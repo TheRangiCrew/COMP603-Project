@@ -26,3 +26,4 @@ replay_pid*
 # netbeans
 nbproject/private/
 nbproject/private/private.properties
+/build/
