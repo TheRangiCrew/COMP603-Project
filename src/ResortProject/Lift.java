@@ -32,12 +32,21 @@ public class Lift {
     private LocalTime closingTime;
     private LiftStatus status;
     
+    /**
+     *
+     * @param length
+     * @param capacity
+     * @param type
+     * @param name
+     * @param openingTime
+     * @param closingTime
+     */
     public Lift(int length, int capacity, LiftType type, String name, String openingTime, String closingTime) {
         this.length = length;
         this.capacity = capacity;
         this.type = type;
         this.name = name;
-        
+        this.status = LiftStatus.CLOSED;
     }
 
     /**

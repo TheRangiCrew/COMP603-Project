@@ -1,6 +1,7 @@
 package ResortProject;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  *
@@ -9,9 +10,32 @@ import java.time.LocalDate;
 public class Ticket {
     
     private Person owner;
-    private int number;
-    private int credit;
+    private UUID id;
+    private float credit;
     private LocalDate validFrom;
     private LocalDate validTo;
     
+    public Ticket(Person owner, LocalDate validFrom, LocalDate validTo) {
+        this.owner = owner;
+        this.id = UUID.randomUUID();
+        this.credit = 0.0f;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
+    }
+    
+    public Ticket(Person owner, float credit, LocalDate validFrom, LocalDate validTo) {
+        this.owner = owner;
+        this.id = UUID.randomUUID();
+        this.credit = credit;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
+    }
+    
+    public Ticket(Person owner, UUID id, float credit, LocalDate validFrom, LocalDate validTO) {
+        this.owner = owner;
+        this.id = id;
+        this.credit = credit;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
+    }
 }
