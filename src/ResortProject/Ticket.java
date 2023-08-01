@@ -31,7 +31,7 @@ public class Ticket {
         this.validTo = validTo;
     }
     
-    public Ticket(Person owner, UUID id, float credit, LocalDate validFrom, LocalDate validTO) {
+    public Ticket(Person owner, UUID id, float credit, LocalDate validFrom, LocalDate validTo) {
         this.owner = owner;
         this.id = id;
         this.credit = credit;
