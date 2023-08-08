@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Lifts>
+    <Lift>
+        <id>917587d5-ed71-4d24-b0f8-1bc9a8aef8a6</id>
+        <length>823</length>
+        <capacity>4</capacity>
+        <type>CHAIRLIFT_FIXED_GRIP</type>
+        <name>Pretty Valley Quad</name>
+        <openingTime>09:00</openingTime>
+        <closingTime>16:00</closingTime>
+        <status>CLOSED</status>
+    </Lift>
+    <Lift>
+        <id>b22a5817-def7-446e-83db-8fe4be436514</id>
+        <length>677</length>
+        <capacity>8</capacity>
+        <type>CHAIRLIFT_DETACHABLE</type>
+        <name>Village 8 Express</name>
+        <openingTime>08:00</openingTime>
+        <closingTime>17:00</closingTime>
+        <status>CLOSED</status>
+    </Lift>
+    <Lift>
+        <id>41a81399-5d3b-445d-862d-b8013f27b78a</id>
+        <length>305</length>
+        <capacity>2</capacity>
+        <type>T_BAR</type>
+        <name>Eyre T-Bar</name>
+        <openingTime>08:30</openingTime>
+        <closingTime>16:30</closingTime>
+        <status>CLOSED</status>
+    </Lift>
+</Lifts>
+

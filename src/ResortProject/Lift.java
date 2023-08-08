@@ -7,12 +7,12 @@ import java.time.LocalTime;
  * @author ryanz
  */
 enum LiftType {
-    CHAIRLIFT_FIXED_GRIP,
-    CHAIRLIFT_DETACHABLE,
+    CHAIRLIFT_FIXED_GRIP, // Express lifts...
+    CHAIRLIFT_DETACHABLE, // Slow regular chairlift
     T_BAR,
-    J_BAR,
-    CONVEYOR,
-    ROPE_TOW,
+    J_BAR, // Poma
+    CONVEYOR, // Magic Carpet
+    ROPE_TOW, 
     GONDOLA;
 } 
 
@@ -24,13 +24,13 @@ enum LiftStatus {
 
 public class Lift {
     
-    private int length;
-    private int capacity;
-    private LiftType type;
-    private String name;
-    private LocalTime openingTime;
-    private LocalTime closingTime;
-    private LiftStatus status;
+    private int length; // Length in metres
+    private int capacity; // Capcity per chair/gondola
+    private LiftType type; // See above
+    private String name; // Name
+    private LocalTime openingTime; // Opening time in 24 hour time
+    private LocalTime closingTime; // Closing time in 24 hour time
+    private LiftStatus status; // See above (e.g. CLOSED, OPEN, WIND_HOLD
     
     /**
      *
@@ -48,35 +48,4 @@ public class Lift {
         this.name = name;
         this.status = LiftStatus.CLOSED;
     }
-
-    /**
-     * @return the length
-     */
-    public int getLength() {
-        return length;
-    }
-
-    /**
-     * @return the capacity
-     */
-    public int getCapacity() {
-        return capacity;
-    }
-
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type.name().replaceAll("_", " ");
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-    
-    
-    
 }
