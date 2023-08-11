@@ -1,5 +1,6 @@
 package ResortProject;
 
+import ResortProject.Menus.MountainCardMenu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,15 +18,16 @@ public class ResortHub {
             System.out.println("| WELCOME TO THE RESORT! |");
             System.out.println("+------------------------+\n");
 
-            System.out.println("Please choose your desired location.");
-            System.out.println("1. Mountain card");
-            System.out.println("2. Mountain cafe");
-            System.out.println("3. Rental equipment");
-            System.out.println("4. Lifts");
-            System.out.println("Q. Close the program");
-
-            String response = null;
             while (quit != true) {
+
+                System.out.println("Please choose your desired location.");
+                System.out.println("1. Mountain card");
+                System.out.println("2. Mountain cafe");
+                System.out.println("3. Rental equipment");
+                System.out.println("4. Lifts");
+                System.out.println("Q. Close the program");
+
+                String response = null;
                 while (response == null) {
                     response = scan.nextLine().toLowerCase();
                     scan.reset();
@@ -34,7 +36,7 @@ public class ResortHub {
                             quit = true;
                             break;
                         case "1":
-                            
+                            MountainCardMenu.mountainCard();
                             break;
                         case "2":
                             quit = true;
