@@ -7,7 +7,7 @@ import java.util.UUID;
  *
  * @author ryanz
  */
-public class Ticket {
+public class MountainCard {
     
     private Person owner;
     private UUID id;
@@ -15,7 +15,7 @@ public class Ticket {
     private LocalDate validFrom;
     private LocalDate validTo;
     
-    public Ticket(Person owner, LocalDate validFrom, LocalDate validTo) {
+    public MountainCard(Person owner, LocalDate validFrom, LocalDate validTo) {
         this.owner = owner;
         this.id = UUID.randomUUID();
         this.credit = 0.0f;
@@ -23,7 +23,7 @@ public class Ticket {
         this.validTo = validTo;
     }
     
-    public Ticket(Person owner, float credit, LocalDate validFrom, LocalDate validTo) {
+    public MountainCard(Person owner, float credit, LocalDate validFrom, LocalDate validTo) {
         this.owner = owner;
         this.id = UUID.randomUUID();
         this.credit = credit;
@@ -31,7 +31,7 @@ public class Ticket {
         this.validTo = validTo;
     }
     
-    public Ticket(Person owner, UUID id, float credit, LocalDate validFrom, LocalDate validTo) {
+    public MountainCard(Person owner, UUID id, float credit, LocalDate validFrom, LocalDate validTo) {
         this.owner = owner;
         this.id = id;
         this.credit = credit;
