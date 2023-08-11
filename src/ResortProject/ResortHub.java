@@ -1,6 +1,8 @@
 package ResortProject;
 
+import ResortProject.Data.GlobalData;
 import ResortProject.Menus.MountainCardMenu;
+import ResortProject.Menus.LiftsMenu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -33,7 +35,9 @@ public class ResortHub {
                     scan.reset();
                     switch (response) {
                         case "q":
-                            quit = true;
+                            if (GlobalData.close()) {
+                                quit = true;
+                            }
                             break;
                         case "1":
                             MountainCardMenu.mountainCard();
@@ -45,7 +49,7 @@ public class ResortHub {
                             quit = true;
                             break;
                         case "4":
-                            quit = true;
+                            LiftsMenu.liftMenu();
                             break;
                         default:
                             System.out.println("Incorrect input, please try again.");

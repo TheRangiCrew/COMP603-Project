@@ -1,7 +1,7 @@
 package ResortProject.Lifts;
 
 import ResortProject.Data.XMLFile;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.UUID;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -12,13 +12,13 @@ import org.w3c.dom.*;
  */
 public class LiftController {
 
-    private HashSet<Lift> lifts;
+    private ArrayList<Lift> lifts;
     private XMLFile file;
 
     // Constructor reads in the current data from the Lift XML file
     public LiftController() {
         
-        this.lifts = new HashSet<Lift>();
+        this.lifts = new ArrayList<Lift>();
         
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/Lift.xml");
@@ -32,7 +32,8 @@ public class LiftController {
             // Element to parse
             Element element = (Element) liftList.item(i);
 
-            // Parsers
+            // Parsers for each element. Only parse as "primitive" types. 
+            // Actual types will be converted in Lift object constructor
             String id = XMLFile.getTextContent(element, "id");
             int length = Integer.parseInt(XMLFile.getTextContent(element, "length"));
             int capacity = Integer.parseInt(XMLFile.getTextContent(element, "capacity"));
@@ -48,7 +49,7 @@ public class LiftController {
 
     }
 
-    public HashSet<Lift> getLifts() {
+    public ArrayList<Lift> getLifts() {
         return this.lifts;
     }
 
@@ -72,20 +73,40 @@ public class LiftController {
         return null;
     }
 
+    /**
+     * Handles the saving of the lift data to it's corresponding XML file.
+     * This should only run at the end of the program
+     * 
+     * @return true if the data was successfully saved to disk, else false
+     */
     public boolean close() {
         try {
+            // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.newDocument();
 
+            // Create the parent <Lifts> element
             Element liftsElement = document.createElement("Lifts");
+            // Add <Lifts> element to the document
             document.appendChild(liftsElement);
 
+            /**
+             * Loop through each lift in the array and parse it's properties
+             * into the XML document under a <Lift> element for each item.
+             * Each element has it's corresponding XML element created and
+             * appended to it's parent <Lift>. The text contents is parsed from
+             * it's type to a string and added to it's XML element.
+             */
             for (Lift lift : lifts) {
+                // <Lift> element for each lift
                 Element liftElement = document.createElement("Lift");
 
+                // Create an <id> XML element
                 Element idElement = document.createElement("id");
+                // Parse from type to a string and add the text to the XML element
                 idElement.appendChild(document.createTextNode(lift.getId().toString()));
+                // Append the element as a child of it's <Lift> element
                 liftElement.appendChild(idElement);
 
                 Element lengthElement = document.createElement("length");
@@ -116,11 +137,12 @@ public class LiftController {
                 statusElement.appendChild(document.createTextNode(lift.getStatus().name()));
                 liftElement.appendChild(statusElement);
 
-                // Add other elements similarly
+                // Add <Lift> to the parent <Lifts> element
                 liftsElement.appendChild(liftElement);
-                
-                file.saveClose(document);
             }
+            
+            // Save the document to the XML file and close the stream
+            file.saveClose(document);
         } catch (Exception e) {
             System.out.println("Failed to close the LiftController. An error occurred");
             return false;

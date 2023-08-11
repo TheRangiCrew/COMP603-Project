@@ -23,10 +23,21 @@ public class Lift {
         GONDOLA;
     }
 
-    static enum LiftStatus {
-        CLOSED,
-        OPEN,
-        WIND_HOLD;
+    public static enum LiftStatus {
+        CLOSED("CLOSED"),
+        OPEN("OPEN"),
+        WIND_HOLD("WIND HOLD");
+        
+        private String name;
+        
+        private LiftStatus(String name) {
+            this.name = name;
+        }
+        
+        @Override
+        public String toString() {
+            return this.name;
+        }
     }
 
     private UUID id;
@@ -145,12 +156,7 @@ public class Lift {
     }
     
     @Override
-    public int hashCode() {
-        return this.getId().hashCode();
-    }
-    
-    @Override
     public String toString() {
-        return this.getName();
+        return this.getName() + " - " + this.getStatus();
     }
 }
