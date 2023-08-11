@@ -6,5 +6,7 @@ package ResortProject;
  */
 public class Menu {
     
-    
+    public static void MountainCard() {
+        
+    }
 }

@@ -61,14 +61,96 @@ public class Lift {
             System.out.println("Failed to create Lift Class");
         }
     }
+
+    /**
+     * @return the id
+     */
+    public UUID getId() {
+        return id;
+    }
+
+    /**
+     * @return the length
+     */
+    public int getLength() {
+        return length;
+    }
+
+    /**
+     * @return the capacity
+     */
+    public int getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * @return the type
+     */
+    public LiftType getType() {
+        return type;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the openingTime
+     */
+    public LocalTime getOpeningTime() {
+        return openingTime;
+    }
+
+    /**
+     * @return the closingTime
+     */
+    public LocalTime getClosingTime() {
+        return closingTime;
+    }
+
+    /**
+     * @return the status
+     */
+    public LiftStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(LiftStatus status) {
+        this.status = status;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        
+        if (!(o instanceof Lift)) {
+            return false;
+        }
+        
+        Lift lift = (Lift) o;
+        
+        if (this.getName().equalsIgnoreCase(lift.getName())) {
+            return true;
+        }
+        
+        return false;
+    }
     
     @Override
     public int hashCode() {
-        return this.id.hashCode();
+        return this.getId().hashCode();
     }
     
     @Override
     public String toString() {
-        return this.name;
+        return this.getName();
     }
 }

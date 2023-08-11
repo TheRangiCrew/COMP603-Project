@@ -34,7 +34,7 @@ public class ResortHub {
                             quit = true;
                             break;
                         case "1":
-                            quit = true;
+                            
                             break;
                         case "2":
                             quit = true;
