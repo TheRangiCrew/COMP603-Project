@@ -34,7 +34,6 @@ public class LiftController {
 
             // Parsers
             String id = XMLFile.getTextContent(element, "id");
-            System.out.println(id);
             int length = Integer.parseInt(XMLFile.getTextContent(element, "length"));
             int capacity = Integer.parseInt(XMLFile.getTextContent(element, "capacity"));
             String type = XMLFile.getTextContent(element, "type");
