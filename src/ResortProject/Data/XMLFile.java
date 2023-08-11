@@ -26,4 +26,13 @@ public class XMLFile {
         }
     }
     
+    public static String getTextContent(Element element, String tagName) {
+        NodeList nodeList = element.getElementsByTagName(tagName);
+        if (nodeList.getLength() > 0) {
+            return nodeList.item(0).getTextContent();
+        } else {
+            return null;
+        }
+    }
+    
 }
