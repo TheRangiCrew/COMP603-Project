@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Cafe>   
+    <Item>
+        <name>Bacon egg pie</name>
+        <price>6.50</price>
+        <description>A hot pie filled with bacon and egg.</description>
+    </Item>
+    <Item>
+        <name>Waffles</name>
+        <price>9.00</price>
+        <description>Two waffles with bacon, banana, and maple syrup</description>
+    </Item>
+    <Item>
+        <name>Muffin stack</name>
+        <price>9.00</price>
+        <description>Bacon, swiss cheese, hashbrown, fried egg & hollandaise sauce in a muffin</description>
+    </Item>
+    <Item>
+        <name>Mince and cheese pie</name>
+        <price>6.50</price>
+        <description>A hot pie filled with mince and a a layer of melted cheese.</description>
+    </Item>
+     <Item>
+        <name>Ham and cheese toastie</name>
+        <price>4.00</price>
+        <description>A ham and cheese toastie with tomato sauce.</description>
+    </Item>
+     <Item>
+        <name>Cheese burger w/ fries</name>
+        <price>9.00</price>
+        <description>A beef pattie, cheese, pickles and tomato sauce in a burger bun with a side of fries.</description>
+    </Item>
+    <Item>
+        <name>Loaded wedges</name>
+        <price>9.00</price>
+        <description>Potato wedges loaded with bacon, cheese, sourcream, and sweet chilli sauce.</description>
+    </Item>
+    <Item>
+        <name>Margharita pizza</name>
+        <price>9.00</price>
+        <description>A pizza with mozzarella cheese and sliced tomato on a thick crust base.</description>
+    </Item>
+    <Item>
+        <name>Coffee</name>
+        <price>4.50</price>
+        <description>Freshly ground coffee beans roasted to perfection.</description>
+    </Item>
+     <Item>
+        <name>Tea</name>
+        <price>4.50</price>
+        <description>A traditional blend of black tea</description>
+    </Item>
+    <Item>
+        <name>Coke No Sugar</name>
+        <price>4.50</price>
+        <description>Coca-Colas' zero sugar coke.</description>
+    </Item>
+    <Item>
+        <name>RedBull</name>
+        <price>4.50</price>
+        <description>Original RedBull energy drink.</description>
+    </Item>
+    <Item>
+        <name>Iced chocolate</name>
+        <price>5.50</price>
+        <description>An ice cold rich chocolate drink.</description>
+    </Item>
+</Cafe>
+
