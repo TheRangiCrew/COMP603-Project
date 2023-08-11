@@ -12,13 +12,17 @@ import org.w3c.dom.*;
  */
 public class LiftController {
 
-    private HashSet<Lift> lifts = new HashSet<Lift>();
+    private HashSet<Lift> lifts;
+    private XMLFile file;
 
     // Constructor reads in the current data from the Lift XML file
     public LiftController() {
+        
+        this.lifts = new HashSet<Lift>();
+        
         // Open and get "root" element of the specified XML file
-        XMLFile inputFile = new XMLFile("./resources/Lift.xml");
-        Element root = inputFile.root;
+        this.file = new XMLFile("./resources/Lift.xml");
+        Element root = file.root;
 
         // Extract all the Lift elements as a list from the root element
         NodeList liftList = root.getElementsByTagName("Lift");
@@ -70,28 +74,59 @@ public class LiftController {
     }
 
     public boolean close() {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.newDocument();
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.newDocument();
 
-        Element liftsElement = document.createElement("Lifts");
-        document.appendChild(liftsElement);
+            Element liftsElement = document.createElement("Lifts");
+            document.appendChild(liftsElement);
 
-        for (Lift lift : lifts) {
-            Element liftElement = document.createElement("Lift");
+            for (Lift lift : lifts) {
+                Element liftElement = document.createElement("Lift");
 
-            Element idElement = document.createElement("id");
-            idElement.appendChild(document.createTextNode(lift.getId().toString()));
-            liftElement.appendChild(idElement);
+                Element idElement = document.createElement("id");
+                idElement.appendChild(document.createTextNode(lift.getId().toString()));
+                liftElement.appendChild(idElement);
 
-            Element lengthElement = document.createElement("length");
-            lengthElement.appendChild(document.createTextNode(String.valueOf(lift.getLength())));
-            liftElement.appendChild(lengthElement);
+                Element lengthElement = document.createElement("length");
+                lengthElement.appendChild(document.createTextNode(String.valueOf(lift.getLength())));
+                liftElement.appendChild(lengthElement);
 
-            // Add other elements similarly
-            liftsElement.appendChild(liftElement);
+                Element capacityElement = document.createElement("capacity");
+                capacityElement.appendChild(document.createTextNode(String.valueOf(lift.getCapacity())));
+                liftElement.appendChild(capacityElement);
+
+                Element typeElement = document.createElement("type");
+                typeElement.appendChild(document.createTextNode(lift.getType().name()));
+                liftElement.appendChild(typeElement);
+
+                Element nameElement = document.createElement("name");
+                nameElement.appendChild(document.createTextNode(lift.getName()));
+                liftElement.appendChild(nameElement);
+
+                Element openingElement = document.createElement("openingTime");
+                openingElement.appendChild(document.createTextNode(lift.getOpeningTime().toString()));
+                liftElement.appendChild(openingElement);
+
+                Element closingElement = document.createElement("closingTime");
+                closingElement.appendChild(document.createTextNode(lift.getClosingTime().toString()));
+                liftElement.appendChild(closingElement);
+
+                Element statusElement = document.createElement("status");
+                statusElement.appendChild(document.createTextNode(lift.getStatus().name()));
+                liftElement.appendChild(statusElement);
+
+                // Add other elements similarly
+                liftsElement.appendChild(liftElement);
+                
+                file.saveClose(document);
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to close the LiftController. An error occurred");
+            return false;
         }
-        
+
         return true;
     }
 

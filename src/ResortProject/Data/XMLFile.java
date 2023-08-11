@@ -30,20 +30,19 @@ public class XMLFile {
         }
     }
     
-    public static void saveClose(Document document) {
+    public void saveClose(Document document) {
         try {
             // Transform the DOM document to XML file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-            // Write to a file
-            File outputFile = new File("Lift.xml");
-            FileWriter fileWriter = new FileWriter(outputFile);
+            // Write to the file
+            FileWriter fileWriter = new FileWriter(this.file);
             transformer.transform(new DOMSource(document), new StreamResult(fileWriter));
             fileWriter.close();
-            
         } catch (Exception e) {
+            System.out.println("Failed to write the lift data to the file.");
             e.printStackTrace();
         }
     }

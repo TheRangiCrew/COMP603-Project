@@ -1,70 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Cafe>   
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Cafe>
     <Item>
-        <name>Bacon egg pie</name>
-        <price>6.50</price>
-        <description>A hot pie filled with bacon and egg.</description>
-    </Item>
-    <Item>
-        <name>Waffles</name>
-        <price>9.00</price>
-        <description>Two waffles with bacon, banana, and maple syrup</description>
-    </Item>
-    <Item>
-        <name>Muffin stack</name>
-        <price>9.00</price>
-        <description>Bacon, swiss cheese, hashbrown, fried egg and hollandaise sauce in a muffin</description>
-    </Item>
-    <Item>
-        <name>Mince and cheese pie</name>
-        <price>6.50</price>
-        <description>A hot pie filled with mince and a a layer of melted cheese.</description>
-    </Item>
-     <Item>
-        <name>Ham and cheese toastie</name>
-        <price>4.00</price>
-        <description>A ham and cheese toastie with tomato sauce.</description>
-    </Item>
-     <Item>
-        <name>Cheese burger w/ fries</name>
-        <price>9.00</price>
-        <description>A beef pattie, cheese, pickles and tomato sauce in a burger bun with a side of fries.</description>
-    </Item>
-    <Item>
-        <name>Loaded wedges</name>
-        <price>9.00</price>
-        <description>Potato wedges loaded with bacon, cheese, sourcream, and sweet chilli sauce.</description>
-    </Item>
-    <Item>
-        <name>Margharita pizza</name>
-        <price>9.00</price>
-        <description>A pizza with mozzarella cheese and sliced tomato on a thick crust base.</description>
-    </Item>
-    <Item>
-        <name>Coffee</name>
-        <price>4.50</price>
-        <description>Freshly ground coffee beans roasted to perfection.</description>
-    </Item>
-     <Item>
+        <id>4793dfa3-d8d8-4832-bd68-22b2799d75f9</id>
         <name>Tea</name>
-        <price>4.50</price>
+        <price>4.5</price>
         <description>A traditional blend of black tea</description>
     </Item>
     <Item>
-        <name>Coke No Sugar</name>
-        <price>4.50</price>
-        <description>Coca-Colas' zero sugar coke.</description>
+        <id>7fc9cb15-2fc9-4c20-8f7d-e1b17b1404c4</id>
+        <name>Bacon egg pie</name>
+        <price>6.5</price>
+        <description>A hot pie filled with bacon and egg.</description>
     </Item>
     <Item>
+        <id>d79d70ef-98a9-4bbf-bd52-0ec5ecb257a8</id>
+        <name>Coffee</name>
+        <price>4.5</price>
+        <description>Freshly ground coffee beans roasted to perfection.</description>
+    </Item>
+    <Item>
+        <id>8b4af406-2bf0-492d-acc5-f9fd74a4110c</id>
+        <name>Ham and cheese toastie</name>
+        <price>4.0</price>
+        <description>A ham and cheese toastie with tomato sauce.</description>
+    </Item>
+    <Item>
+        <id>ac5a25f1-13c9-43b6-8ad7-5d14d3c73fa7</id>
+        <name>Margharita pizza</name>
+        <price>9.0</price>
+        <description>A pizza with mozzarella cheese and sliced tomato on a thick crust base.</description>
+    </Item>
+    <Item>
+        <id>e55b673a-bee8-46f9-88ef-272bd618de4e</id>
+        <name>Mince and cheese pie</name>
+        <price>6.5</price>
+        <description>A hot pie filled with mince and a a layer of melted cheese.</description>
+    </Item>
+    <Item>
+        <id>cf4d1bc4-5f63-4f4b-b1ed-1be1246215ca</id>
+        <name>Loaded wedges</name>
+        <price>9.0</price>
+        <description>Potato wedges loaded with bacon, cheese, sourcream, and sweet chilli sauce.</description>
+    </Item>
+    <Item>
+        <id>c2358606-812b-4c10-a2ab-3579910692fc</id>
+        <name>Iced chocolate</name>
+        <price>5.5</price>
+        <description>An ice cold rich chocolate drink.</description>
+    </Item>
+    <Item>
+        <id>37b181c6-96aa-419c-8159-149b9675305e</id>
         <name>RedBull</name>
-        <price>4.50</price>
+        <price>4.5</price>
         <description>Original RedBull energy drink.</description>
     </Item>
     <Item>
-        <name>Iced chocolate</name>
-        <price>5.50</price>
-        <description>An ice cold rich chocolate drink.</description>
+        <id>e04e49ab-b93f-463f-94f6-8dca0fdc5449</id>
+        <name>Waffles</name>
+        <price>9.0</price>
+        <description>Two waffles with bacon, banana, and maple syrup</description>
+    </Item>
+    <Item>
+        <id>33be02cc-2c3c-469f-83bb-cea7aaedc49c</id>
+        <name>Muffin stack</name>
+        <price>9.0</price>
+        <description>Bacon, swiss cheese, hashbrown, fried egg and hollandaise sauce in a muffin</description>
+    </Item>
+    <Item>
+        <id>4348da5e-fd4e-4aff-a84a-1cccce14cf37</id>
+        <name>Coke No Sugar</name>
+        <price>4.5</price>
+        <description>Coca-Colas' zero sugar coke.</description>
+    </Item>
+    <Item>
+        <id>86e58c8b-fbc8-4ea3-afa3-a23d9143a7d8</id>
+        <name>Cheese burger w/ fries</name>
+        <price>9.0</price>
+        <description>A beef pattie, cheese, pickles and tomato sauce in a burger bun with a side of fries.</description>
     </Item>
 </Cafe>
-
