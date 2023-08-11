@@ -66,4 +66,9 @@ public class Lift {
     public int hashCode() {
         return this.id.hashCode();
     }
+    
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
