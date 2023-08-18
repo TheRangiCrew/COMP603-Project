@@ -8,7 +8,7 @@
         <name>Eyre T-Bar</name>
         <openingTime>08:30</openingTime>
         <closingTime>16:30</closingTime>
-        <status>OPEN</status>
+        <status>CLOSED</status>
     </Lift>
     <Lift>
         <id>917587d5-ed71-4d24-b0f8-1bc9a8aef8a6</id>
@@ -28,6 +28,6 @@
         <name>Village 8 Express</name>
         <openingTime>08:00</openingTime>
         <closingTime>17:00</closingTime>
-        <status>WIND_HOLD</status>
+        <status>OPEN</status>
     </Lift>
 </Lifts>

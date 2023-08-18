@@ -16,9 +16,9 @@ public class ResortHub {
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
         while (quit != true) {
-            System.out.println("+------------------------+");
-            System.out.println("| WELCOME TO THE RESORT! |");
-            System.out.println("+------------------------+\n");
+            System.out.println("+-----------------------------+");
+            System.out.println("| WELCOME TO THE SNOW RESORT! |");
+            System.out.println("+-----------------------------+\n");
 
             while (quit != true) {
 
@@ -26,7 +26,7 @@ public class ResortHub {
                 System.out.println("1. Mountain card");
                 System.out.println("2. Mountain cafe");
                 System.out.println("3. Rental equipment");
-                System.out.println("4. Lifts");
+                System.out.println("4. Ski Lifts");
                 System.out.println("Q. Close the program");
 
                 String response = null;

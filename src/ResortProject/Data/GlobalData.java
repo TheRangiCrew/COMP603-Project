@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ResortProject.Data;
 
 import ResortProject.Lifts.LiftController;
@@ -10,7 +6,6 @@ import ResortProject.Lifts.LiftController;
  * Controls for all the data and state of the program using the Singleton Pattern
  * design principle.
  * 
- * @author ryanz
  */
 public class GlobalData {
     /**

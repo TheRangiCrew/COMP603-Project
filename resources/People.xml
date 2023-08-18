@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<People>
+    <Person>
+        <id>d448870a-4001-402c-aca1-72206f098a00</id>
+        <firstName>Sam</firstName>
+        <lastName>Robertson</lastName>
+        <birthDate>1995-08-07</birthDate>
+        <email>sam.is.awesome@xtra.co.nz</email>
+        <phone>+642012345678</phone>
+        <credit></credit>
+    </Person>
+    <Person>
+        <id>07563a2b-6ec9-40bf-9abf-d09fb964b9a1</id>
+        <firstName>Ryan</firstName>
+        <lastName>Adam</lastName>
+        <birthDate>2003-05-20</birthDate>
+        <email>ryan.ryan@ryan.com.au</email>
+        <phone>+61412345678</phone>
+    </Person>
+</People>
+

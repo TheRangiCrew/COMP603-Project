@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Passes>
+    <Pass>
+        <id>f9e5ae33-a438-4e65-a87d-c7cbcf0d2abe</id>
+        <owner>d5d41e1b-782c-4afe-8caa-184f2511ee70</owner>
+        <validFrom>2023-08-18</validFrom>
+        <validTo>2023-10-08</validTo>
+    </Pass>
+</Passes>
