@@ -6,10 +6,6 @@ import java.util.UUID;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
-/**
- *
- * @author ryanz
- */
 public class LiftController {
 
     private ArrayList<Lift> lifts;
