@@ -19,8 +19,8 @@ public class PeopleController {
         Element root = file.root;
 
         // Extract all the Person elements as a list from the root element
-        NodeList peopleList = root.getElementsByTagName("People");
-
+        NodeList peopleList = root.getElementsByTagName("Person");
+        
         // Loop through NodeList and parse each necessary element
         for (int i = 0; i < peopleList.getLength(); i++) {
             // Element to parse
@@ -47,9 +47,17 @@ public class PeopleController {
         return this.people;
     }
     
+    /**
+     * Compares the email and date of birth of each person to find a specific person
+     * 
+     * @param email the email of the person
+     * @param dob the dob of the person as a LocalDate
+     * @return a Person if one exists, or null if one cannot be found 
+     * @see LocalDate
+     */
     public Person getPerson(String email, LocalDate dob) {
         for (Person person : people) {
-            if (person.getEmail().equalsIgnoreCase(email) && person.getDob().isEqual(dob)) {
+            if (person.getEmail().equalsIgnoreCase(email) && person.getDob().equals(dob)) {
                 return person;
             }
         }
@@ -125,5 +133,16 @@ public class PeopleController {
         }
 
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        String output = "";
+        
+        for ( Person person : people) {
+            output += person.toString();
+        }
+        
+        return output;
     }
 }
