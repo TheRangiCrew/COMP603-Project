@@ -2,6 +2,7 @@ package ResortProject.Data;
 
 import ResortProject.Lifts.LiftController;
 import ResortProject.People.PeopleController;
+import ResortProject.People.Person;
 
 /**
  * Controls for all the data and state of the program using the Singleton Pattern
@@ -14,12 +15,9 @@ public class GlobalData {
      */
     private static GlobalData instance = new GlobalData();
     
-    /**
-     * Lift data controller
-     * @see LiftController
-     */
     public static LiftController liftController;
     public static PeopleController peopleController;
+    private static Person loggedInPerson = null;
     
     /**
      * Initialise all data in the program including reading XML data using the
@@ -36,6 +34,18 @@ public class GlobalData {
      */
     public static GlobalData getInstance() {
         return instance;
+    }
+    
+    public static Person getLoggedIn() {
+        return loggedInPerson;
+    }
+    
+    public static void setLoggedIn(Person person) {
+        loggedInPerson = person;
+    }
+    
+    public static void logout() {
+        loggedInPerson = null;
     }
     
     /**

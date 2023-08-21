@@ -3,6 +3,7 @@ package ResortProject.People;
 import ResortProject.Data.XMLFile;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
@@ -34,9 +35,25 @@ public class PeopleController {
             String dob = XMLFile.getTextContent(element, "dob");
             String email = XMLFile.getTextContent(element, "email");
             String phone = XMLFile.getTextContent(element, "phone");
+            float credit = Float.parseFloat(XMLFile.getTextContent(element, "credit"));
+            
+            HashSet<LiftPass> liftSet = new HashSet();
+            NodeList liftPassElements = element.getElementsByTagName("LiftPasses");
+            Element liftPassElement = (Element) liftPassElements.item(0);
+            NodeList passElements = liftPassElement.getElementsByTagName("LiftPass");
+            
+            for (int j = 0; j < passElements.getLength(); j++) {
+                Element passElement = (Element) passElements.item(i);
+                
+                String liftId = XMLFile.getTextContent(passElement, "id");
+                String validFrom = XMLFile.getTextContent(passElement, "validFrom");
+                String validTo = XMLFile.getTextContent(passElement, "validTo");
+                
+                liftSet.add(new LiftPass(liftId, validFrom, validTo));
+            }
 
             // Add Person to People HashSet
-            people.add(new Person(id, firstName, lastName, dob, email, phone));
+            people.add(new Person(id, firstName, lastName, dob, email, phone, credit, liftSet));
         }
     }
     
@@ -101,25 +118,50 @@ public class PeopleController {
                 // Append the element as a child of it's <Person> element
                 personElement.appendChild(idElement);
 
-                Element typeElement = document.createElement("firstName");
-                typeElement.appendChild(document.createTextNode(person.getFirstName()));
-                personElement.appendChild(typeElement);
+                Element firstNameElement = document.createElement("firstName");
+                firstNameElement.appendChild(document.createTextNode(person.getFirstName()));
+                personElement.appendChild(firstNameElement);
 
-                Element nameElement = document.createElement("lastName");
-                nameElement.appendChild(document.createTextNode(person.getLastName()));
-                personElement.appendChild(nameElement);
+                Element lastNameElement = document.createElement("lastName");
+                lastNameElement.appendChild(document.createTextNode(person.getLastName()));
+                personElement.appendChild(lastNameElement);
 
-                Element openingElement = document.createElement("dob");
-                openingElement.appendChild(document.createTextNode(person.getDob().toString()));
-                personElement.appendChild(openingElement);
+                Element dobElement = document.createElement("dob");
+                dobElement.appendChild(document.createTextNode(person.getDob().toString()));
+                personElement.appendChild(dobElement);
 
-                Element closingElement = document.createElement("email");
-                closingElement.appendChild(document.createTextNode(person.getEmail()));
-                personElement.appendChild(closingElement);
+                Element emailElement = document.createElement("email");
+                emailElement.appendChild(document.createTextNode(person.getEmail()));
+                personElement.appendChild(emailElement);
 
-                Element statusElement = document.createElement("phone");
-                statusElement.appendChild(document.createTextNode(person.getPhone()));
-                personElement.appendChild(statusElement);
+                Element phoneElement = document.createElement("phone");
+                phoneElement.appendChild(document.createTextNode(person.getPhone()));
+                personElement.appendChild(phoneElement);
+                
+                Element creditElement = document.createElement("credit");
+                creditElement.appendChild(document.createTextNode(String.valueOf(person.getCredit())));
+                personElement.appendChild(creditElement);
+                
+                Element passesElement = document.createElement("LiftPasses");
+                for (LiftPass pass : person.getPasses()) {
+                    Element passElement = document.createElement("LiftPass");
+                    
+                    Element passIdElement = document.createElement("id");
+                    passIdElement.appendChild(document.createTextNode(pass.getId().toString()));
+                    passElement.appendChild(passIdElement);
+                    
+                    Element validFromElement = document.createElement("validFrom");
+                    validFromElement.appendChild(document.createTextNode(pass.getValidFrom().toString()));
+                    passElement.appendChild(validFromElement);
+                    
+                    Element validToElement = document.createElement("validTo");
+                    validToElement.appendChild(document.createTextNode(pass.getValidTo().toString()));
+                    passElement.appendChild(validToElement);
+                    
+                    passesElement.appendChild(passElement);
+                }
+                
+                personElement.appendChild(passesElement);
 
                 // Add <Person> to the parent <People> element
                 peopleElement.appendChild(personElement);

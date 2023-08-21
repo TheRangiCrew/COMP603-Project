@@ -3,10 +3,6 @@ package ResortProject.Lifts;
 import java.time.LocalTime;
 import java.util.UUID;
 
-/**
- *
- * @author ryanz
- */
 public class Lift {
 
     Lift() {

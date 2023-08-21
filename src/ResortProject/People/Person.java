@@ -1,5 +1,6 @@
 package ResortProject.People;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.HashSet;
@@ -17,9 +18,13 @@ public class Person {
     private LocalDate dob;
     private String email;
     private String phone;
+    private float credit;
     private HashSet<LiftPass> passes;
+    
+    // Formatter for credits
+    private DecimalFormat decformat = new DecimalFormat("0.00");
 
-    public Person(String id, String firstName, String lastName, String dob, String email, String phone) {
+    public Person(String id, String firstName, String lastName, String dob, String email, String phone, float credit) {
         try {
             this.id = UUID.fromString(id);
             this.firstName = firstName;
@@ -27,7 +32,27 @@ public class Person {
             this.dob = LocalDate.parse(dob);
             this.email = email;
             this.phone = phone;
+            this.credit = credit;
             this.passes = new HashSet();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Failed to parse UUID. Incorrect format. Person will be skipped...");
+        } catch (DateTimeParseException e) {
+            System.out.println("Failed to parse DOB " + dob + ". Person will be skipped...");
+        }
+    }
+    
+    public Person(String id, String firstName, String lastName, String dob, String email, String phone, float credit, HashSet<LiftPass> passes) {
+        try {
+            this.id = UUID.fromString(id);
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.dob = LocalDate.parse(dob);
+            this.email = email;
+            this.phone = phone;
+            this.credit = credit;
+            this.passes = passes;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Failed to parse UUID. Incorrect format. Person will be skipped...");
         } catch (DateTimeParseException e) {
             System.out.println("Failed to parse DOB " + dob + ". Person will be skipped...");
         }
@@ -90,9 +115,43 @@ public class Person {
         return lastName;
     }
     
-    @Override
-    public String toString() {
-        return this.getName();
+    /**
+     * @return the credit
+     */
+    public float getCredit() {
+        return credit;
     }
     
+    /**
+     * @return the credit
+     */
+    public String getCreditAsString() {
+        return decformat.format(this.credit);
+    }
+    
+    public void addToCredit(float amount) {
+        this.credit += Float.parseFloat(decformat.format(amount));
+    }
+    
+    public LiftPass getLatestLiftPass() {
+        if (this.passes.size() > 0) {
+            return (LiftPass) this.passes.toArray()[this.passes.size()-1];
+        }
+        
+        return null;
+    }
+    
+    public void addLiftPass(LiftPass pass) {
+        this.passes.add(pass);
+    }
+    
+    /**
+     * @return their name
+     */
+    @Override
+    public String toString() {
+        return this.getName() + " " + this.getDob().toString() + "\n"
+                + this.getEmail() + " " + this.getPhone() + "\n"
+                + "Credit balance: $" + this.getCredit();
+    }
 }
