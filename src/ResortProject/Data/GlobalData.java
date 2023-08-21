@@ -1,6 +1,7 @@
 package ResortProject.Data;
 
 import ResortProject.Lifts.LiftController;
+import ResortProject.People.PeopleController;
 
 /**
  * Controls for all the data and state of the program using the Singleton Pattern
@@ -18,6 +19,7 @@ public class GlobalData {
      * @see LiftController
      */
     public static LiftController liftController;
+    public static PeopleController peopleController;
     
     /**
      * Initialise all data in the program including reading XML data using the
@@ -25,6 +27,7 @@ public class GlobalData {
      */
     private GlobalData() {
         this.liftController = new LiftController();
+        this.peopleController = new PeopleController();
     }
     
     /**
@@ -42,6 +45,7 @@ public class GlobalData {
     public static boolean close() {
         // Write lift data to disk and close data streams
         liftController.close();
+        peopleController.close();
         
         return true;
     }
