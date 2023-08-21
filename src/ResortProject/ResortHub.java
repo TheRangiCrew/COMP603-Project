@@ -1,12 +1,11 @@
 package ResortProject;
 
+import ResortProject.Menus.Menu;
 import ResortProject.Data.GlobalData;
 import ResortProject.Menus.MountainCardMenu;
-import ResortProject.Menus.LiftsMenu;
 import ResortProject.People.Person;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**

@@ -105,7 +105,7 @@ public class PeopleController {
                 typeElement.appendChild(document.createTextNode(person.getFirstName()));
                 personElement.appendChild(typeElement);
 
-                Element nameElement = document.createElement("lsatName");
+                Element nameElement = document.createElement("lastName");
                 nameElement.appendChild(document.createTextNode(person.getLastName()));
                 personElement.appendChild(nameElement);
 

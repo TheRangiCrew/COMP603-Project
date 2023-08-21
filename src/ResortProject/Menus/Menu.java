@@ -1,7 +1,6 @@
-package ResortProject;
+package ResortProject.Menus;
 
 import ResortProject.Data.GlobalData;
-import ResortProject.Menus.LiftsMenu;
 import ResortProject.Menus.MountainCardMenu;
 import java.util.Scanner;
 
@@ -39,7 +38,7 @@ public class Menu {
                     // quit = true;
                     break;
                 case "4":
-                    LiftsMenu.liftMenu();
+                    System.out.println(GlobalData.liftController.toString());
                     break;
                 case "l":
                     System.out.println("Good bye!");
