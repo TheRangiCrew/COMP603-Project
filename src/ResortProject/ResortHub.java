@@ -3,6 +3,7 @@ package ResortProject;
 import ResortProject.Data.GlobalData;
 import ResortProject.Menus.MountainCardMenu;
 import ResortProject.Menus.LiftsMenu;
+import ResortProject.People.Person;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
@@ -17,67 +18,48 @@ public class ResortHub {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
-        String EmailLogin;
+        boolean loggedOut = true;
         LocalDate DOBLogin;
         while (quit != true) {
             System.out.println("+-----------------------------+");
             System.out.println("| WELCOME TO THE SNOW RESORT! |");
             System.out.println("+-----------------------------+\n");
             String response = null;
+
             while (response == null) {
-                try {
-                    System.out.println("Please login.");
-                    System.out.println("Email: ");
-                    response = scan.nextLine();
-                    scan.reset();
-                    System.out.println("Birth date (YYYY-MM-DD): ");
-                    DOBLogin = LocalDate.parse(scan.nextLine().trim());
-                    scan.reset();
-                } catch (DateTimeParseException e) {
-                    System.out.println("Incorrect input, please try again.");
-                    response = null;
-                }
-            }
-            while (quit != true) {
-                
-                System.out.println("Please choose your desired location.");
-                System.out.println("1. Mountain card");
-                System.out.println("2. Mountain cafe");
-                System.out.println("3. Rental equipment");
-                System.out.println("4. View ski lift status");
-                System.out.println("L. Log out");
-                System.out.println("Q. Log out and close the program");
-                
-                response = null;
-                while (response == null) {
-                    response = scan.nextLine().toLowerCase();
-                    scan.reset();
-                    switch (response) {
-                        case "q":
-                            if (GlobalData.close()) {
-                                quit = true;
-                            }
-                            break;
-                        case "1":
-                            MountainCardMenu.mountainCard();
-                            break;
-                        case "2":
-                            quit = true;
-                            break;
-                        case "3":
-                            quit = true;
-                            break;
-                        case "4":
-                            LiftsMenu.liftMenu();
-                            break;
-                        case "L":
-                            
-                            break;
-                        default:
-                            System.out.println("Incorrect input, please try again.");
+                while (loggedOut == true) {
+                    try {
+                        System.out.println("Please login.");
+                        System.out.println("Email: ");
+                        response = scan.nextLine().toLowerCase();
+                        scan.reset();
+                        System.out.println("Birth date (YYYY-MM-DD): ");
+                        DOBLogin = LocalDate.parse(scan.nextLine().trim());
+                        scan.reset();
+                        // uses getPerson method to search the ArrayList of people for login details. returns a person if there is a match or null when no match.
+                        Person loggedIn = GlobalData.peopleController.getPerson(response, DOBLogin);
+                        if (loggedIn == null) {
+                            System.out.println("Incorrect login details, please try again.");
                             response = null;
-                            break;
+
+                        } else {
+                            loggedOut = false;
+                        }
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Incorrect input, please try again.");
+                        response = null;
                     }
+                }
+                Menu.MenuCode option = Menu.mainMenu();
+                switch(option) {
+                    case LOGOUT:
+                        loggedOut = true;
+                        break;
+                    case QUIT:
+                         if (GlobalData.close()) {
+                        quit = true;
+                    }
+                    break;
                 }
             }
         }
