@@ -3,7 +3,6 @@ package ResortProject;
 import ResortProject.Data.GlobalData;
 import ResortProject.Menus.MountainCardMenu;
 import ResortProject.Menus.LiftsMenu;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**

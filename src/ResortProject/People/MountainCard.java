@@ -1,4 +1,4 @@
-package ResortProject.MountainCard;
+package ResortProject.People;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
