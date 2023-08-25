@@ -43,7 +43,7 @@ public class PeopleController {
             NodeList passElements = liftPassElement.getElementsByTagName("LiftPass");
             
             for (int j = 0; j < passElements.getLength(); j++) {
-                Element passElement = (Element) passElements.item(i);
+                Element passElement = (Element) passElements.item(j);
                 
                 String liftId = XMLFile.getTextContent(passElement, "id");
                 String validFrom = XMLFile.getTextContent(passElement, "validFrom");

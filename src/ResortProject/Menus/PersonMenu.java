@@ -123,6 +123,7 @@ public class PersonMenu {
                     break;
                 case "5":
                     GlobalData.getLoggedIn().addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.parse("2023-10-08").atTime(23, 59)));
+                    break;
                 default:
                     System.out.println("Incorrect input, please try again.");
                     response = null;
