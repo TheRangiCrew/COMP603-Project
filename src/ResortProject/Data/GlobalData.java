@@ -1,5 +1,6 @@
 package ResortProject.Data;
 
+import ResortProject.Cafe.Cafe;
 import ResortProject.Lifts.LiftController;
 import ResortProject.People.PeopleController;
 import ResortProject.People.Person;
@@ -17,6 +18,7 @@ public class GlobalData {
     
     public static LiftController liftController;
     public static PeopleController peopleController;
+    public static Cafe cafe;
     private static Person loggedInPerson = null;
     
     /**
@@ -24,8 +26,9 @@ public class GlobalData {
      * respective classes
      */
     private GlobalData() {
-        this.liftController = new LiftController();
-        this.peopleController = new PeopleController();
+        GlobalData.liftController = new LiftController();
+        GlobalData.peopleController = new PeopleController();
+        GlobalData.cafe = new Cafe();
     }
     
     /**
@@ -44,6 +47,9 @@ public class GlobalData {
         loggedInPerson = person;
     }
     
+    /**
+     * Saves the program's data and removes the current person as being logged in
+     */
     public static void logout() {
         GlobalData.save();
         loggedInPerson = null;

@@ -6,19 +6,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-/**
- *
- * @author sr95
- */
 public class ResortHub {
 
     public static void main(String[] args) {
-        
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("Shutting down...");
-            GlobalData.close();
-        }));
-        
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
         LocalDate dobLogin;
@@ -51,18 +41,21 @@ public class ResortHub {
                     }
                 }
                 System.out.println("");
-                Menu.MenuCode option = Menu.mainMenu();
+                Menu.MenuCode option = Menu.main();
                 switch (option) {
                     case LOGOUT:
                         GlobalData.logout();
                         break;
                     case QUIT:
                         quit = true;
+                        if (GlobalData.close()) {
+                            quit = true;
+                        }
                         break;
                 }
             }
         }
         
-        Runtime.getRuntime().exit(0);
+        
     }
 }

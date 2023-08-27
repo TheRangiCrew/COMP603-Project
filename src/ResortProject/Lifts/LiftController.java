@@ -76,6 +76,9 @@ public class LiftController {
      * @return true if the data was successfully saved to disk, else false
      */
     public boolean save() {
+        if (this.lifts.isEmpty()) {
+            return false;
+        }
         try {
             // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -149,7 +152,7 @@ public class LiftController {
     
     public void close() {
         this.save();
-        file.close();
+//        file.close();
     }
 
     @Override

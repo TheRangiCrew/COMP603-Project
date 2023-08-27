@@ -13,7 +13,7 @@ public class PeopleController {
     private XMLFile file;
 
     public PeopleController() {
-        this.people = new ArrayList<Person>();
+        this.people = new ArrayList<>();
         
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/People.xml");
@@ -89,6 +89,9 @@ public class PeopleController {
      * @return true if the data was successfully saved to disk, else false
      */
     public boolean save() {
+        if (this.people.isEmpty()) {
+            return false;
+        }
         try {
             // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -179,7 +182,7 @@ public class PeopleController {
     
     public void close() {
         this.save();
-        file.close();
+//        file.close();
     }
     
     @Override

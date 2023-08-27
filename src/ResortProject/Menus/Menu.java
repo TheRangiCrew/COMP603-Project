@@ -1,7 +1,6 @@
 package ResortProject.Menus;
 
 import ResortProject.Data.GlobalData;
-import ResortProject.Menus.PersonMenu;
 import java.util.Scanner;
 
 public class Menu {
@@ -11,7 +10,7 @@ public class Menu {
         QUIT
     }
 
-    public static MenuCode mainMenu() {
+    public static MenuCode main() {
         Scanner scan = new Scanner(System.in);
 
         String response = null;
@@ -30,10 +29,10 @@ public class Menu {
                 case "q":
                     return MenuCode.QUIT;
                 case "1":
-                    PersonMenu.mountainCard();
+                    PersonMenu.main();
                     break;
                 case "2":
-                    // quit = true;
+                    MountainCafeMenu.main();
                     break;
                 case "3":
                     // quit = true;
