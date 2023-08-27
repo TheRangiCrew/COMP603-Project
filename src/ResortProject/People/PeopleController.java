@@ -13,7 +13,7 @@ public class PeopleController {
     private XMLFile file;
 
     public PeopleController() {
-        this.people = new ArrayList<Person>();
+        this.people = new ArrayList<>();
         
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/People.xml");
@@ -88,7 +88,10 @@ public class PeopleController {
      * 
      * @return true if the data was successfully saved to disk, else false
      */
-    public boolean close() {
+    public boolean save() {
+        if (this.people.isEmpty()) {
+            return false;
+        }
         try {
             // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -168,13 +171,18 @@ public class PeopleController {
             }
             
             // Save the document to the XML file and close the stream
-            file.saveClose(document);
+            file.save(document);
         } catch (Exception e) {
             System.out.println("Failed to close the PeopleController. An error occurred");
             return false;
         }
 
         return true;
+    }
+    
+    public void close() {
+        this.save();
+//        file.close();
     }
     
     @Override

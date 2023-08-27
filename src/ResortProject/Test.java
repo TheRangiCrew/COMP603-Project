@@ -1,6 +1,5 @@
 package ResortProject;
 
-import 
 /**
  *
  * @author ryanz

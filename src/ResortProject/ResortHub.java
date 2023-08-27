@@ -2,15 +2,10 @@ package ResortProject;
 
 import ResortProject.Menus.Menu;
 import ResortProject.Data.GlobalData;
-import ResortProject.People.Person;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-/**
- *
- * @author sr95
- */
 public class ResortHub {
 
     public static void main(String[] args) {
@@ -46,12 +41,13 @@ public class ResortHub {
                     }
                 }
                 System.out.println("");
-                Menu.MenuCode option = Menu.mainMenu();
+                Menu.MenuCode option = Menu.main();
                 switch (option) {
                     case LOGOUT:
                         GlobalData.logout();
                         break;
                     case QUIT:
+                        quit = true;
                         if (GlobalData.close()) {
                             quit = true;
                         }
@@ -59,5 +55,7 @@ public class ResortHub {
                 }
             }
         }
+        
+        
     }
 }

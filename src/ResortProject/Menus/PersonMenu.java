@@ -4,15 +4,13 @@ import ResortProject.Data.GlobalData;
 import ResortProject.People.LiftPass;
 import ResortProject.People.Person;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PersonMenu {
 
-    public static void mountainCard() {
+    public static void main() {
         Scanner scan = new Scanner(System.in);
         String response = null;
 
@@ -47,7 +45,6 @@ public class PersonMenu {
                     break;
                 default:
                     System.out.println("Incorrect input, please try again.");
-                    response = null;
                     break;
             }
             response = null;
@@ -60,12 +57,12 @@ public class PersonMenu {
         Float response = null;
         while (response == null) {
             try {
-                System.out.println("Please insert amount to top up, or press 0 to return to previous menu.");
+                System.out.println("Please insert amount to top up, or enter 0 to return to previous menu.");
                 response = scan.nextFloat();
                 scan.reset();
 
                 if (response == 0.0f) {
-                    PersonMenu.mountainCard();
+                    return;
                 } else if (response < 0.0f) {
                     System.out.println("Must be a positive number, please try again.");
                     response = null;
@@ -75,6 +72,7 @@ public class PersonMenu {
                     person.addToCredit(response);
                     System.out.println("$" + decformat.format(response) + " has been added to your card. Balance is now " + person.getCredit());
                 }
+                GlobalData.save();
             } catch (InputMismatchException e) {
                 System.out.println("Incorrect input, please try again.");
             }
@@ -130,6 +128,9 @@ public class PersonMenu {
                     break;
             }
         }
+        
         System.out.println("\nLift Pass Added\n" + GlobalData.getLoggedIn().getLatestLiftPass().toString() + "\n");
+        
+        GlobalData.save();
     }
 }
