@@ -148,7 +148,8 @@ public class LiftController {
     }
     
     public void close() {
-        file.close(document);
+        this.save();
+        file.close();
     }
 
     @Override

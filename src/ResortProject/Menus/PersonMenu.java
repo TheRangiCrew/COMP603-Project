@@ -4,9 +4,7 @@ import ResortProject.Data.GlobalData;
 import ResortProject.People.LiftPass;
 import ResortProject.People.Person;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -47,7 +45,6 @@ public class PersonMenu {
                     break;
                 default:
                     System.out.println("Incorrect input, please try again.");
-                    response = null;
                     break;
             }
             response = null;
@@ -75,6 +72,7 @@ public class PersonMenu {
                     person.addToCredit(response);
                     System.out.println("$" + decformat.format(response) + " has been added to your card. Balance is now " + person.getCredit());
                 }
+                GlobalData.save();
             } catch (InputMismatchException e) {
                 System.out.println("Incorrect input, please try again.");
             }
@@ -130,6 +128,9 @@ public class PersonMenu {
                     break;
             }
         }
+        
         System.out.println("\nLift Pass Added\n" + GlobalData.getLoggedIn().getLatestLiftPass().toString() + "\n");
+        
+        GlobalData.save();
     }
 }

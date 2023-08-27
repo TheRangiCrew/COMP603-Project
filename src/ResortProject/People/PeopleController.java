@@ -177,6 +177,11 @@ public class PeopleController {
         return true;
     }
     
+    public void close() {
+        this.save();
+        file.close();
+    }
+    
     @Override
     public String toString() {
         String output = "";

@@ -45,7 +45,13 @@ public class GlobalData {
     }
     
     public static void logout() {
+        GlobalData.save();
         loggedInPerson = null;
+    }
+    
+    public static void save() {
+        liftController.save();
+        peopleController.save();
     }
     
     /**

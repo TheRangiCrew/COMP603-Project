@@ -43,7 +43,7 @@ public class Cafe {
         return this.cafeMenu;
     }
     
-    public boolean close() {
+    public boolean save() {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -74,7 +74,7 @@ public class Cafe {
                 // Add other elements similarly
                 cafeElement.appendChild(itemElement);
                 
-                file.saveClose(document);
+                file.save(document);
             }
         } catch (Exception e) {
             System.out.println("Failed to close the LiftController. An error occurred");
