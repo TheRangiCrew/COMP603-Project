@@ -1,18 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RentalEquipment>
-    <Equipment>
-        <Item>
-            <id></id>
-            <name>Taboggan</name>
-            <size>Regular</size>
-            <available>True</available>
-        </Item>
-    </Equipment>
-    <Skis></Skis>
-    <Snowboards></Snowboards>
-    <Boots></Boots>
-    <Clothing>
-        
-    </Clothing>
+    <Item type="Taboggan">
+        <size>Regular</size>
+        <available>40</available>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">155</size>
+        <available>10</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">160</size>
+        <available>15</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">150</size>
+        <available>5</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">158</size>
+        <available>8</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">163</size>
+        <available>12</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">156</size>
+        <available>18</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">162</size>
+        <available>3</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">157</size>
+        <available>7</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">161</size>
+        <available>11</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">159</size>
+        <available>9</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">154</size>
+        <available>14</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">164</size>
+        <available>6</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">153</size>
+        <available>16</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">166</size>
+        <available>2</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">152</size>
+        <available>13</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">167</size>
+        <available>4</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">151</size>
+        <available>17</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">161</size>
+        <available>1</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">158</size>
+        <available>20</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="snowboard">
+        <size unit="cm">165</size>
+        <available>0</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">155</size>
+        <available>10</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">160</size>
+        <available>15</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">150</size>
+        <available>5</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">158</size>
+        <available>8</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">163</size>
+        <available>12</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">156</size>
+        <available>18</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">162</size>
+        <available>3</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">157</size>
+        <available>7</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">161</size>
+        <available>11</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">159</size>
+        <available>9</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">153</size>
+        <available>14</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">164</size>
+        <available>6</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">166</size>
+        <available>2</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">152</size>
+        <available>13</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">167</size>
+        <available>4</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">169</size>
+        <available>17</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">165</size>
+        <available>1</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">168</size>
+        <available>20</available>
+        <rideType>Park</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">170</size>
+        <available>0</available>
+        <rideType>All Mountain</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">159</size>
+        <available>16</available>
+        <rideType>Freeride</rideType>
+    </Item>
+    <Item type="skipole">
+        <size>Any</size>
+        <avaialble>25</avaialble>
+    </Item>
 </RentalEquipment>
 

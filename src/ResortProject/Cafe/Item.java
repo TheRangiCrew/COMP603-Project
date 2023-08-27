@@ -4,28 +4,32 @@ import java.text.DecimalFormat;
 
 public class Item {
 
-    private double price;
+    private float price;
     private String name;
     private String description;
     private String category;
 
-    public Item(String name, double price, String description, String category) {
+    public Item(String name, float price, String description, String category) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.category = category;
     }
 
-    public double getPrice() {
-        return price;
+    public float getPrice() {
+        return this.price;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
+    }
+    
+    public String getCategory() {
+        return this.category;
     }
     
     @Override
