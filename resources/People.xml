@@ -10,6 +10,11 @@
         <credit>22.34</credit>
         <LiftPasses>
             <LiftPass>
+                <id>f8efeb5d-2ecc-4a38-b3b1-39be0dfc6dd4</id>
+                <validFrom>2023-08-25T00:00</validFrom>
+                <validTo>2023-10-08T23:59</validTo>
+            </LiftPass>
+            <LiftPass>
                 <id>f9e5ae33-a438-4e65-a87d-c7cbcf0d2abe</id>
                 <validFrom>2023-08-22T00:00</validFrom>
                 <validTo>2023-08-22T23:59</validTo>

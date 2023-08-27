@@ -206,13 +206,23 @@ class Boots extends Equipment {
 
 }
 
-class Tabogan extends Equipment {
-    
-    public Tabogan(String size, boolean available) {
-        super("Tabogan", size, available);
+class Clothing extends Equipment {
+    private String gender; // male or female style/fit
+
+    public Clothing( String name, String size, boolean available, String gender) {
+        super(name, size, available);
+        this.gender = gender;
     }
     
-    public Tabogan(UUID id, String size, boolean available) {
-        super(id, "Tabogan", size, available);
+    public Clothing( UUID id, String name, String size, boolean available, String gender) {
+        super(id, name, size, available);
+        this.gender = gender;
+    }
+    
+    /**
+     * @return the gender
+     */
+    public String getGender() {
+        return gender;
     }
 }

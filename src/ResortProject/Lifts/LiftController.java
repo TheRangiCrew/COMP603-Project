@@ -75,7 +75,7 @@ public class LiftController {
      * 
      * @return true if the data was successfully saved to disk, else false
      */
-    public boolean close() {
+    public boolean save() {
         try {
             // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -138,13 +138,17 @@ public class LiftController {
             }
             
             // Save the document to the XML file and close the stream
-            file.saveClose(document);
+            file.save(document);
         } catch (Exception e) {
             System.out.println("Failed to close the LiftController. An error occurred");
             return false;
         }
 
         return true;
+    }
+    
+    public void close() {
+        file.close(document);
     }
 
     @Override

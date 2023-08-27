@@ -88,7 +88,7 @@ public class PeopleController {
      * 
      * @return true if the data was successfully saved to disk, else false
      */
-    public boolean close() {
+    public boolean save() {
         try {
             // Create a new XML Document to add our new data to
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -168,7 +168,7 @@ public class PeopleController {
             }
             
             // Save the document to the XML file and close the stream
-            file.saveClose(document);
+            file.save(document);
         } catch (Exception e) {
             System.out.println("Failed to close the PeopleController. An error occurred");
             return false;

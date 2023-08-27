@@ -2,7 +2,6 @@ package ResortProject;
 
 import ResortProject.Menus.Menu;
 import ResortProject.Data.GlobalData;
-import ResortProject.People.Person;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -14,6 +13,12 @@ import java.util.Scanner;
 public class ResortHub {
 
     public static void main(String[] args) {
+        
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Shutting down...");
+            GlobalData.close();
+        }));
+        
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
         LocalDate dobLogin;
@@ -52,12 +57,12 @@ public class ResortHub {
                         GlobalData.logout();
                         break;
                     case QUIT:
-                        if (GlobalData.close()) {
-                            quit = true;
-                        }
+                        quit = true;
                         break;
                 }
             }
         }
+        
+        Runtime.getRuntime().exit(0);
     }
 }
