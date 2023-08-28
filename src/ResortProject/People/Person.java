@@ -6,10 +6,6 @@ import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.UUID;
 
-/**
- *
- * @author ryanz
- */
 public class Person {
 
     private UUID id;
@@ -131,6 +127,15 @@ public class Person {
     
     public void addToCredit(float amount) {
         this.credit += Float.parseFloat(decformat.format(amount));
+    }
+    
+    public boolean deductFromCredit(float amount) {
+        if (this.credit < amount || amount < 0.0f) {
+            return false;
+        }
+        
+        this.credit -= amount;
+        return true;
     }
     
     public LiftPass getLatestLiftPass() {

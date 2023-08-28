@@ -1,11 +1,15 @@
 package ResortProject.Cafe;
 
+import ResortProject.People.Person;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class Order {
     
     private HashMap<String, ArrayList<Item>> items;
+    private int numOfItems;
     private float cost;
     
     public Order() {
@@ -21,11 +25,63 @@ public class Order {
             list.add(item);
             items.put(item.getName(), list);
         }
-        cost += item.getPrice();
+        this.cost += item.getPrice();
+        this.numOfItems++;
     }
     
     public void remove(String name) {
         
+    }
+    
+    public boolean submit(Person person) {
+        if (person.getCredit() < this.cost) {
+            return false;
+        }
+        
+        person.deductFromCredit(cost);
+        
+        return true;
+    }
+    
+    public int getNumOfItems() {
+        return this.numOfItems;
+    }
+    
+    public String getCostString() {
+        DecimalFormat decformat = new DecimalFormat("0.00");
+        
+        return "$" + decformat.format(this.cost);
+    }
+    
+    public HashMap<String, ArrayList<Item>> getItems() {
+        return this.items;
+    }
+    
+    @Override
+    public String toString() {
+        String output = "";
+        
+        for (Entry<String, ArrayList<Item>> item: this.items.entrySet()) {
+            output += (item.getValue().size() + "x " + item.getKey() + " @ " + item.getValue().get(0).getPriceString() + "\n");
+        }
+        
+        output += "--------------------\nTotal " + this.numOfItems + (this.numOfItems == 1 ? " item - " : " items - ") + this.getCostString();
+        
+        return output;
+    }
+    
+    public String toListedString() {
+        String output = "";
+        
+        int index = 0;
+        for (Entry<String, ArrayList<Item>> item: this.items.entrySet()) {
+            output += (index + ".    " + item.getValue().size() + "x " + item.getKey() + " @ " + item.getValue().get(0).getPriceString() + "\n");
+            index++;
+        }
+        
+        output += "--------------------\nTotal " + this.numOfItems + (this.numOfItems == 1 ? " item - " : " items - ") + this.getCostString();
+        
+        return output;
     }
     
 }
