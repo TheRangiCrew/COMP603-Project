@@ -30,7 +30,23 @@ public class Order {
     }
     
     public void remove(String name) {
+        ArrayList<Item> itemList = this.items.get(name);
         
+        this.cost -= itemList.size() * itemList.get(0).getPrice();
+        this.numOfItems -= itemList.size();
+        
+        this.items.remove(name);
+    }
+    
+    public void remove(String name, int num) {
+        ArrayList<Item> itemList = this.items.get(name);
+        
+        this.cost -= num * itemList.get(0).getPrice();
+        this.numOfItems -= num;
+        
+        for (int i = 0; i < num; i++) {
+            itemList.remove(i);
+        }
     }
     
     public boolean submit(Person person) {
@@ -61,7 +77,7 @@ public class Order {
     public String toString() {
         String output = "";
         
-        for (Entry<String, ArrayList<Item>> item: this.items.entrySet()) {
+        for (Entry<String, ArrayList<Item>> item : this.items.entrySet()) {
             output += (item.getValue().size() + "x " + item.getKey() + " @ " + item.getValue().get(0).getPriceString() + "\n");
         }
         
@@ -73,8 +89,8 @@ public class Order {
     public String toListedString() {
         String output = "";
         
-        int index = 0;
-        for (Entry<String, ArrayList<Item>> item: this.items.entrySet()) {
+        int index = 1;
+        for (Entry<String, ArrayList<Item>> item : this.items.entrySet()) {
             output += (index + ".    " + item.getValue().size() + "x " + item.getKey() + " @ " + item.getValue().get(0).getPriceString() + "\n");
             index++;
         }

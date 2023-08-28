@@ -50,7 +50,6 @@ public class PersonMenu {
         }
     }
 
-    // class still needs a loop.
     private static void topUpCard() {
         Scanner scan = new Scanner(System.in);
         Float response = null;
@@ -69,7 +68,7 @@ public class PersonMenu {
                     DecimalFormat decformat = new DecimalFormat("0.00");
                     Person person = GlobalData.getLoggedIn();
                     person.addToCredit(response);
-                    System.out.println("$" + decformat.format(response) + " has been added to your card. Balance is now " + person.getCredit());
+                    System.out.println("$" + decformat.format(response) + " has been added to your card. Balance is now $" + person.getCreditAsString());
                 }
                 GlobalData.save();
             } catch (InputMismatchException e) {
@@ -79,7 +78,6 @@ public class PersonMenu {
         System.out.println("");
     }
 
-    //switch case needs to be completed.
     private static void buyLiftPass() {
         Scanner scan = new Scanner(System.in);
         String response = null;

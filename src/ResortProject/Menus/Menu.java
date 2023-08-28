@@ -5,12 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static enum MenuCode {
-        LOGOUT,
-        QUIT
-    }
-
-    public static MenuCode main() {
+    public static void main() {
         Scanner scan = new Scanner(System.in);
 
         String response = null;
@@ -21,13 +16,10 @@ public class Menu {
             System.out.println("3. Rental Equipment");
             System.out.println("4. View Skit Lift Status");
             System.out.println("L. Log out");
-            System.out.println("Q. Log out and close the program");
             response = scan.nextLine().toLowerCase();
             scan.reset();
             System.out.println("");
             switch (response) {
-                case "q":
-                    return MenuCode.QUIT;
                 case "1":
                     PersonMenu.main();
                     break;
@@ -42,7 +34,7 @@ public class Menu {
                     break;
                 case "l":
                     System.out.println("Good bye!");
-                    return MenuCode.LOGOUT;
+                    return;
 
                 default:
                     System.out.println("Incorrect input, please try again.");
@@ -51,6 +43,5 @@ public class Menu {
             }
             response = null;
         }
-        return MenuCode.QUIT;
     }
 }

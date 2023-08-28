@@ -1,5 +1,6 @@
 package ResortProject.People;
 
+import ResortProject.Data.GlobalData;
 import ResortProject.Data.XMLFile;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -80,6 +81,13 @@ public class PeopleController {
         }
         
         return null;
+    }
+    
+    public Person addPerson(Person person) {
+        this.people.add(person);
+        GlobalData.save();
+        
+        return person;
     }
     
     /**

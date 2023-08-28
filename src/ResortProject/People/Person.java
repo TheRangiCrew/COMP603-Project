@@ -19,6 +19,17 @@ public class Person {
     
     // Formatter for credits
     private DecimalFormat decformat = new DecimalFormat("0.00");
+    
+    public Person(String firstName, String lastName, LocalDate dob, String email, String phone) {
+        this.id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.email = email;
+        this.phone = phone;
+        this.credit = 0.0f;
+        this.passes = new HashSet<>();
+    }
 
     public Person(String id, String firstName, String lastName, String dob, String email, String phone, float credit) {
         try {
@@ -157,6 +168,6 @@ public class Person {
     public String toString() {
         return this.getName() + " " + this.getDob().toString() + "\n"
                 + this.getEmail() + " " + this.getPhone() + "\n"
-                + "Credit balance: $" + this.getCredit();
+                + "Credit balance: $" + this.getCreditAsString();
     }
 }
