@@ -19,6 +19,12 @@ public class Item {
     public float getPrice() {
         return this.price;
     }
+    
+    public String getPriceString() {
+        DecimalFormat decformat = new DecimalFormat("0.00");
+        
+        return "$" + decformat.format(this.price);
+    }
 
     public String getName() {
         return this.name;
@@ -36,6 +42,6 @@ public class Item {
     public String toString() {
         DecimalFormat decformat = new DecimalFormat("0.00");
         
-        return this.name + "   $" + decformat.format(this.price) + "\n" + this.description + "\n";
+        return this.name + "   " + this.getPriceString() + "\n" + this.description + "\n";
     }
 }
