@@ -1,7 +1,5 @@
 package ResortProject.RentalEquipment;
 
-import java.util.UUID;
-
 enum RideType {
     ALL_MOUNTAIN("All Mountain"),
     FREERIDE("Freeride"),
@@ -36,46 +34,22 @@ enum BootType {
     }
 }
 
-public class Equipment {
+public class Equipment implements Comparable<Equipment> {
 
-    private UUID id;
     private String name;
     private String size;
-    private boolean available;
+    private int available;
 
     /**
-     * ID is randomly generated unless provided
-     *
      * @param name
      * @param size
      * @param available
      */
-    public Equipment(String name, String size, boolean available) {
-        this.id = UUID.randomUUID();
+    public Equipment(String name, String size, int available) {
+
         this.name = name;
         this.size = size;
         this.available = available;
-    }
-
-    /**
-     *
-     * @param id
-     * @param name
-     * @param size
-     * @param available
-     */
-    public Equipment(UUID id, String name, String size, boolean available) {
-        this.id = id;
-        this.name = name;
-        this.size = size;
-        this.available = available;
-    }
-
-    /**
-     * @return the id
-     */
-    public UUID getId() {
-        return id;
     }
 
     /**
@@ -95,39 +69,49 @@ public class Equipment {
     /**
      * @return the availability
      */
-    public boolean isAvailable() {
+    public int getAvailable() {
         return available;
+    }
+    
+    public boolean isAvailable() {
+        return this.available > 0;
     }
 
     /**
      * @param available
      */
-    public void setAvailable(boolean available) {
+    public void setAvailable(int available) {
         this.available = available;
     }
 
     @Override
     public String toString() {
-        return this.name + "  " + this.size + "  " + (this.available ? "Available" : "Unavailable");
+        return this.name + "  " + this.size + "  " + (this.isAvailable() ? "Available" : "Unavailable");
     }
-
+    
+    @Override
+    public int compareTo(Equipment equipment) {
+        try {
+            return Integer.compare(Integer.parseInt(this.size), Integer.parseInt(equipment.size));
+        } catch(NumberFormatException e) {
+            return 404;
+        }  
+    }
 }
 
 class Skis extends Equipment {
 
     private RideType rideType; // all mountain / freeride / park / On piste
-    private boolean skiPoles; // If poles were included
 
-    public Skis(String size, boolean available, RideType rideType, boolean skiPoles) {
+    /**
+     * 
+     * @param size
+     * @param available
+     * @param rideType
+     */
+    public Skis(String size, int available, RideType rideType) {
         super(rideType.toString() + " Skis", size, available); // e.g. All Mountain Skis, Freeride Skis
         this.rideType = rideType;
-        this.skiPoles = skiPoles;
-    }
-
-    public Skis(UUID id, String size, boolean available, RideType rideType, boolean skiPoles) {
-        super(id, rideType.toString() + " Skis", size, available);
-        this.rideType = rideType;
-        this.skiPoles = skiPoles;
     }
 
     /**
@@ -137,38 +121,18 @@ class Skis extends Equipment {
         return rideType;
     }
 
-    /**
-     * @return True if ski poles are included, false otherwise
-     */
-    public boolean hasSkiPoles() {
-        return skiPoles;
-    }
-
-    /**
-     * @param skiPoles
-     */
-    public void setSkiPoles(boolean skiPoles) {
-        this.skiPoles = skiPoles;
-    }
-
     @Override
     public String toString() {
-        return super.toString() + "  " + (this.skiPoles ? "  w/ poles" : "");
+        return super.toString();
     }
-
 }
 
 class Snowboard extends Equipment {
 
     private RideType rideType; // All mountain / freeride / park / on piste
 
-    public Snowboard(String size, boolean available, RideType rideType) {
+    public Snowboard(String size, int available, RideType rideType) {
         super(rideType.toString() + " Snowboard", size, available);
-        this.rideType = rideType;
-    }
-
-    public Snowboard(UUID id, String size, boolean available, RideType rideType) {
-        super(id, rideType.toString() + " Snowboard", size, available);
         this.rideType = rideType;
     }
 
@@ -178,23 +142,15 @@ class Snowboard extends Equipment {
     public RideType getRideType() {
         return rideType;
     }
-
 }
 
 class Boots extends Equipment {
 
     private BootType bootType; // Ski boots or board boots
 
-    public Boots(BootType bootType, String size, boolean available) {
+    public Boots(String size, int available, BootType bootType) {
         super(bootType.equals(BootType.SKI) ? "Ski Boot" : "Snowboard Boot", size, available);
         this.bootType = bootType;
-
-    }
-
-    public Boots(UUID id, BootType bootType, String size, boolean available) {
-        super(id, bootType.equals(BootType.SKI) ? "Ski Boot" : "Snowboard Boot", size, available);
-        this.bootType = bootType;
-
     }
 
     /**
@@ -203,22 +159,17 @@ class Boots extends Equipment {
     public BootType getBootType() {
         return bootType;
     }
-
 }
 
 class Clothing extends Equipment {
+
     private String gender; // male or female style/fit
 
-    public Clothing( String name, String size, boolean available, String gender) {
+    public Clothing(String name, String size, int available, String gender) {
         super(name, size, available);
         this.gender = gender;
     }
-    
-    public Clothing( UUID id, String name, String size, boolean available, String gender) {
-        super(id, name, size, available);
-        this.gender = gender;
-    }
-    
+
     /**
      * @return the gender
      */

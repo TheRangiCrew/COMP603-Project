@@ -35,7 +35,7 @@ public class Menu {
                     MountainCafeMenu.main();
                     break;
                 case "3":
-                    // quit = true;
+                    RentalEquipmentMenu.main();
                     break;
                 case "4":
                     System.out.println(GlobalData.liftController.toString());

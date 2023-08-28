@@ -86,7 +86,7 @@
     </Item>
     <Item type="snowboard">
         <size unit="cm">151</size>
-        <available>17</available>
+        <available>0</available>
         <rideType>Freeride</rideType>
     </Item>
     <Item type="snowboard">
@@ -206,7 +206,358 @@
     </Item>
     <Item type="skipole">
         <size>Any</size>
-        <avaialble>25</avaialble>
+        <available>25</available>
     </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>3</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>4</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>5</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>6</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>7</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>8</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>9</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>10</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>11</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>12</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>snowboard</bootType>
+        <size>13</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>3</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>4</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>5</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>6</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>7</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>8</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>9</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>10</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>11</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>12</size>
+        <available>10</available>
+    </Item>
+    <Item type="boots">
+        <bootType>ski</bootType>
+        <size>13</size>
+        <available>10</available>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>childsOnePiece</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>helmet</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>jacket</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>xs</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>s</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>m</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>l</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>female</gender>
+    </Item>
+    <Item type="clothing">
+        <clothingType>pants</clothingType>
+        <size>xl</size>
+        <available>10</available>
+        <gender>male</gender>
+    </Item>
+
 </RentalEquipment>
 

@@ -4,6 +4,7 @@ import ResortProject.Cafe.Cafe;
 import ResortProject.Lifts.LiftController;
 import ResortProject.People.PeopleController;
 import ResortProject.People.Person;
+import ResortProject.RentalEquipment.EquipmentController;
 
 /**
  * Controls for all the data and state of the program using the Singleton Pattern
@@ -19,6 +20,7 @@ public class GlobalData {
     public static LiftController liftController;
     public static PeopleController peopleController;
     public static Cafe cafe;
+    public static EquipmentController equipmentController;
     private static Person loggedInPerson = null;
     
     /**
@@ -29,6 +31,7 @@ public class GlobalData {
         GlobalData.liftController = new LiftController();
         GlobalData.peopleController = new PeopleController();
         GlobalData.cafe = new Cafe();
+        GlobalData.equipmentController = new EquipmentController();
     }
     
     /**

@@ -24,7 +24,6 @@ public class PersonMenu {
             System.out.println("R. Return to main menu");
             response = scan.nextLine().toLowerCase();
             scan.reset();
-            System.out.println("");
 
             switch (response) {
                 case "r":
