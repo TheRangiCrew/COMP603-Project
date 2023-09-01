@@ -2,6 +2,7 @@ package ResortProject.People;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.UUID;
@@ -86,6 +87,10 @@ public class Person {
      */
     public LocalDate getDob() {
         return dob;
+    }
+    
+    public String getLocalDob() {
+        return this.dob.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
     }
 
     /**
@@ -173,7 +178,7 @@ public class Person {
      */
     @Override
     public String toString() {
-        return this.getName() + " " + this.getDob().toString() + "\n"
+        return this.getName() + " " + this.getLocalDob() + "\n"
                 + this.getEmail() + " " + this.getPhone() + "\n"
                 + "Credit balance: $" + this.getCreditAsString();
     }

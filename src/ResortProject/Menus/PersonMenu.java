@@ -75,9 +75,11 @@ public class PersonMenu {
                 GlobalData.save();
             } catch (InputMismatchException e) {
                 System.out.println("Incorrect input, please try again.");
+                response = null;
+                scan.reset();
             }
         }
-        System.out.println("");
+        System.out.println("\n");
     }
 
     private static void buyLiftPass() {
