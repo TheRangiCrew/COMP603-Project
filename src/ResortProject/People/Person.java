@@ -7,6 +7,9 @@ import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.UUID;
 
+/**
+ * A person
+ */
 public class Person {
 
     private UUID id;
@@ -21,6 +24,15 @@ public class Person {
     // Formatter for credits
     private DecimalFormat decformat = new DecimalFormat("0.00");
 
+    /**
+     * New person given minimal data
+     * 
+     * @param firstName First name
+     * @param lastName  Last name
+     * @param dob       Date of Birth
+     * @param email     Email Address
+     * @param phone     Phone Number
+     */
     public Person(String firstName, String lastName, LocalDate dob, String email, String phone) {
         this.id = UUID.randomUUID();
         this.firstName = firstName;
@@ -32,6 +44,17 @@ public class Person {
         this.passes = new HashSet<>();
     }
 
+    /**
+     * New person given all primitive types of data
+     * 
+     * @param id        UUID
+     * @param firstName First name
+     * @param lastName  Last name
+     * @param dob       Date of Birth
+     * @param email     Email Address
+     * @param phone     Phone Number
+     * @param credit    Credits
+     */
     public Person(String id, String firstName, String lastName, String dob, String email, String phone, float credit) {
         try {
             this.id = UUID.fromString(id);
@@ -49,6 +72,19 @@ public class Person {
         }
     }
 
+    /**
+     * 
+     * New person given all primitive types of data and list passes
+     * 
+     * @param id        UUID
+     * @param firstName First name
+     * @param lastName  Last name
+     * @param dob       Date of Birth
+     * @param email     Email Address
+     * @param phone     Phone Number
+     * @param credit    Credits
+     * @param passes    Lift passes
+     */
     public Person(String id, String firstName, String lastName, String dob, String email, String phone, float credit,
             HashSet<LiftPass> passes) {
         try {
@@ -88,7 +124,10 @@ public class Person {
     public LocalDate getDob() {
         return dob;
     }
-    
+
+    /**
+     * @return string representation of the date of birth
+     */
     public String getLocalDob() {
         return this.dob.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
     }
@@ -142,6 +181,10 @@ public class Person {
         return decformat.format(this.credit);
     }
 
+    /**
+     * 
+     * @param amount the amount to add to credit
+     */
     public void addToCredit(float amount) {
         this.credit += Float.parseFloat(decformat.format(amount));
     }
@@ -161,6 +204,10 @@ public class Person {
         return true;
     }
 
+    /**
+     * 
+     * @return the most recently added lift pass
+     */
     public LiftPass getLatestLiftPass() {
         if (this.passes.size() > 0) {
             return (LiftPass) this.passes.toArray()[this.passes.size() - 1];
@@ -169,12 +216,16 @@ public class Person {
         return null;
     }
 
+    /**
+     * 
+     * @param pass the lift pass to add
+     */
     public void addLiftPass(LiftPass pass) {
         this.passes.add(pass);
     }
 
     /**
-     * @return their name
+     * @return their name, date of birth, email address, phone number, credits
      */
     @Override
     public String toString() {

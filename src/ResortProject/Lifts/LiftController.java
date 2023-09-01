@@ -6,29 +6,40 @@ import java.util.UUID;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
+/**
+ * Lift Controller
+ * 
+ * Responsible for importing the data for the lifts from XML files and parsing
+ * the data into collections to be used globally throughout the program
+ */
 public class LiftController {
 
+    // Collection storing Lift objects
     private ArrayList<Lift> lifts;
+    // The XML file to read and write to
     private XMLFile file;
 
-    // Constructor reads in the current data from the Lift XML file
+    /**
+     * Constructor
+     */
     public LiftController() {
-        
+
         this.lifts = new ArrayList<Lift>();
-        
-        // Open and get "root" element of the specified XML file
+
+        // Open and get "root" element of the specified XML file. Root element is the
+        // first element within the file
         this.file = new XMLFile("./resources/Lift.xml");
-        Element root = file.root;
+        Element root = file.getRoot();
 
         // Extract all the Lift elements as a list from the root element
         NodeList liftList = root.getElementsByTagName("Lift");
 
         // Loop through NodeList and parse each necessary element
         for (int i = 0; i < liftList.getLength(); i++) {
-            // Element to parse
+            // The current element that will be parsed
             Element element = (Element) liftList.item(i);
 
-            // Parsers for each element. Only parse as "primitive" types. 
+            // Parsers for each element. Only parse as "primitive" types.
             // Actual types will be converted in Lift object constructor
             String id = XMLFile.getTextContent(element, "id");
             int length = Integer.parseInt(XMLFile.getTextContent(element, "length"));
@@ -39,17 +50,29 @@ public class LiftController {
             String closingTime = XMLFile.getTextContent(element, "closingTime");
             String status = XMLFile.getTextContent(element, "status");
 
-            // Add Lift to lifts HashSet
+            // Add Lift to lifts ArrayList
             lifts.add(new Lift(id, length, capacity, type, name, openingTime, closingTime, status));
         }
 
     }
 
+    /**
+     * 
+     * @return all the lifts
+     */
     public ArrayList<Lift> getLifts() {
         return this.lifts;
     }
 
+    /**
+     * Find a lift with the specified name
+     * 
+     * @param name the name of the lift
+     * @return the Lift object if found else {@code null}
+     * @see Lift
+     */
     public Lift getLift(String name) {
+        // Loop through each lift and compare their names ingoring case
         for (Lift lift : lifts) {
             if (lift.getName().equalsIgnoreCase(name)) {
                 return lift;
@@ -59,7 +82,16 @@ public class LiftController {
         return null;
     }
 
+    /**
+     * Find a lift with the specified UUID
+     * 
+     * @param id the UUID of the lift
+     * @return the Lift object if found else {@code null}
+     * @see Lift
+     * @see UUID
+     */
     public Lift getLift(UUID id) {
+        // Loop through each lift and compare their UUIDs
         for (Lift lift : lifts) {
             if (lift.getId().compareTo(id) == 0) {
                 return lift;
@@ -71,7 +103,6 @@ public class LiftController {
 
     /**
      * Handles the saving of the lift data to it's corresponding XML file.
-     * This should only run at the end of the program
      * 
      * @return true if the data was successfully saved to disk, else false
      */
@@ -107,7 +138,7 @@ public class LiftController {
                 idElement.appendChild(document.createTextNode(lift.getId().toString()));
                 // Append the element as a child of it's <Lift> element
                 liftElement.appendChild(idElement);
-
+                // Repeat for each element
                 Element lengthElement = document.createElement("length");
                 lengthElement.appendChild(document.createTextNode(String.valueOf(lift.getLength())));
                 liftElement.appendChild(lengthElement);
@@ -139,7 +170,7 @@ public class LiftController {
                 // Add <Lift> to the parent <Lifts> element
                 liftsElement.appendChild(liftElement);
             }
-            
+
             // Save the document to the XML file and close the stream
             file.save(document);
         } catch (Exception e) {
@@ -149,12 +180,12 @@ public class LiftController {
 
         return true;
     }
-    
-    public void close() {
-        this.save();
-//        file.close();
-    }
 
+    /**
+     * @return a list of all the lifts generate using their {@code toString()}
+     *         methods
+     * @see Lift
+     */
     @Override
     public String toString() {
         String output = "";

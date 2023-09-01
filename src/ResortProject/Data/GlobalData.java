@@ -19,6 +19,7 @@ public class GlobalData {
      */
     private static GlobalData instance = new GlobalData();
 
+    // Static variables for each Controller Class
     public static LiftController liftController;
     public static PeopleController peopleController;
     public static Cafe cafe;
@@ -26,8 +27,7 @@ public class GlobalData {
     private static Person loggedInPerson = null;
 
     /**
-     * Initialise all data in the program including reading XML data using the
-     * respective classes
+     * Initialise all data in the program including reading XML data from file
      */
     private GlobalData() {
         GlobalData.equipmentController = new EquipmentController();
@@ -45,38 +45,38 @@ public class GlobalData {
         return instance;
     }
 
+    /**
+     * 
+     * @return the currently logged in user
+     * @see Person
+     */
     public static Person getLoggedIn() {
         return loggedInPerson;
     }
 
+    /**
+     * Set the currently logged in person
+     * 
+     * @param person the person to log in
+     * @see Person
+     */
     public static void setLoggedIn(Person person) {
         loggedInPerson = person;
     }
 
     /**
-     * Saves the program's data and removes the current person as being logged in
+     * Saves the program's data and resets the logged in person to null
      */
     public static void logout() {
         GlobalData.save();
         loggedInPerson = null;
     }
 
+    /**
+     * Save the programs data
+     */
     public static void save() {
         liftController.save();
         peopleController.save();
     }
-
-    /**
-     * Handles the termination of data controllers and program processes
-     * 
-     * @return true if controllers and processes terminated successfully, else false
-     */
-    public static boolean close() {
-        // Write lift data to disk and close data streams
-        liftController.close();
-        peopleController.close();
-
-        return true;
-    }
-
 }

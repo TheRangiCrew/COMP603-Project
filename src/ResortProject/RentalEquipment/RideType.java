@@ -1,5 +1,8 @@
 package ResortProject.RentalEquipment;
 
+/**
+ * Different types of Skis and Snowboards
+ */
 public enum RideType {
     ALL_MOUNTAIN("All Mountain"),
     FREERIDE("Freeride"),

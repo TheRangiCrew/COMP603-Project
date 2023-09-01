@@ -1,5 +1,8 @@
 package ResortProject.RentalEquipment;
 
+/**
+ * Types of boots
+ */
 public enum BootType {
     SKI("Ski"),
     SNOWBOARD("Snowboard");

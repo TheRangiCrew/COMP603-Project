@@ -10,13 +10,19 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Main menu to rent equipment. User input directs users to mpre specific sub
+ * menus for each equipment
+ */
 public class RentalEquipmentMenu {
 
     public static void main() {
         Scanner scan = new Scanner(System.in);
         String response = null;
 
+        // Loop util valid response
         while (response == null) {
+            // User options
             System.out.println("Rental Equipment ->");
             System.out.println("-------------------");
             System.out.println("Select an option below:");
@@ -26,19 +32,26 @@ public class RentalEquipmentMenu {
             System.out.println("4. Boot rental          $25");
             System.out.println("5. Clothing rental      $10");
             System.out.println("R. Return to main menu");
+            // User input
             response = scan.nextLine().toLowerCase();
             scan.reset();
 
             switch (response) {
+                // R
                 case "r":
+                    // Return to the program's main menu
                     return;
+                // Snowboard Rental
                 case "1":
                     RentalEquipmentMenu.snowboardRental();
                     break;
+                // Ski Rental
                 case "2":
                     RentalEquipmentMenu.skiRental();
                     break;
+                // Taboggan Rental
                 case "3":
+                    // Since the taboggan is a generic equipment it can de handled here
                     if (GlobalData.getLoggedIn().deductFromCredit(10)) {
                         System.out.println("\nEquipment hired! Thank you.");
                     } else {
@@ -48,12 +61,15 @@ public class RentalEquipmentMenu {
                         scan.reset();
                     }
                     break;
+                // Boots Rental
                 case "4":
                     RentalEquipmentMenu.bootRental();
                     break;
+                // Clothing Rental
                 case "5":
                     RentalEquipmentMenu.clothingRental();
                     break;
+                // Handle all other input
                 default:
                     System.out.println("Invalid input. Please try again...");
                     response = null;
@@ -69,7 +85,7 @@ public class RentalEquipmentMenu {
      */
     private static RideType selectRide() {
         Scanner scan = new Scanner(System.in);
-        // The ride type to be return
+        // The ride type to be returned
         RideType rideType = null;
 
         String response = null;
@@ -81,6 +97,7 @@ public class RentalEquipmentMenu {
             System.out.println("3. Park");
             System.out.println("4. On Piste");
             System.out.println("R. Return to Rental Equipment Menu");
+            // User input
             response = scan.nextLine().toLowerCase();
 
             switch (response) {
@@ -115,6 +132,9 @@ public class RentalEquipmentMenu {
         return rideType;
     }
 
+    /**
+     * Snowboard Rental menu
+     */
     private static void snowboardRental() {
         ArrayList<Snowboard> boardRental = GlobalData.equipmentController.getSnowboards();
         Collections.sort(boardRental);
@@ -163,6 +183,7 @@ public class RentalEquipmentMenu {
                 // Check if the size is a valid size
                 for (Snowboard potential : filteredBoards) {
                     if (potential.getIntSize() == chosenSize) {
+                        // Assign the correct snowboard
                         snowboard = potential;
                         break;
                     }
@@ -176,8 +197,7 @@ public class RentalEquipmentMenu {
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
-            }
-            catch (NumberFormatException ee) {
+            } catch (NumberFormatException ee) {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
@@ -194,7 +214,7 @@ public class RentalEquipmentMenu {
 
         }
 
-        RentalEquipmentMenu.main();
+        return;
     }
 
     private static void skiRental() {
@@ -245,6 +265,7 @@ public class RentalEquipmentMenu {
                 // Check if the size is a valid size
                 for (Skis potential : filteredSkis) {
                     if (potential.getIntSize() == chosenSize) {
+                        // Assign the correct skis
                         skis = potential;
                         break;
                     }
@@ -258,8 +279,7 @@ public class RentalEquipmentMenu {
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
-            }
-            catch (NumberFormatException ee) {
+            } catch (NumberFormatException ee) {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
@@ -276,10 +296,14 @@ public class RentalEquipmentMenu {
 
         }
 
-        RentalEquipmentMenu.main();
+        return;
     }
 
+    /**
+     * Boot Rental menu
+     */
     private static void bootRental() {
+        // Get all boots
         ArrayList<Boots> bootRental = GlobalData.equipmentController.getBoots();
         Collections.sort(bootRental);
 
@@ -293,8 +317,10 @@ public class RentalEquipmentMenu {
             System.out.println("1. Ski Boot");
             System.out.println("2. Snowboard Boot");
             System.out.println("R. Return to Rental Equipment Menu");
+            // User input
             response = scan.nextLine().toLowerCase();
 
+            // Set the chosen boot type or return/loop around
             switch (response) {
                 case "r":
                     return;
@@ -373,8 +399,11 @@ public class RentalEquipmentMenu {
 
     }
 
+    /**
+     * Clothing Rental menu
+     */
     private static void clothingRental() {
-
+        // Get all clothing
         ArrayList<Clothing> clothingRental = GlobalData.equipmentController.getClothing();
         Collections.sort(clothingRental);
 
@@ -384,16 +413,18 @@ public class RentalEquipmentMenu {
         ClothingType type = null;
 
         while (response == null) {
-
+            // User options
             System.out.println("Please choose a clothing type: ");
             System.out.println("1. Jacket");
             System.out.println("2. Pants");
             System.out.println("3. Helmet");
             System.out.println("4. Childs one piece");
             System.out.println("R. Return to rental equipent");
+            // User input
             response = scan.nextLine().toLowerCase();
             scan.reset();
 
+            // Set the chosen clothing or return or loop back
             switch (response) {
                 case "r":
                     return;
@@ -421,14 +452,16 @@ public class RentalEquipmentMenu {
         Gender gender = null;
 
         while (response == null) {
-
+            // User options
             System.out.println("Please choose a gender: ");
             System.out.println("1. Male");
             System.out.println("2. Female");
             System.out.println("R. Cancel");
+            // User input
             response = scan.nextLine().toLowerCase();
             scan.reset();
 
+            // Set the correct gender or return or loop back
             switch (response) {
                 case "r":
                     return;
@@ -469,6 +502,11 @@ public class RentalEquipmentMenu {
 
     }
 
+    /**
+     * Prints a dynamic table given a an Equipment with integer sizes
+     * 
+     * @param equipment the equipments to go through
+     */
     private static void generateIntTable(ArrayList<? extends Equipment> equipment) {
         NumberFormat numFormat = new DecimalFormat("000");
         // Print a table of the available sizes from the filtered list of snowbords
@@ -478,7 +516,8 @@ public class RentalEquipmentMenu {
         for (int i = 0; i < equipment.size(); i++) {
             if (equipment.get(i).isAvailable()) {
                 System.out.print(
-                        "| " + numFormat.format(Integer.parseInt(equipment.get(i).getSize())) + " " + (i == equipment.size() - 1 ? "|" : ""));
+                        "| " + numFormat.format(Integer.parseInt(equipment.get(i).getSize())) + " "
+                                + (i == equipment.size() - 1 ? "|" : ""));
             }
         }
         // New row line

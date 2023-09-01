@@ -1,5 +1,8 @@
 package ResortProject.RentalEquipment;
 
+/**
+ * Types of clothing
+ */
 public enum ClothingType {
     JACKET("Jacket"),
     PANTS("Pants"),
@@ -12,6 +15,9 @@ public enum ClothingType {
         this.name = name;
     }
 
+    /**
+     * @return string representation of enum
+     */
     @Override
     public String toString() {
         return this.name;

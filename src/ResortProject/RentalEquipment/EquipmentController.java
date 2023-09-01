@@ -5,17 +5,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.w3c.dom.*;
 
+/**
+ * Equipment Controller
+ * 
+ * Responsible for importing the data for the equipment from XML files and
+ * parsing the data into collections to be used globally throughout the program
+ */
 public class EquipmentController {
 
+    /**
+     * Collection to store the different types of equipment where the equipment type
+     * is the key and the variations/instances of each equipment type is the value
+     */
     private HashMap<String, ArrayList<Equipment>> equipment;
+    // The XML file to read and write to
     private XMLFile file;
 
+    /**
+     * Constructor
+     */
     public EquipmentController() {
         this.equipment = new HashMap<>();
 
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/RentalEquipment.xml");
-        Element root = file.root;
+        Element root = file.getRoot();
 
         // Extract all the RentalEquipment elements as a list from the root element
         NodeList equipmentList = root.getElementsByTagName("Item");
@@ -79,12 +93,17 @@ public class EquipmentController {
         }
     }
 
+    /**
+     * 
+     * @return all the stored equipment where the equipment type
+     *         is the key and the variations/instances of each equipment type is the
+     *         value
+     */
     public HashMap<String, ArrayList<Equipment>> getEquipment() {
         return this.equipment;
     }
 
     /**
-     * 
      * @return all the snowboards
      */
     public ArrayList<Snowboard> getSnowboards() {

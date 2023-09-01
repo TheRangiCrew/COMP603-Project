@@ -1,5 +1,9 @@
 package ResortProject.RentalEquipment;
 
+/**
+ * The generic Equipment class with the common elements of Rental Equipment
+ * within the resort
+ */
 public class Equipment implements Comparable<Equipment> {
 
     private String name;
@@ -8,12 +12,12 @@ public class Equipment implements Comparable<Equipment> {
     private String type;
 
     /**
-     * @param name
-     * @param size
-     * @param available
+     * @param name      name of the equipment
+     * @param size      size as a string (can be parsed to other types in
+     *                  sub-classes)
+     * @param available available quantity
      */
     public Equipment(String name, String size, int available, String type) {
-
         this.name = name;
         this.size = size;
         this.available = available;
@@ -49,7 +53,7 @@ public class Equipment implements Comparable<Equipment> {
     }
 
     /**
-     * @param available
+     * @param available the availability
      */
     public void setAvailable(int available) {
         this.available = available;
@@ -62,11 +66,17 @@ public class Equipment implements Comparable<Equipment> {
         return this.type;
     }
 
+    /**
+     * @return name, size, availability of equipment as string
+     */
     @Override
     public String toString() {
         return this.name + "  " + this.size + "  " + (this.isAvailable() ? "Available" : "Unavailable");
     }
 
+    /**
+     * @return 0 if equipment is equal otherwise other integer
+     */
     @Override
     public int compareTo(Equipment equipment) {
         try {

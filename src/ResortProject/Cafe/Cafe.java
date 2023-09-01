@@ -24,19 +24,20 @@ public class Cafe {
      * Constructor
      */
     public Cafe() {
+
         this.cafeMenu = new HashMap<>();
 
         // Open and get "root" element of the specified XML file. Root element is the
         // first element within the file
         file = new XMLFile("./resources/Cafe.xml");
-        Element root = file.root;
+        Element root = file.getRoot();
 
         // Extract all the Item elements as a list of XML Nodes
         NodeList itemList = root.getElementsByTagName("Item");
 
         // Loop through NodeList and parse each necessary element
         for (int i = 0; i < itemList.getLength(); i++) {
-            // THe current element that will be parsed
+            // The current element that will be parsed
             Element element = (Element) itemList.item(i);
 
             // Get the category attribute of the item
@@ -77,15 +78,21 @@ public class Cafe {
         return this.cafeMenu;
     }
 
+    /**
+     * @return A "menu" of the cafe as a String showing each item's name, price and
+     *         description in a categorical list
+     * @see Item
+     */
     @Override
     public String toString() {
         String output = "";
 
-        // Calling each item and adding it's toString
+        // For each category...
         for (Entry<String, ArrayList<Item>> items : cafeMenu.entrySet()) {
+            // ...add its name to the output string...
             output += items.getKey() + "\n";
             output += "--------------------\n";
-
+            // ...followed by the {@code toString()} output of each item in that category
             for (Item item : items.getValue()) {
                 output += item.toString() + "\n";
             }

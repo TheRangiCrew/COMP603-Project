@@ -10,4 +10,20 @@
         <credit>0.0</credit>
         <LiftPasses/>
     </Person>
+    <Person>
+        <id>dbec8ae2-7e29-482e-a636-f441fa01a713</id>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <dob>1997-01-01</dob>
+        <email>john@doe.com</email>
+        <phone>0212345678</phone>
+        <credit>11.0</credit>
+        <LiftPasses>
+            <LiftPass>
+                <id>6cd8cc12-e220-4a0a-8348-64705411798c</id>
+                <validFrom>2023-09-01T00:00</validFrom>
+                <validTo>2023-09-08T23:59</validTo>
+            </LiftPass>
+        </LiftPasses>
+    </Person>
 </People>

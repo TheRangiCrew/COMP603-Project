@@ -8,9 +8,17 @@ import java.util.HashSet;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
+/**
+ * People Controller
+ * 
+ * Responsible for importing the data for the people from XML files and parsing
+ * the data into collections to be used globally throughout the program
+ */
 public class PeopleController {
 
+    // Collection storing Persons
     private ArrayList<Person> people;
+    // The XML file to read and write to
     private XMLFile file;
 
     public PeopleController() {
@@ -18,7 +26,7 @@ public class PeopleController {
 
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/People.xml");
-        Element root = file.root;
+        Element root = file.getRoot();
 
         // Extract all the Person elements as a list from the root element
         NodeList peopleList = root.getElementsByTagName("Person");
@@ -188,11 +196,9 @@ public class PeopleController {
         return true;
     }
 
-    public void close() {
-        this.save();
-        // file.close();
-    }
-
+    /**
+     * @return a list of people's names
+     */
     @Override
     public String toString() {
         String output = "";
