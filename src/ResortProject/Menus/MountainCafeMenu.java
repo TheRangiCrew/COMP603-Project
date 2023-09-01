@@ -84,7 +84,8 @@ public class MountainCafeMenu {
                     }
 
                     System.out.println("\n" + order.toString() + "\n");
-                    System.out.print("You order is above. If it is correct press Y, otherwise press N to go back (Y/N) ");
+                    System.out
+                            .print("You order is above. If it is correct press Y, otherwise press N to go back (Y/N) ");
                     while (response == null) {
                         response = scan.nextLine().toLowerCase();
                         scan.reset();
@@ -95,7 +96,8 @@ public class MountainCafeMenu {
                                     GlobalData.save();
                                     return;
                                 } else {
-                                    System.out.println("\nYou do not have enough credit in your account for this order.\nPlease top-up your credit before finishing the order.");
+                                    System.out.println(
+                                            "\nYou do not have enough credit in your account for this order.\nPlease top-up your credit before finishing the order.");
                                     System.out.println("\nPress any key to continue...");
                                     scan.nextLine();
                                     scan.reset();
@@ -130,22 +132,22 @@ public class MountainCafeMenu {
                     response = null;
                 default:
                     try {
-                    int option = Integer.parseInt(response) - 1;
-                    // If the selected option was out-of-bounds of the array, throw an Exception
-                    if (option < 0 || option > categories.length - 1) {
-                        throw new Exception();
+                        int option = Integer.parseInt(response) - 1;
+                        // If the selected option was out-of-bounds of the array, throw an Exception
+                        if (option < 0 || option > categories.length - 1) {
+                            throw new Exception();
+                        }
+
+                        ArrayList<Item> selectedSubMenu = GlobalData.cafe.getMenu().get(categories[option]);
+
+                        MountainCafeMenu.subMenu(categories[option], selectedSubMenu);
+                        response = null;
+
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please try again...");
+                    } catch (Exception e) {
+                        System.out.println("Invalid input. Please try again...");
                     }
-
-                    ArrayList<Item> selectedSubMenu = GlobalData.cafe.getMenu().get(categories[option]);
-
-                    MountainCafeMenu.subMenu(categories[option], selectedSubMenu);
-                    response = null;
-
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input. Please try again...");
-                } catch (Exception e) {
-                    System.out.println("Invalid input. Please try again...");
-                }
             }
 
             response = null;
@@ -159,6 +161,11 @@ public class MountainCafeMenu {
         String response = null;
 
         while (response == null) {
+            if (order.getNumOfItems() == 0) {
+                System.out.println("Order is empty. Going back to the main menu");
+                return;
+            }
+
             System.out.println("\n" + order.toListedString() + "\n");
             System.out.print("Select an item from above by typing its corresponding number or 'R' to go back: ");
 
@@ -181,40 +188,43 @@ public class MountainCafeMenu {
                 response = null;
                 while (response == null) {
                     System.out.println("Are you sure you want to remove " + items[option] + "? (Y/N)");
-                    
+
                     response = scan.nextLine().toLowerCase();
                     scan.reset();
 
                     switch (response) {
                         case "y":
                             if (itemList.size() > 1) {
-                                
+
                                 int num = -1;
                                 while (num == -1) {
-                                    System.out.println("This item was added " + itemList.size() + " times.\nHow many do you wish to remove? (0-" + itemList.size() + ")");
+                                    System.out.println("This item was added " + itemList.size()
+                                            + " times.\nHow many do you wish to remove? (0-" + itemList.size() + ")");
                                     try {
                                         num = scan.nextInt();
                                         scan.reset();
-                                        
+
                                         if (num < 0 || num > itemList.size()) {
                                             throw new InputMismatchException();
                                         }
-                                        
+
                                         if (num == 0) {
                                             System.out.println("0 items removed");
                                             break;
                                         }
-                                        
+
                                         if (num == itemList.size()) {
                                             order.remove(items[option]);
-                                            System.out.println("All orders for " + items[option] + " have been removed");
+                                            System.out
+                                                    .println("All orders for " + items[option] + " have been removed");
                                             break;
                                         }
-                                        
+
                                         order.remove(items[option], num);
-                                        
-                                        System.out.println(num + (num == 1 ? " order" : " orders") + " for " + items[option] + " were removed from the order");
-                                        
+
+                                        System.out.println(num + (num == 1 ? " order" : " orders") + " for "
+                                                + items[option] + " were removed from the order");
+
                                     } catch (InputMismatchException e) {
                                         System.out.println("Invalid input. Please try again...\n");
                                         num = -1;
@@ -238,7 +248,7 @@ public class MountainCafeMenu {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
-            
+
             response = null;
         }
 
@@ -273,19 +283,20 @@ public class MountainCafeMenu {
                 }
 
                 Item selectedItem = items.get(option);
-                
+
                 int num = -1;
 
                 while (num == -1) {
-                    System.out.print("How many " + selectedItem.getName() + ", for " + selectedItem.getPriceString() + ", do you wish to add? (0-10) ");
+                    System.out.print("How many " + selectedItem.getName() + ", for " + selectedItem.getPriceString()
+                            + ", do you wish to add? (0-10) ");
                     try {
                         num = scan.nextInt();
                         scan.reset();
-                    
+
                         if (num < 0 || num > 10) {
                             throw new InputMismatchException();
                         }
-                        
+
                         for (int i = 0; i < num; i++) {
                             order.add(selectedItem);
                         }
