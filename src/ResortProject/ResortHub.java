@@ -9,12 +9,19 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The ResortHub includes the main for our program along with the sign in and
+ * login methods.
+ */
 public class ResortHub {
 
+    // Main method runs the home page to the UI and takes a user input to navigate
+    // to its next menus.
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean quit = false;
 
+        // While the user has not pressed q for quit keep running the program.
         while (quit != true) {
             System.out.println("+-----------------------------+");
             System.out.println("| WELCOME TO THE SNOW RESORT! |");
@@ -22,6 +29,8 @@ public class ResortHub {
 
             String response = null;
 
+            // While the users response is null loop through to ahow the menu and allow user
+            // to input.
             while (response == null) {
                 try {
                     System.out.println("L. Login");
@@ -31,6 +40,8 @@ public class ResortHub {
 
                     response = scan.nextLine().toLowerCase();
 
+                    // Swtich case is used to take the user to their desired menu or throw
+                    // InputMismatchException and make user try again.
                     switch (response) {
                         case "l":
                             login();
@@ -44,14 +55,15 @@ public class ResortHub {
                             GlobalData.save();
                             return;
                         default:
-                            throw new InputMismatchException();
                     }
 
+                    // Save program data
                     GlobalData.save();
+
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please try again...\n");
                 }
-                
+
                 response = null;
             }
 
@@ -80,7 +92,8 @@ public class ResortHub {
                         return;
                     }
                     dob = LocalDate.parse(dobResponse, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                    // uses getPerson method to search the ArrayList of people for login details. returns a person if there is a match or null when no match.
+                    // uses getPerson method to search the ArrayList of people for login details.
+                    // returns a person if there is a match or null when no match.
                     GlobalData.setLoggedIn(GlobalData.peopleController.getPerson(response, dob));
                     if (GlobalData.getLoggedIn() == null) {
                         System.out.println("Incorrect login details, please try again.");
@@ -98,63 +111,66 @@ public class ResortHub {
 
     private static void signup() {
         Scanner scan = new Scanner(System.in);
-        
+
         String firstName = null;
         String lastName = null;
         String dobString = null;
         LocalDate dob = null;
         String email = null;
         String phone = null;
-        
+
         String exit = "exit";
         String nameRegex = "^[A-Za-z\\-\\.]+$";
-        String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
-        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         String phoneRegex = "^\\+?\\d+$";
-        
-        System.out.println("\nPlease provide the information specified by the prompts to complete the sign-up process or type 'Exit' at any time to cancel.\n");
-        
+
+        System.out.println(
+                "\nPlease provide the information specified by the prompts to complete the sign-up process or type 'Exit' at any time to cancel.\n");
+
         while (firstName == null) {
             System.out.print("First Name: ");
             firstName = scan.nextLine().trim();
             scan.reset();
-            
+
             if (firstName.isEmpty()) {
                 System.out.println("Your name is required. Please try again...\n");
                 firstName = null;
             } else if (firstName.equalsIgnoreCase(exit)) {
                 return;
             } else if (!(firstName.matches(nameRegex))) {
-                System.out.println("Your name can only contain letters, hyphens (-) and periods (.). Please try again...\n");
+                System.out.println(
+                        "Your name can only contain letters, hyphens (-) and periods (.). Please try again...\n");
                 firstName = null;
             }
         }
-        
+
         while (lastName == null) {
             System.out.print("Last Name: ");
             lastName = scan.nextLine().trim();
             scan.reset();
-            
+
             if (lastName.isEmpty()) {
                 System.out.println("Your name is required. Please try again...\n");
                 lastName = null;
             } else if (lastName.equalsIgnoreCase(exit)) {
                 return;
             } else if (!(lastName.matches(nameRegex))) {
-                System.out.println("Your name can only contain letters, hyphens (-) and periods (.). Please try again...\n");
+                System.out.println(
+                        "Your name can only contain letters, hyphens (-) and periods (.). Please try again...\n");
                 lastName = null;
             }
         }
-        
+
         while (dobString == null && dob == null) {
             System.out.print("Date of Birth (DD-MM-YYYY): ");
             dobString = scan.nextLine().trim();
             scan.reset();
-            
+
             if (dobString.equalsIgnoreCase(exit)) {
                 return;
-            } 
-            
+            }
+
             try {
                 dob = LocalDate.parse(dobString, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             } catch (DateTimeParseException e) {
@@ -162,12 +178,12 @@ public class ResortHub {
                 dobString = null;
             }
         }
-        
+
         while (email == null) {
             System.out.print("Email: ");
             email = scan.nextLine().trim();
             scan.reset();
-            
+
             if (email.isEmpty()) {
                 System.out.println("Your email is required. Please try again...\n");
                 email = null;
@@ -178,12 +194,12 @@ public class ResortHub {
                 email = null;
             }
         }
-        
+
         while (phone == null) {
             System.out.print("Phone: ");
             phone = scan.nextLine().trim();
             scan.reset();
-            
+
             if (phone.isEmpty()) {
                 System.out.println("Your phone number is required. Please try again...\n");
                 phone = null;
@@ -194,15 +210,16 @@ public class ResortHub {
                 phone = null;
             }
         }
-        
+
         Person person = GlobalData.peopleController.addPerson(new Person(firstName, lastName, dob, email, phone));
-        
-        System.out.println("\nYour account has been created " + person.getFirstName() + "!\nYou may use it straight away by going back to the main menu and logging in."
+
+        System.out.println("\nYour account has been created " + person.getFirstName()
+                + "!\nYou may use it straight away by going back to the main menu and logging in."
                 + "\nNOTE: Your account has no credit or lift passes added automatically. You may do this once logged in.");
-        
+
         System.out.println("\nPress any key to continue...");
         scan.nextLine();
-        
+
         return;
     }
 }
