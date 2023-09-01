@@ -1,59 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <People>
     <Person>
-        <id>d448870a-4001-402c-aca1-72206f098a00</id>
-        <firstName>Sam</firstName>
-        <lastName>Robertson</lastName>
-        <dob>1995-08-07</dob>
-        <email>sam@xtra.co.nz</email>
-        <phone>+642012345678</phone>
-        <credit>72.34</credit>
-        <LiftPasses>
-            <LiftPass>
-                <id>f8efeb5d-2ecc-4a38-b3b1-39be0dfc6dd4</id>
-                <validFrom>2023-08-25T00:00</validFrom>
-                <validTo>2023-10-08T23:59</validTo>
-            </LiftPass>
-            <LiftPass>
-                <id>f9e5ae33-a438-4e65-a87d-c7cbcf0d2abe</id>
-                <validFrom>2023-08-22T00:00</validFrom>
-                <validTo>2023-08-22T23:59</validTo>
-            </LiftPass>
-        </LiftPasses>
-    </Person>
-    <Person>
-        <id>07563a2b-6ec9-40bf-9abf-d09fb964b9a1</id>
+        <id>669cb544-f2f4-4b89-ad90-23c91fdf1267</id>
         <firstName>Ryan</firstName>
         <lastName>Adam</lastName>
         <dob>2003-05-20</dob>
-        <email>ryan.ryan@ryan.com.au</email>
-        <phone>+61412345678</phone>
-        <credit>20.0</credit>
-        <LiftPasses/>
-    </Person>
-    <Person>
-        <id>452f9bf9-8a10-4226-bb85-7236153d61e7</id>
-        <firstName>a</firstName>
-        <lastName/>
-        <dob>1999-11-11</dob>
-        <email>a</email>
-        <phone>02123456789</phone>
-        <credit>14.76</credit>
-        <LiftPasses>
-            <LiftPass>
-                <id>7e5a11e8-30f9-4a9f-a62f-3e59de838e38</id>
-                <validFrom>2023-08-25T00:00</validFrom>
-                <validTo>2023-09-01T23:59</validTo>
-            </LiftPass>
-        </LiftPasses>
-    </Person>
-    <Person>
-        <id>cec689cd-c0a9-4bd0-a462-4a2d8ba9c12e</id>
-        <firstName>John</firstName>
-        <lastName>Doe</lastName>
-        <dob>2003-05-20</dob>
-        <email>jd@xtra.co.nz</email>
-        <phone>02123456789</phone>
+        <email>ryan@gmail.com</email>
+        <phone>0212345678</phone>
         <credit>0.0</credit>
         <LiftPasses/>
     </Person>
