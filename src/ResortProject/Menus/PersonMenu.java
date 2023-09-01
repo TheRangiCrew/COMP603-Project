@@ -58,7 +58,6 @@ public class PersonMenu {
             try {
                 System.out.print("Please enter the amount to top up, or enter 0 to return to previous menu: ");
                 response = scan.nextFloat();
-                scan.reset();
 
                 if (response == 0.0f) {
                     return;
@@ -75,9 +74,11 @@ public class PersonMenu {
                 GlobalData.save();
             } catch (InputMismatchException e) {
                 System.out.println("Incorrect input, please try again.");
+                response = null;
+                scan.next();
             }
         }
-        System.out.println("");
+        System.out.println("\n");
     }
 
     private static void buyLiftPass() {
