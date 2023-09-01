@@ -194,6 +194,7 @@ public class MountainCafeMenu {
                                     System.out.println("This item was added " + itemList.size() + " times.\nHow many do you wish to remove? (0-" + itemList.size() + ")");
                                     try {
                                         num = scan.nextInt();
+                                        scan.reset();
                                         
                                         if (num < 0 || num > itemList.size()) {
                                             throw new InputMismatchException();
@@ -217,6 +218,7 @@ public class MountainCafeMenu {
                                     } catch (InputMismatchException e) {
                                         System.out.println("Invalid input. Please try again...\n");
                                         num = -1;
+                                        scan.next();
                                     }
                                 }
                             } else {
@@ -274,8 +276,8 @@ public class MountainCafeMenu {
                 
                 int num = -1;
 
-                System.out.print("How many " + selectedItem.getName() + ", for " + selectedItem.getPriceString() + ", do you wish to add? (0-10) ");
                 while (num == -1) {
+                    System.out.print("How many " + selectedItem.getName() + ", for " + selectedItem.getPriceString() + ", do you wish to add? (0-10) ");
                     try {
                         num = scan.nextInt();
                         scan.reset();
@@ -290,6 +292,7 @@ public class MountainCafeMenu {
                     } catch (InputMismatchException e) {
                         System.out.println("Invalid input. Please try again...");
                         num = -1;
+                        scan.next();
                     }
                 }
 
