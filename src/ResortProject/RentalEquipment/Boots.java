@@ -2,6 +2,7 @@ package ResortProject.RentalEquipment;
 
 import java.util.InputMismatchException;
 
+
 public class Boots extends Equipment {
 
     private BootType bootType; // Ski boots or board boots
