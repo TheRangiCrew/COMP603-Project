@@ -39,10 +39,8 @@ public class RentalEquipmentMenu {
                     RentalEquipmentMenu.skiRental();
                 default:
                     System.out.println("Invalid input. Please try again...");
-                    return;
+                    response = null;
             }
-
-            response = null;
         }
     }
 
@@ -71,6 +69,8 @@ public class RentalEquipmentMenu {
             switch (response) {
                 // If the user selects 'R', return since rideType is already null
                 case "r":
+                    response = null;
+                    RentalEquipmentMenu.main();
                     break;
                 case "1":
                     rideType = RideType.ALL_MOUNTAIN;
@@ -134,7 +134,8 @@ public class RentalEquipmentMenu {
 
             // If statement to check for return 'r'
             if (response.equals("r")) {
-                return;
+                RentalEquipmentMenu.main();
+                break;
             }
 
             int chosenSize;
@@ -159,6 +160,10 @@ public class RentalEquipmentMenu {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
+            catch (NumberFormatException ee) {
+                System.out.println("Invalid input. Please try again...");
+                response = null;
+            }
         }
 
         // Deduct credit from person. Handle if not enough credit
@@ -172,7 +177,7 @@ public class RentalEquipmentMenu {
 
         }
 
-        return;
+        RentalEquipmentMenu.main();
     }
 
     private static void skiRental() {
@@ -211,7 +216,7 @@ public class RentalEquipmentMenu {
             scan.reset();
 
             // If statement to check for return 'r'
-            if (response.equals("r")) {
+            if (response.equalsIgnoreCase("r")) {
                 return;
             }
 
@@ -237,6 +242,10 @@ public class RentalEquipmentMenu {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
+            catch (NumberFormatException ee) {
+                System.out.println("Invalid input. Please try again...");
+                response = null;
+            }
         }
 
         // Deduct credit from person. Handle if not enough credit
@@ -250,7 +259,7 @@ public class RentalEquipmentMenu {
 
         }
 
-        return;
+        RentalEquipmentMenu.main();
     }
 
     private static void bootRental() {
