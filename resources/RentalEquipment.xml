@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RentalEquipment>
-    <Item type="Taboggan">
+    <Item type="taboggan">
         <size>Regular</size>
         <available>40</available>
     </Item>
@@ -85,6 +85,11 @@
         <rideType>All Mountain</rideType>
     </Item>
     <Item type="snowboard">
+        <size unit="cm">156</size>
+        <available>15</available>
+        <rideType>On Piste</rideType>
+    </Item>
+    <Item type="snowboard">
         <size unit="cm">151</size>
         <available>0</available>
         <rideType>Freeride</rideType>
@@ -113,6 +118,11 @@
         <size unit="cm">160</size>
         <available>15</available>
         <rideType>Freeride</rideType>
+    </Item>
+    <Item type="ski">
+        <size unit="cm">150</size>
+        <available>15</available>
+        <rideType>On Piste</rideType>
     </Item>
     <Item type="ski">
         <size unit="cm">150</size>
