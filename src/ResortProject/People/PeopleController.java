@@ -15,20 +15,20 @@ public class PeopleController {
 
     public PeopleController() {
         this.people = new ArrayList<>();
-        
+
         // Open and get "root" element of the specified XML file
         this.file = new XMLFile("./resources/People.xml");
         Element root = file.root;
 
         // Extract all the Person elements as a list from the root element
         NodeList peopleList = root.getElementsByTagName("Person");
-        
+
         // Loop through NodeList and parse each necessary element
         for (int i = 0; i < peopleList.getLength(); i++) {
             // Element to parse
             Element element = (Element) peopleList.item(i);
 
-            // Parsers for each element. Only parse as "primitive" types. 
+            // Parsers for each element. Only parse as "primitive" types.
             // Actual types will be converted in Person object constructor
             String id = XMLFile.getTextContent(element, "id");
             String firstName = XMLFile.getTextContent(element, "firstName");
@@ -37,19 +37,19 @@ public class PeopleController {
             String email = XMLFile.getTextContent(element, "email");
             String phone = XMLFile.getTextContent(element, "phone");
             float credit = Float.parseFloat(XMLFile.getTextContent(element, "credit"));
-            
+
             HashSet<LiftPass> liftSet = new HashSet();
             NodeList liftPassElements = element.getElementsByTagName("LiftPasses");
             Element liftPassElement = (Element) liftPassElements.item(0);
             NodeList passElements = liftPassElement.getElementsByTagName("LiftPass");
-            
+
             for (int j = 0; j < passElements.getLength(); j++) {
                 Element passElement = (Element) passElements.item(j);
-                
+
                 String liftId = XMLFile.getTextContent(passElement, "id");
                 String validFrom = XMLFile.getTextContent(passElement, "validFrom");
                 String validTo = XMLFile.getTextContent(passElement, "validTo");
-                
+
                 liftSet.add(new LiftPass(liftId, validFrom, validTo));
             }
 
@@ -57,20 +57,20 @@ public class PeopleController {
             people.add(new Person(id, firstName, lastName, dob, email, phone, credit, liftSet));
         }
     }
-    
+
     /**
      * @return the people
      */
     public ArrayList<Person> getPeople() {
         return this.people;
     }
-    
+
     /**
      * Compares the email and date of birth of each person to find a specific person
      * 
      * @param email the email of the person
-     * @param dob the dob of the person as a LocalDate
-     * @return a Person if one exists, or null if one cannot be found 
+     * @param dob   the dob of the person as a LocalDate
+     * @return a Person if one exists, or null if one cannot be found
      * @see LocalDate
      */
     public Person getPerson(String email, LocalDate dob) {
@@ -79,17 +79,17 @@ public class PeopleController {
                 return person;
             }
         }
-        
+
         return null;
     }
-    
+
     public Person addPerson(Person person) {
         this.people.add(person);
         GlobalData.save();
-        
+
         return person;
     }
-    
+
     /**
      * Handles the saving of the people data to it's corresponding XML file.
      * This should only run at the end of the program
@@ -148,36 +148,36 @@ public class PeopleController {
                 Element phoneElement = document.createElement("phone");
                 phoneElement.appendChild(document.createTextNode(person.getPhone()));
                 personElement.appendChild(phoneElement);
-                
+
                 Element creditElement = document.createElement("credit");
                 creditElement.appendChild(document.createTextNode(String.valueOf(person.getCredit())));
                 personElement.appendChild(creditElement);
-                
+
                 Element passesElement = document.createElement("LiftPasses");
                 for (LiftPass pass : person.getPasses()) {
                     Element passElement = document.createElement("LiftPass");
-                    
+
                     Element passIdElement = document.createElement("id");
                     passIdElement.appendChild(document.createTextNode(pass.getId().toString()));
                     passElement.appendChild(passIdElement);
-                    
+
                     Element validFromElement = document.createElement("validFrom");
                     validFromElement.appendChild(document.createTextNode(pass.getValidFrom().toString()));
                     passElement.appendChild(validFromElement);
-                    
+
                     Element validToElement = document.createElement("validTo");
                     validToElement.appendChild(document.createTextNode(pass.getValidTo().toString()));
                     passElement.appendChild(validToElement);
-                    
+
                     passesElement.appendChild(passElement);
                 }
-                
+
                 personElement.appendChild(passesElement);
 
                 // Add <Person> to the parent <People> element
                 peopleElement.appendChild(personElement);
             }
-            
+
             // Save the document to the XML file and close the stream
             file.save(document);
         } catch (Exception e) {
@@ -187,20 +187,20 @@ public class PeopleController {
 
         return true;
     }
-    
+
     public void close() {
         this.save();
-//        file.close();
+        // file.close();
     }
-    
+
     @Override
     public String toString() {
         String output = "";
-        
-        for ( Person person : people) {
+
+        for (Person person : people) {
             output += person.toString();
         }
-        
+
         return output;
     }
 }

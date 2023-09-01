@@ -21,7 +21,7 @@ public class EquipmentController {
         // Extract all the RentalEquipment elements as a list from the root element
         NodeList equipmentList = root.getElementsByTagName("Item");
 
-        //Loop through NodeList and parse each necessary element 
+        // Loop through NodeList and parse each necessary element
         for (int i = 0; i < equipmentList.getLength(); i++) {
             // The current element to parse
             Element element = (Element) equipmentList.item(i);
@@ -37,12 +37,13 @@ public class EquipmentController {
                 // get the value of that key as the array to put the current element into
                 equipmentType = equipment.get(type);
             } else {
-                // else add a new key-value pair to the HashMap where the key is the equipment's type
+                // else add a new key-value pair to the HashMap where the key is the equipment's
+                // type
                 equipmentType = new ArrayList<Equipment>();
                 equipment.put(type, equipmentType);
             }
 
-            //Parses
+            // Parses
             String name = element.getAttribute("type");
             String size = XMLFile.getTextContent(element, "size");
             int available = Integer.parseInt(XMLFile.getTextContent(element, "available"));
@@ -52,8 +53,13 @@ public class EquipmentController {
             // switch case on the type so it reads in any custome elemnts for that type.
             switch (type) {
                 case "snowboard":
+                    RideType rideType = RideType
+                            .valueOf(XMLFile.getTextContent(element, "rideType").toUpperCase().replace(" ", "_"));
+                    newItem = new Snowboard(size, available, rideType);
+                    break;
                 case "ski":
-                    RideType rideType = RideType.valueOf(XMLFile.getTextContent(element, "rideType").toUpperCase().replace(" ", "_"));
+                    rideType = RideType
+                            .valueOf(XMLFile.getTextContent(element, "rideType").toUpperCase().replace(" ", "_"));
                     newItem = new Skis(size, available, rideType);
                     break;
                 case "boots":
@@ -66,19 +72,83 @@ public class EquipmentController {
                     newItem = new Clothing(clothingType, size, available, gender);
                     break;
                 default:
-                    newItem = new Equipment(type, size, available);
+                    newItem = new Equipment(type, size, available, type);
                     break;
             }
 
             equipmentType.add(newItem);
         }
     }
-    
+
     public HashMap<String, ArrayList<Equipment>> getEquipment() {
         return this.equipment;
     }
 
-   // public static boolean save() {
-        
-    //}
+    /**
+     * 
+     * @return all the snowboards
+     */
+    public ArrayList<Snowboard> getSnowboards() {
+        // Empty ArrayList of snowboards
+        ArrayList<Snowboard> snowboards = new ArrayList<>();
+        // Loop through each snowboard in the equipment HashMap
+        this.equipment.get("snowboard").forEach((Equipment element) -> {
+            // Add to the snowboards ArrayList
+            snowboards.add((Snowboard) element);
+        });
+
+        // Return the ArrayList
+        return snowboards;
+    }
+
+    /**
+     * 
+     * @return all the skis
+     */
+    public ArrayList<Skis> getSkis() {
+        // Empty ArrayList of skis
+        ArrayList<Skis> skis = new ArrayList<>();
+        // Loop through each skis in the equipment HashMap
+        this.equipment.get("ski").forEach((Equipment element) -> {
+            // Add to the skis ArrayList
+            skis.add((Skis) element);
+        });
+
+        // Return the ArrayList
+        return skis;
+    }
+
+    /**
+     * 
+     * @return all the skis
+     */
+    public ArrayList<Boots> getBoots() {
+        // Empty ArrayList of boots
+        ArrayList<Boots> boots = new ArrayList<>();
+        // Loop through each boots in the equipment HashMap
+        this.equipment.get("boot").forEach((Equipment element) -> {
+            // Add to the boots ArrayList
+            boots.add((Boots) element);
+        });
+
+        // Return the ArrayList
+        return boots;
+    }
+
+    /**
+     * 
+     * @return all the skis
+     */
+    public ArrayList<Clothing> getClothing() {
+        // Empty ArrayList of clothing
+        ArrayList<Clothing> clothing = new ArrayList<>();
+        // Loop through each clothing in the equipment HashMap
+        this.equipment.get("clothing").forEach((Equipment element) -> {
+            // Add to the clothing ArrayList
+            clothing.add((Clothing) element);
+        });
+
+        // Return the ArrayList
+        return clothing;
+    }
 }

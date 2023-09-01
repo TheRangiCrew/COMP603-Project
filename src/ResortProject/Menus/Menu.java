@@ -14,7 +14,7 @@ public class Menu {
             System.out.println("1. Credit & Lift Passes");
             System.out.println("2. Mountain Cafe");
             System.out.println("3. Rental Equipment");
-            System.out.println("4. View Skit Lift Status");
+            System.out.println("4. View Ski Lift Status");
             System.out.println("L. Log out");
             response = scan.nextLine().toLowerCase();
             scan.reset();
@@ -33,6 +33,7 @@ public class Menu {
                     System.out.println(GlobalData.liftController.toString());
                     break;
                 case "l":
+                    GlobalData.logout();
                     System.out.println("Good bye!");
                     return;
 

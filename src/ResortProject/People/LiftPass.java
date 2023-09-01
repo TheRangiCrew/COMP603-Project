@@ -7,18 +7,18 @@ import java.time.format.FormatStyle;
 import java.util.UUID;
 
 public class LiftPass {
-    
+
     private UUID id;
     private LocalDateTime validFrom;
     private LocalDateTime validTo;
-    
+
     public LiftPass(LocalDateTime validFrom, LocalDateTime validTo) {
         this.id = UUID.randomUUID();
         this.validFrom = validFrom;
         this.validTo = validTo;
     }
-    
-    public LiftPass(String id, String validFrom, String validTo ) {
+
+    public LiftPass(String id, String validFrom, String validTo) {
         try {
             this.id = UUID.fromString(id);
             this.validFrom = LocalDateTime.parse(validFrom);
@@ -29,7 +29,7 @@ public class LiftPass {
             System.out.println("LocalDate provided is in an incorrect format. Skipping Lift Pass...");
         }
     }
-    
+
     /**
      * @return the id
      */
@@ -50,14 +50,15 @@ public class LiftPass {
     public LocalDateTime getValidTo() {
         return validTo;
     }
-    
+
     public boolean isValid() {
         return this.getValidTo().isAfter(LocalDateTime.now()) && LocalDateTime.now().isAfter(getValidFrom());
     }
-    
+
     @Override
     public String toString() {
-        String valid = this.isValid() ? "Valid ✅" : "Invalid 🗙";
-        return valid + "\n" + this.getValidFrom().format(DateTimeFormatter.ofPattern("dd MMM yy")) + " - " + this.getValidTo().format(DateTimeFormatter.ofPattern("dd MMM yy"));
+        String valid = this.isValid() ? "Valid ✅" : "Invalid ❌";
+        return valid + "\n" + this.getValidFrom().format(DateTimeFormatter.ofPattern("dd MMM yy")) + " - "
+                + this.getValidTo().format(DateTimeFormatter.ofPattern("dd MMM yy"));
     }
 }

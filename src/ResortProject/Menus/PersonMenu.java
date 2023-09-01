@@ -29,9 +29,10 @@ public class PersonMenu {
                 case "r":
                     return;
                 case "1":
-                    System.out.println(GlobalData.getLoggedIn().toString());
+                    System.out.println("\n" + GlobalData.getLoggedIn().toString());
                     System.out.println("--------------------");
-                    System.out.println(GlobalData.getLoggedIn().getPasses().size() + " Lift " + (GlobalData.getLoggedIn().getPasses().size() == 1 ? "Pass" : "Passes"));
+                    System.out.println(GlobalData.getLoggedIn().getPasses().size() + " Lift "
+                            + (GlobalData.getLoggedIn().getPasses().size() == 1 ? "Pass" : "Passes"));
                     System.out.println(GlobalData.getLoggedIn().getLatestLiftPass() != null
                             ? GlobalData.getLoggedIn().getLatestLiftPass().toString() + "\n"
                             : "");
@@ -55,7 +56,7 @@ public class PersonMenu {
         Float response = null;
         while (response == null) {
             try {
-                System.out.println("Please insert amount to top up, or enter 0 to return to previous menu.");
+                System.out.print("Please enter the amount to top up, or enter 0 to return to previous menu: ");
                 response = scan.nextFloat();
                 scan.reset();
 
@@ -68,7 +69,8 @@ public class PersonMenu {
                     DecimalFormat decformat = new DecimalFormat("0.00");
                     Person person = GlobalData.getLoggedIn();
                     person.addToCredit(response);
-                    System.out.println("$" + decformat.format(response) + " has been added to your card. Balance is now $" + person.getCreditAsString());
+                    System.out.println("\n$" + decformat.format(response)
+                            + " has been added to your card. Balance is now $" + person.getCreditAsString());
                 }
                 GlobalData.save();
             } catch (InputMismatchException e) {
@@ -108,16 +110,20 @@ public class PersonMenu {
                     return;
                 case "1":
                 case "2":
-                    GlobalData.getLoggedIn().addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().atTime(23, 59)));
+                    GlobalData.getLoggedIn()
+                            .addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().atTime(23, 59)));
                     break;
                 case "3":
-                    GlobalData.getLoggedIn().addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().plusDays(5).atTime(23, 59)));
+                    GlobalData.getLoggedIn().addLiftPass(
+                            new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().plusDays(5).atTime(23, 59)));
                     break;
                 case "4":
-                    GlobalData.getLoggedIn().addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().plusDays(7).atTime(23, 59)));
+                    GlobalData.getLoggedIn().addLiftPass(
+                            new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.now().plusDays(7).atTime(23, 59)));
                     break;
                 case "5":
-                    GlobalData.getLoggedIn().addLiftPass(new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.parse("2023-10-08").atTime(23, 59)));
+                    GlobalData.getLoggedIn().addLiftPass(
+                            new LiftPass(LocalDate.now().atStartOfDay(), LocalDate.parse("2023-10-08").atTime(23, 59)));
                     break;
                 default:
                     System.out.println("Incorrect input, please try again.");
@@ -125,9 +131,9 @@ public class PersonMenu {
                     break;
             }
         }
-        
+
         System.out.println("\nLift Pass Added\n" + GlobalData.getLoggedIn().getLatestLiftPass().toString() + "\n");
-        
+
         GlobalData.save();
     }
 }
