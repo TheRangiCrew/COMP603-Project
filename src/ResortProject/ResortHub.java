@@ -34,6 +34,7 @@ public class ResortHub {
                     switch (response) {
                         case "l":
                             login();
+                            System.out.println("");
                             break;
                         case "c":
                             signup();
@@ -65,19 +66,25 @@ public class ResortHub {
         while (response == null) {
             while (GlobalData.getLoggedIn() == null) {
                 try {
-                    System.out.println("\nPlease enter the requested details to login");
+                    System.out.println("\nPlease enter the requested details to login or enter 'R' to cancel");
                     System.out.print("Email: ");
                     response = scan.nextLine().toLowerCase();
                     scan.reset();
+                    if (response.equalsIgnoreCase("r") || response.isBlank()) {
+                        return;
+                    }
                     System.out.print("Birth date (DD-MM-YYYY): ");
-                    dob = LocalDate.parse(scan.nextLine().trim(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    String dobResponse = scan.nextLine().trim();
                     scan.reset();
+                    if (dobResponse.equalsIgnoreCase("r")) {
+                        return;
+                    }
+                    dob = LocalDate.parse(dobResponse, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                     // uses getPerson method to search the ArrayList of people for login details. returns a person if there is a match or null when no match.
                     GlobalData.setLoggedIn(GlobalData.peopleController.getPerson(response, dob));
                     if (GlobalData.getLoggedIn() == null) {
                         System.out.println("Incorrect login details, please try again.");
                         response = null;
-
                     }
                 } catch (DateTimeParseException e) {
                     System.out.println("Incorrect input, please try again.");
