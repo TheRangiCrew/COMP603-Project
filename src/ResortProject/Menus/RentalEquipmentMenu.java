@@ -37,6 +37,23 @@ public class RentalEquipmentMenu {
                     break;
                 case "2":
                     RentalEquipmentMenu.skiRental();
+                    break;
+                case "3":
+                    if (GlobalData.getLoggedIn().deductFromCredit(10)) {
+                        System.out.println("\nEquipment hired! Thank you.");
+                    } else {
+                        System.out.println("\nNot enough credit, please top up your accout.");
+                        System.out.println("Press any key to continue...");
+                        scan.next();
+                        scan.reset();
+                    }
+                    break;
+                case "4":
+                    RentalEquipmentMenu.bootRental();
+                    break;
+                case "5":
+                    RentalEquipmentMenu.clothingRental();
+                    break;
                 default:
                     System.out.println("Invalid input. Please try again...");
                     return;
@@ -48,7 +65,7 @@ public class RentalEquipmentMenu {
 
     /**
      * A generic function for rental equipment to select the type of ski/board
-     * 
+     *
      * @return The RideType the user selects
      * @see RideType
      */
@@ -167,7 +184,7 @@ public class RentalEquipmentMenu {
         } else {
             System.out.println("\nNot enough credit, please top up your accout.");
             System.out.println("Press any key to continue...");
-            scan.next();
+            scan.nextLine();
             scan.reset();
 
         }
@@ -245,7 +262,7 @@ public class RentalEquipmentMenu {
         } else {
             System.out.println("\nNot enough credit, please top up your accout.");
             System.out.println("Press any key to continue...");
-            scan.next();
+            scan.nextLine();
             scan.reset();
 
         }
@@ -277,6 +294,7 @@ public class RentalEquipmentMenu {
                     break;
                 case "2":
                     type = BootType.SNOWBOARD;
+                    break;
                 default:
                     System.out.println("Invalid input. Please try again...");
                     response = null;
@@ -299,7 +317,7 @@ public class RentalEquipmentMenu {
             generateIntTable(bootRental);
 
             System.out.println("Please choose a shoe size or enter 'R' to cancel: ");
-            scan.nextLine().toLowerCase();
+            response = scan.nextLine().toLowerCase();
             scan.reset();
 
             // If statement to check for return 'r'
@@ -325,7 +343,7 @@ public class RentalEquipmentMenu {
                     response = null;
                 }
 
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please try again...");
                 response = null;
             }
@@ -338,9 +356,8 @@ public class RentalEquipmentMenu {
         } else {
             System.out.println("\nNot enough credit, please top up your accout.");
             System.out.println("Press any key to continue...");
-            scan.next();
+            scan.nextLine();
             scan.reset();
-
         }
 
         return;
@@ -436,9 +453,7 @@ public class RentalEquipmentMenu {
         } else {
             System.out.println("\nNot enough credit, please top up your accout.");
             System.out.println("Press any key to continue...");
-            scan.next();
-            scan.reset();
-
+            scan.nextLine();
         }
 
         return;
@@ -446,6 +461,7 @@ public class RentalEquipmentMenu {
     }
 
     private static void generateIntTable(ArrayList<? extends Equipment> equipment) {
+        NumberFormat numFormat = new DecimalFormat("000");
         // Print a table of the available sizes from the filtered list of snowbords
         System.out.println("");
         // Print the sizes
@@ -453,7 +469,7 @@ public class RentalEquipmentMenu {
         for (int i = 0; i < equipment.size(); i++) {
             if (equipment.get(i).isAvailable()) {
                 System.out.print(
-                        "| " + equipment.get(i).getSize() + " " + (i == equipment.size() - 1 ? "|" : ""));
+                        "| " + numFormat.format(Integer.parseInt(equipment.get(i).getSize())) + " " + (i == equipment.size() - 1 ? "|" : ""));
             }
         }
         // New row line
@@ -465,7 +481,6 @@ public class RentalEquipmentMenu {
         }
         // Print the availability of each size
         System.out.print("\nAvailable ");
-        NumberFormat numFormat = new DecimalFormat("000");
         for (int i = 0; i < equipment.size(); i++) {
             if (equipment.get(i).isAvailable()) {
                 System.out.print("| " + numFormat.format(equipment.get(i).getAvailable()) + " "
