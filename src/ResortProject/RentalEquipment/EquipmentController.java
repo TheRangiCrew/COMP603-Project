@@ -3,7 +3,6 @@ package ResortProject.RentalEquipment;
 import ResortProject.Data.XMLFile;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
 public class EquipmentController {
@@ -126,7 +125,7 @@ public class EquipmentController {
         // Empty ArrayList of boots
         ArrayList<Boots> boots = new ArrayList<>();
         // Loop through each boots in the equipment HashMap
-        this.equipment.get("boot").forEach((Equipment element) -> {
+        this.equipment.get("boots").forEach((Equipment element) -> {
             // Add to the boots ArrayList
             boots.add((Boots) element);
         });
