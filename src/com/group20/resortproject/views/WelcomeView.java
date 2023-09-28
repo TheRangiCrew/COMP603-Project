@@ -8,7 +8,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
-import com.group20.resortproject.MainFrame;
+import com.group20.resortproject.Main;
 import com.group20.resortproject.components.Heading;
 import com.group20.resortproject.controllers.Controller;
 import com.group20.resortproject.controllers.WelcomeController;
@@ -25,7 +25,7 @@ public class WelcomeView extends ViewPanel {
         /**
          * Setup
          */
-        this.setSize(MainFrame.size);
+        this.setSize(Main.size);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         /**

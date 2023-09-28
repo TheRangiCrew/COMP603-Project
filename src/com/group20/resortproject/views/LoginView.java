@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.group20.resortproject.MainFrame;
+import com.group20.resortproject.Main;
 import com.group20.resortproject.controllers.Controller;
 
 public class LoginView extends ViewPanel {
@@ -23,7 +23,7 @@ public class LoginView extends ViewPanel {
         /**
          * Setup
          */
-        this.setSize(MainFrame.size);
+        this.setSize(Main.size);
         this.setLayout(new GridBagLayout());
 
         GridBagConstraints constraints = new GridBagConstraints();
