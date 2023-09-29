@@ -15,7 +15,9 @@ public enum Page {
      * The Pages with their own name and MVC classes
      */
     WELCOME("Welcome", new WelcomeView(), new WelcomeController()),
-    LOGIN("Login", new LoginModel(), new LoginView(), new LoginController());
+    LOGIN("Login", new LoginModel(), new LoginView(), new LoginController()),
+    REGISTER("Register", new RegisterView(), new RegisterController());
+
 
     // User friendly name of the page
     private String name;

@@ -2,6 +2,8 @@ package com.group20.resortproject.views;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 
 import javax.swing.Box;
@@ -61,9 +63,23 @@ public class WelcomeView extends ViewPanel {
     }
 
     @Override
-    public void addController(Controller controller) {
+    public void addController(Controller c) {
+        WelcomeController controller = (WelcomeController) c;
         System.out.println("Added");
-        this.loginButton.addMouseListener((WelcomeController) controller);
+        this.loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the controller method when the button is clicked
+                controller.loginClicked();
+            }
+        });
+        this.registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Call the controller method when the button is clicked
+                controller.registerClicked();
+            }
+        });
     }
 
 }

@@ -1,36 +1,23 @@
 package com.group20.resortproject.controllers;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import com.group20.resortproject.Navigator;
 import com.group20.resortproject.Page;
 
-public class WelcomeController extends Controller implements MouseListener {
+public class WelcomeController extends Controller {
 
-    @Override
-    public void initModel() {
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
+    public void loginClicked() {
         Navigator.goTo(Page.LOGIN);
     }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
+    public void registerClicked() {
+        Navigator.goTo(Page.REGISTER);
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void initModel() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'initModel'");
     }
+
 
 }
