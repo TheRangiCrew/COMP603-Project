@@ -94,28 +94,7 @@ public class RegisterController implements Controller {
         submitButton.setEnabled(false);
         submitButton.setText("Registering...");
 
-        // Create a MessageDigest instance for SHA-256
-        MessageDigest digest;
-        try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            throw new ValidationException("Could not get password hash digest");
-        }
-
-        // Convert the input string to bytes
-        byte[] passwordHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-
-        // Convert the byte array to a hexadecimal string
-        StringBuilder hexString = new StringBuilder(2 * passwordHash.length);
-        for (byte b : passwordHash) {
-            String hex = Integer.toHexString(0xff & b);
-            if (hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
-
-        model.addUser(firstName, lastName, dobDate, email, phone, hexString.toString());
+        model.addUser(firstName, lastName, dobDate, email, phone, password);
         
     }
 

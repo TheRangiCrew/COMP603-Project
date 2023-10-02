@@ -52,19 +52,7 @@ public class LoginController implements Controller {
         int userID = userData.first.intValue();
         String dbPassword = userData.second;
 
-        MessageDigest digest;
-
-        try {
-            digest = MessageDigest.getInstance("SHA-256");
-        } catch (NoSuchAlgorithmException e) {
-            throw new ValidationException("Could not retrieve SHA digest");
-        }
-
-        byte[] dbPasswordBytes = dbPassword.getBytes(StandardCharsets.UTF_8);
-
-        byte[] passwordBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-
-        if(MessageDigest.isEqual(dbPasswordBytes, passwordBytes)) {
+        if(password.equals(dbPassword)) {
             System.out.println("Logged In...");
         } else {
             // If all is successful, change button status
