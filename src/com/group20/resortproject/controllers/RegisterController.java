@@ -1,18 +1,136 @@
 package com.group20.resortproject.controllers;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.JButton;
+import com.group20.resortproject.exception.ValidationException;
 import com.group20.resortproject.models.Model;
+import com.group20.resortproject.models.RegisterModel;
+import com.group20.resortproject.views.RegisterView;
 import com.group20.resortproject.views.View;
 
-public class RegisterController extends Controller{
-    
-    Model model;
-    View view;
+public class RegisterController implements Controller {
 
+    RegisterModel model; // Reference to the model
+    RegisterView view; // Reference to the view
+
+    String nameRegex = "^[A-Za-z\\-\\.]+$"; // Allows only alphabetic characters and hyphens (-)
+    String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" // Allows only a valid email structure (example@example.com)
+            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+    String phoneRegex = "^\\+?\\d+$"; // Only allows digits and +
+
+
+    public void submit() throws ValidationException {
+
+    String firstName = "";
+    String lastName = "";
+    String dob = "";
+    LocalDate dobDate;
+    String email = "";
+    String phone = "";
+    String password = "";
+    String confirmation ="";
     
+    try {
+        firstName = this.view.getFirstNameField().getText();
+        lastName = this.view.getLastNameField().getText();
+        dob = this.view.getDobStringField().getText();
+        email = this.view.getEmailField().getText();
+        phone = this.view.getPhoneField().getText();
+        password = new String(this.view.getPasswordField().getPassword());
+        confirmation = new String(this.view.getConfirmationField().getPassword());
+    } catch (NullPointerException e) {}
+    
+
+        if (firstName.isEmpty()) {
+            throw new ValidationException("Your first name is required!");
+        } else if (!(firstName.matches(nameRegex))) {
+            throw new ValidationException("Your name can only contain letters and hyphens");
+        }
+
+        if (lastName.isEmpty()) {
+            throw new ValidationException("Your last name is required!");
+        } else if (!(lastName.matches(nameRegex))) {
+            throw new ValidationException("Your name can only contain letters and hyphens");
+        }
+
+        if (dob.isEmpty()) {
+            throw new ValidationException("Your DOB is required!");
+        }
+        try {
+            dobDate = LocalDate.parse(dob, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        } catch (DateTimeParseException e) {
+            throw new ValidationException("The DOB entered was not valid!");
+        }
+
+        if (email.isEmpty()) {
+            throw new ValidationException("Your email is required!");
+        }
+        if (!(email.matches(emailRegex))) {
+            throw new ValidationException("The email provided is not valid!");
+        }
+        
+        if (phone.isEmpty()) {
+            throw new ValidationException("Your phone number is required!");
+        } else if (!(phone.matches(phoneRegex))) {
+            throw new ValidationException("The phone number provided was not formatted correctly");
+        }
+        
+        if (password.isEmpty()) {
+            throw new ValidationException("Please create a password!");
+        }
+        if(confirmation.isEmpty()) {
+            throw new ValidationException("Please confirm your password!");
+        } else if (!(confirmation.matches(password))) {
+            throw new ValidationException("Your passwords do not match!");
+        }
+
+        // If all is successful, change button status
+        JButton submitButton = this.view.getSubmitButton();
+        submitButton.setEnabled(false);
+        submitButton.setText("Registering...");
+
+        // Create a MessageDigest instance for SHA-256
+        MessageDigest digest;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new ValidationException("Could not get password hash digest");
+        }
+
+        // Convert the input string to bytes
+        byte[] passwordHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        // Convert the byte array to a hexadecimal string
+        StringBuilder hexString = new StringBuilder(2 * passwordHash.length);
+        for (byte b : passwordHash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        model.addUser(firstName, lastName, dobDate, email, phone, hexString.toString());
+        
+    }
+
 
     @Override
-    public void initModel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initModel'");
+    public void addModel(Model model) {
+        this.model = (RegisterModel) model;
     }
+
+
+    @Override
+    public void addView(View view) {
+        this.view = (RegisterView) view;
+    }
+
+    
+
 }

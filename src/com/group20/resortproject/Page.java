@@ -16,7 +16,7 @@ public enum Page {
      */
     WELCOME("Welcome", new WelcomeView(), new WelcomeController()),
     LOGIN("Login", new LoginModel(), new LoginView(), new LoginController()),
-    REGISTER("Register", new RegisterView(), new RegisterController());
+    REGISTER("Register", new RegisterModel(), new RegisterView(), new RegisterController());
 
 
     // User friendly name of the page

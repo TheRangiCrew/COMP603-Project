@@ -2,8 +2,10 @@ package com.group20.resortproject.controllers;
 
 import com.group20.resortproject.Navigator;
 import com.group20.resortproject.Page;
+import com.group20.resortproject.models.Model;
+import com.group20.resortproject.views.View;
 
-public class WelcomeController extends Controller {
+public class WelcomeController implements Controller {
 
     public void loginClicked() {
         Navigator.goTo(Page.LOGIN);
@@ -14,9 +16,13 @@ public class WelcomeController extends Controller {
     }
 
     @Override
-    public void initModel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initModel'");
+    public void addModel(Model model) {
+        
+    }
+
+    @Override
+    public void addView(View view) {
+        
     }
 
 

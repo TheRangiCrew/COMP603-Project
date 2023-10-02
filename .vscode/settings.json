@@ -1,3 +1,8 @@
 {
-  "java.project.referencedLibraries": ["lib/**/*.jar", "flatlaf-3.2.1.jar"]
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "flatlaf-3.2.1.jar",
+    "c:\\Users\\sr95\\OneDrive\\Documents\\AUT\\Derby\\db-derby-10.14.2.0-lib\\lib\\derby.jar",
+    "c:\\Users\\sr95\\OneDrive\\Documents\\AUT\\Derby\\db-derby-10.14.2.0-lib\\lib\\derbyclient.jar"
+  ]
 }

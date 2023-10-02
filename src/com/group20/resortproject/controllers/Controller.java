@@ -10,21 +10,9 @@ import com.group20.resortproject.views.View;
  * all the business logic and incoming requests, manipulate data using the Model
  * component and interact with the Views to render the final output.
  */
-public abstract class Controller implements EventListener {
+public interface Controller extends EventListener {
 
-    Model model;
-    View view;
+    public void addModel(Model model);
 
-    public Controller() {
-    }
-
-    public void addModel(Model model) {
-        this.model = model;
-    }
-
-    public void addView(View view) {
-        this.view = view;
-    }
-
-    public abstract void initModel();
+    public void addView(View view);
 }

@@ -1,20 +1,31 @@
 package com.group20.resortproject.views;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import com.group20.resortproject.Main;
+import com.group20.resortproject.Navigator;
 import com.group20.resortproject.controllers.Controller;
+import com.group20.resortproject.controllers.LoginController;
+import com.group20.resortproject.controllers.RegisterController;
+import com.group20.resortproject.exception.ValidationException;
 
 public class LoginView extends ViewPanel {
 
+    private JLabel errorLabel;
     private JTextField emailField;
     private JPasswordField passwordField;
     private JButton submitButton;
@@ -34,10 +45,13 @@ public class LoginView extends ViewPanel {
         /**
          * Create Components
          */
+        this.errorLabel = new JLabel();
+        this.errorLabel.setForeground(Color.RED);
         this.emailField = new JTextField(fieldColumns);
         this.passwordField = new JPasswordField(fieldColumns);
         this.submitButton = new JButton("Submit");
         submitButton.addMouseListener(null);
+
 
         /**
          * Add Components
@@ -45,12 +59,24 @@ public class LoginView extends ViewPanel {
         this.add(Box.createVerticalGlue());
         constraints.gridx = 0;
         constraints.gridy = 0;
-        this.add(emailField, constraints);
+        constraints.gridwidth = 2;
+        this.add(this.errorLabel, constraints);
+        constraints.anchor = GridBagConstraints.EAST;
+        constraints.gridwidth = 1;
         constraints.gridx = 0;
         constraints.gridy = 1;
-        this.add(passwordField, constraints);
+        this.add(new JLabel("Email: "), constraints);
+        constraints.gridx++;
+        this.add(emailField, constraints);
         constraints.gridx = 0;
         constraints.gridy = 2;
+        this.add(new JLabel("Password: "), constraints);
+        constraints.gridx++;
+        this.add(passwordField, constraints);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridwidth = 2;
         this.add(submitButton, constraints);
         this.add(Box.createVerticalGlue());
 
@@ -63,10 +89,41 @@ public class LoginView extends ViewPanel {
     }
 
     @Override
-    public void addController(Controller controller) {
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method
-        // 'addController'");
+    public void addController(Controller c) {
+        
+        LoginController controller = (LoginController) c;
+
+        // Add an ActionListener to the submit button
+        this.submitButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Submit the form to the controller
+                    controller.login();
+                    Navigator.goToPrev();
+
+                } catch (ValidationException ex) {
+                    // Set the error message
+                    errorLabel.setText(ex.getMessage());
+                }
+            }
+            
+        });
     }
 
+    public JTextField getEmailField() {
+        return emailField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JButton getSubmitButton() {
+        return submitButton;
+    }
+
+    
+    
 }

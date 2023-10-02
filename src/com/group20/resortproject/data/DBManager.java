@@ -9,31 +9,23 @@ public class DBManager {
     private static final String USERNAME = "group20";
     private static final String PASSWORD = "group20";
 
-    private Connection conn;
+    private static Connection conn;
 
-    public DBManager() {
-        establishConnection();
-    }
-
-    public Connection getConnection() {
-        return this.conn;
+    public static Connection getConnection() {
+        return conn;
     }
 
     // Establish connection
-    public void establishConnection() {
-        if (this.conn == null) {
+    public static void establishConnection() {
+        if (conn == null) {
             try {
                 conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                conn.setSchema("MOUNTAINRESORT");
                 System.out.println(URL + " Connection Successful...");
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        DBManager db = new DBManager();
-
     }
 
 }

@@ -1,10 +1,12 @@
 package com.group20.resortproject;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.group20.resortproject.data.DBManager;
 
 public class Main {
 
@@ -30,8 +32,20 @@ public class Main {
         // your call!
         FlatLightLaf.setup();
 
+        DBManager.establishConnection();
+
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+
+        int screenWidth=screenSize.width;
+        int frameWidth=screenWidth/2;
+        int screenHeight=screenSize.height;
+        int frameHeight=screenHeight/2;
+        size = new Dimension(frameWidth, frameHeight);
+
+        
         // Create the main JFrame of the program
-        frame = new JFrame("My GUI");
+        frame = new JFrame("Resort Kiosk");
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         // Set the frame size
         frame.setSize(size);
