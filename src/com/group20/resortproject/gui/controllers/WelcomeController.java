@@ -1,9 +1,10 @@
-package com.group20.resortproject.controllers;
+package com.group20.resortproject.gui.controllers;
 
-import com.group20.resortproject.Navigator;
-import com.group20.resortproject.Page;
-import com.group20.resortproject.models.Model;
-import com.group20.resortproject.views.View;
+import com.group20.resortproject.Controller;
+import com.group20.resortproject.Model;
+import com.group20.resortproject.View;
+import com.group20.resortproject.gui.Navigator;
+import com.group20.resortproject.gui.Page;
 
 public class WelcomeController implements Controller {
 

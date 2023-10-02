@@ -1,4 +1,4 @@
-package com.group20.resortproject.data;
+package com.group20.resortproject.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

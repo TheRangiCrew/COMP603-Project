@@ -1,17 +1,16 @@
-package com.group20.resortproject.controllers;
+package com.group20.resortproject.gui.controllers;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JButton;
-import com.group20.resortproject.exception.ValidationException;
-import com.group20.resortproject.models.Model;
-import com.group20.resortproject.models.RegisterModel;
-import com.group20.resortproject.views.RegisterView;
-import com.group20.resortproject.views.View;
+
+import com.group20.resortproject.Controller;
+import com.group20.resortproject.Model;
+import com.group20.resortproject.View;
+import com.group20.resortproject.gui.models.RegisterModel;
+import com.group20.resortproject.gui.views.RegisterView;
+import com.group20.resortproject.utility.ValidationException;
 
 public class RegisterController implements Controller {
 

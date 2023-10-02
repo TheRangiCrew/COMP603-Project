@@ -1,4 +1,4 @@
-package com.group20.resortproject.data;
+package com.group20.resortproject.utility;
 
 public class Tuple<A, B> {
     public A first;

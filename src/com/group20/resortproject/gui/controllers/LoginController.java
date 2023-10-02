@@ -1,21 +1,16 @@
-package com.group20.resortproject.controllers;
-
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+package com.group20.resortproject.gui.controllers;
 
 import javax.swing.JButton;
 
-import com.group20.resortproject.data.Tuple;
-import com.group20.resortproject.exception.ValidationException;
-import com.group20.resortproject.models.LoginModel;
-import com.group20.resortproject.models.Model;
-import com.group20.resortproject.views.LoginView;
-import com.group20.resortproject.views.View;
+import com.group20.resortproject.Controller;
+import com.group20.resortproject.Model;
+import com.group20.resortproject.View;
+import com.group20.resortproject.gui.views.LoginView;
+import com.group20.resortproject.user.UserController;
+import com.group20.resortproject.utility.ValidationException;
 
 public class LoginController implements Controller {
 
-    LoginModel model;
     LoginView view;
 
     private final String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
@@ -47,15 +42,11 @@ public class LoginController implements Controller {
         submitButton.setEnabled(false);
         submitButton.setText("Checking...");
 
-        Tuple<Integer, String> userData = model.login(email);
-
-        int userID = userData.first.intValue();
-        String dbPassword = userData.second;
-
-        if(password.equals(dbPassword)) {
+        // If a user login attempt is successful...
+        if(UserController.login(email, password)) {
             System.out.println("Logged In...");
         } else {
-            // If all is successful, change button status
+            // If all is unsuccessful, change button status
             submitButton = this.view.getSubmitButton();
             submitButton.setEnabled(true);
             submitButton.setText("Submit");
@@ -65,13 +56,12 @@ public class LoginController implements Controller {
     }
 
     @Override
-    public void addModel(Model model) {
-        this.model = (LoginModel) model;
+    public void addView(View view) {
+        this.view = (LoginView) view;
     }
 
     @Override
-    public void addView(View view) {
-        this.view = (LoginView) view;
+    public void addModel(Model model) {
     }
 
 }

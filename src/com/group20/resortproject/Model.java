@@ -1,4 +1,4 @@
-package com.group20.resortproject.models;
+package com.group20.resortproject;
 
 import java.util.Observable;
 

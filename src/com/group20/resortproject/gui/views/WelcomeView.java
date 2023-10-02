@@ -1,4 +1,4 @@
-package com.group20.resortproject.views;
+package com.group20.resortproject.gui.views;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -10,10 +10,10 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
+import com.group20.resortproject.Controller;
 import com.group20.resortproject.Main;
-import com.group20.resortproject.components.Heading;
-import com.group20.resortproject.controllers.Controller;
-import com.group20.resortproject.controllers.WelcomeController;
+import com.group20.resortproject.gui.components.Heading;
+import com.group20.resortproject.gui.controllers.WelcomeController;
 
 /**
  * The Welcome Page when the application first launches

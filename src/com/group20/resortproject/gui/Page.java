@@ -1,8 +1,11 @@
-package com.group20.resortproject;
+package com.group20.resortproject.gui;
 
-import com.group20.resortproject.controllers.*;
-import com.group20.resortproject.models.*;
-import com.group20.resortproject.views.*;
+import com.group20.resortproject.Controller;
+import com.group20.resortproject.MainPanel;
+import com.group20.resortproject.Model;
+import com.group20.resortproject.gui.controllers.*;
+import com.group20.resortproject.gui.models.*;
+import com.group20.resortproject.gui.views.*;
 
 /**
  * ALL the pages that can be navigated to in the program. This is very much an
@@ -15,7 +18,7 @@ public enum Page {
      * The Pages with their own name and MVC classes
      */
     WELCOME("Welcome", new WelcomeView(), new WelcomeController()),
-    LOGIN("Login", new LoginModel(), new LoginView(), new LoginController()),
+    LOGIN("Login", new LoginView(), new LoginController()),
     REGISTER("Register", new RegisterModel(), new RegisterView(), new RegisterController());
 
 

@@ -1,9 +1,6 @@
-package com.group20.resortproject.controllers;
+package com.group20.resortproject;
 
 import java.util.EventListener;
-
-import com.group20.resortproject.models.Model;
-import com.group20.resortproject.views.View;
 
 /**
  * Controllers act as an interface between Model and View components to process

@@ -1,4 +1,4 @@
-package com.group20.resortproject.views;
+package com.group20.resortproject.gui.views;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -11,17 +11,14 @@ import java.util.Observable;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
+import com.group20.resortproject.Controller;
 import com.group20.resortproject.Main;
-import com.group20.resortproject.Navigator;
-import com.group20.resortproject.controllers.Controller;
-import com.group20.resortproject.controllers.LoginController;
-import com.group20.resortproject.controllers.RegisterController;
-import com.group20.resortproject.exception.ValidationException;
+import com.group20.resortproject.gui.Navigator;
+import com.group20.resortproject.gui.controllers.LoginController;
+import com.group20.resortproject.utility.ValidationException;
 
 public class LoginView extends ViewPanel {
 

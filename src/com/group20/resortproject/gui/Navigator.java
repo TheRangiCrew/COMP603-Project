@@ -1,8 +1,10 @@
-package com.group20.resortproject;
+package com.group20.resortproject.gui;
 
 import java.awt.CardLayout;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
+
+import com.group20.resortproject.MainPanel;
 
 /**
  * Handles the page navigation of the application. Essentially just switches the
@@ -86,6 +88,11 @@ public class Navigator {
         return true;
     }
 
+    public static void goToHome() {
+        goTo(Page.WELCOME);
+        resetPrevious();
+    }
+
     /**
      * Go to a specified page
      * 
@@ -121,5 +128,9 @@ public class Navigator {
      */
     public static Page getCurrent() {
         return current;
+    }
+
+    public static void resetPrevious() {
+        previous.clear();
     }
 }

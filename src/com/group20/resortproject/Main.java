@@ -6,7 +6,9 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.group20.resortproject.data.DBManager;
+import com.group20.resortproject.gui.Navigator;
+import com.group20.resortproject.gui.Page;
+import com.group20.resortproject.utility.DBManager;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.group20.resortproject.models;
+package com.group20.resortproject.gui.models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
 
-import com.group20.resortproject.data.DBManager;
+import com.group20.resortproject.Model;
+import com.group20.resortproject.utility.DBManager;
 
 public class RegisterModel extends Model {
 

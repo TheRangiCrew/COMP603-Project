@@ -1,6 +1,5 @@
-package com.group20.resortproject.views;
+package com.group20.resortproject;
 
-import com.group20.resortproject.controllers.Controller;
 import java.util.Observer;
 
 /**

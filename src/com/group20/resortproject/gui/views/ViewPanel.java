@@ -1,10 +1,11 @@
-package com.group20.resortproject.views;
+package com.group20.resortproject.gui.views;
 
 import java.util.Observable;
 
 import javax.swing.JPanel;
 
-import com.group20.resortproject.controllers.Controller;
+import com.group20.resortproject.Controller;
+import com.group20.resortproject.View;
 
 public class ViewPanel extends JPanel implements View {
 

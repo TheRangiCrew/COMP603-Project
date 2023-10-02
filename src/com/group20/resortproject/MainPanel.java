@@ -5,7 +5,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-import com.group20.resortproject.components.TopBar;
+import com.group20.resortproject.gui.components.TopBar;
 
 /**
  * The Main panel that all pages are displayed in. Contains a content pain and

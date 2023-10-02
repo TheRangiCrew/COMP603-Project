@@ -1,4 +1,4 @@
-package com.group20.resortproject.components;
+package com.group20.resortproject.gui.components;
 
 import java.awt.Font;
 
