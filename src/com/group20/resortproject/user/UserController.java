@@ -1,5 +1,7 @@
 package com.group20.resortproject.user;
 
+import java.time.LocalDate;
+
 import com.group20.resortproject.utility.Tuple;
 
 public class UserController {
@@ -42,6 +44,10 @@ public class UserController {
 
     public static void logout() {
         loggedInUser = null;
+    }
+
+    public static void addUser(String firstName, String lastName, LocalDate dob, String email, String phone, String password) {
+        UserModel.insertUser(firstName, lastName, dob, email, phone, password);
     }
 
 }

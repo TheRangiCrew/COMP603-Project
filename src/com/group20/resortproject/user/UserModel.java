@@ -1,6 +1,7 @@
 package com.group20.resortproject.user;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,6 +72,28 @@ public class UserModel {
 		}
 
         return new Tuple<Integer, String>(id, dbPassword);
+    }
+
+    static void insertUser(String firstName, String lastName, LocalDate dob, String email, String phone, String password) {
+        Connection conn = DBManager.getConnection();
+
+        PreparedStatement statement;
+
+        try {
+            statement = conn.prepareStatement("INSERT INTO Users(firstName, lastName, dob, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
+
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setDate(3, Date.valueOf(dob));
+            statement.setString(4, email);
+            statement.setString(5, phone);
+            statement.setString(6, password);
+            
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 
 }

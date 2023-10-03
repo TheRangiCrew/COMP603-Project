@@ -8,13 +8,12 @@ import javax.swing.JButton;
 import com.group20.resortproject.Controller;
 import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
-import com.group20.resortproject.gui.models.RegisterModel;
 import com.group20.resortproject.gui.views.RegisterView;
+import com.group20.resortproject.user.UserController;
 import com.group20.resortproject.utility.ValidationException;
 
 public class RegisterController implements Controller {
 
-    RegisterModel model; // Reference to the model
     RegisterView view; // Reference to the view
 
     String nameRegex = "^[A-Za-z\\-\\.]+$"; // Allows only alphabetic characters and hyphens (-)
@@ -93,14 +92,13 @@ public class RegisterController implements Controller {
         submitButton.setEnabled(false);
         submitButton.setText("Registering...");
 
-        model.addUser(firstName, lastName, dobDate, email, phone, password);
+        UserController.addUser(firstName, lastName, dobDate, email, phone, password);
         
     }
 
 
     @Override
     public void addModel(Model model) {
-        this.model = (RegisterModel) model;
     }
 
 
