@@ -11,7 +11,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.group20.resortproject.gui.Navigator;
-import com.group20.resortproject.gui.Page;
 import com.group20.resortproject.user.UserController;
 
 public class TopBar extends JPanel {
@@ -51,7 +50,6 @@ public class TopBar extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 UserController.logout();
                 Navigator.goToHome();
-                update();
             }
 
         });
