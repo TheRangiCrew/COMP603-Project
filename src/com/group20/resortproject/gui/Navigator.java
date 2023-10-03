@@ -51,6 +51,11 @@ public class Navigator {
      * @see Page
      */
     private static boolean setCardLayout(Page page) {
+        // Check to see if the user is allowed to navigate to the page
+        if (!(page.isAllowed())) {
+            return false;
+        }
+
         // Get the layout of the content panel. This is the only way to access the
         // CardLayout instance the panel uses to switch pages
         LayoutManager layout = MainPanel.getContentPanel().getLayout();
@@ -132,5 +137,6 @@ public class Navigator {
 
     public static void resetPrevious() {
         previous.clear();
+        MainPanel.getTopBar().update();
     }
 }
