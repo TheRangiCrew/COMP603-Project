@@ -51,10 +51,6 @@ public class Navigator {
      * @see Page
      */
     private static boolean setCardLayout(Page page) {
-        // Check to see if the user is allowed to navigate to the page
-        if (!(page.isAllowed())) {
-            return false;
-        }
 
         // Get the layout of the content panel. This is the only way to access the
         // CardLayout instance the panel uses to switch pages
@@ -67,6 +63,7 @@ public class Navigator {
 
         // Type cast the layout to CardLayout
         CardLayout cl = (CardLayout) layout;
+        page.initialise();
         System.out.println("Going to " + page.getName());
         // Set the panel to the requested page
         cl.show(MainPanel.getContentPanel(), page.getName());
