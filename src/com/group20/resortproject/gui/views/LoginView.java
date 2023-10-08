@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Observable;
 
 import javax.swing.Box;
@@ -16,7 +18,6 @@ import javax.swing.JTextField;
 
 import com.group20.resortproject.Controller;
 import com.group20.resortproject.Main;
-import com.group20.resortproject.gui.Navigator;
 import com.group20.resortproject.gui.controllers.LoginController;
 import com.group20.resortproject.utility.ValidationException;
 
@@ -48,7 +49,6 @@ public class LoginView extends ViewPanel {
         this.passwordField = new JPasswordField(fieldColumns);
         this.submitButton = new JButton("Submit");
         submitButton.addMouseListener(null);
-
 
         /**
          * Add Components
@@ -82,12 +82,11 @@ public class LoginView extends ViewPanel {
     @Override
     public void update(Observable o, Object arg) {
         // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public void addController(Controller c) {
-        
+
         LoginController controller = (LoginController) c;
 
         // Add an ActionListener to the submit button
@@ -104,7 +103,63 @@ public class LoginView extends ViewPanel {
                     errorLabel.setText(ex.getMessage());
                 }
             }
-            
+
+        });
+
+        // Allow the submit to work when a user presses enter
+        this.emailField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // 10 is the key code for enter
+                if (e.getKeyCode() == 10) {
+                    try {
+                        // Submit the form to the controller
+                        controller.login();
+
+                    } catch (ValidationException ex) {
+                        // Set the error message
+                        errorLabel.setText(ex.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
+
+        // Allow the submit to work when a user presses enter
+        this.passwordField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // 10 is the key code for enter
+                if (e.getKeyCode() == 10) {
+                    try {
+                        // Submit the form to the controller
+                        controller.login();
+
+                    } catch (ValidationException ex) {
+                        // Set the error message
+                        errorLabel.setText(ex.getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
         });
     }
 
@@ -120,6 +175,4 @@ public class LoginView extends ViewPanel {
         return submitButton;
     }
 
-    
-    
 }
