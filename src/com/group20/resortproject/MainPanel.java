@@ -5,21 +5,21 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-import com.group20.resortproject.gui.components.TopBar;
+import com.group20.resortproject.gui.components.TopBar.TopBarView;
 
 /**
  * The Main panel that all pages are displayed in. Contains a content pain and
  * an informative information bar at the top of the panel
  * 
  * @see JPanel
- * @see TopBar
+ * @see TopBarView
  */
 public class MainPanel extends JPanel {
 
     // The JPanel instance. Only one
     private static MainPanel instance;
     // The TopBar top bar
-    private static TopBar topBar;
+    private static TopBarView topBar;
     // The panel where all pages are displayed
     private static JPanel contentPanel;
 
@@ -28,13 +28,13 @@ public class MainPanel extends JPanel {
      * features a really cool and handy top bar of application information like the
      * current page and a back button 👌
      * 
-     * @see TopBar
+     * @see TopBarView
      */
     private MainPanel() {
 
         setLayout(new BorderLayout());
 
-        topBar = new TopBar();
+        topBar = new TopBarView();
 
         contentPanel = new JPanel(new CardLayout());
 
@@ -62,9 +62,9 @@ public class MainPanel extends JPanel {
     /**
      * 
      * @return the TopBar instance
-     * @see TopBar
+     * @see TopBarView
      */
-    public static TopBar getTopBar() {
+    public static TopBarView getTopBar() {
         return topBar;
     }
 

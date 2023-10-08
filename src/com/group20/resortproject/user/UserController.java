@@ -26,6 +26,10 @@ public class UserController {
         // Find a user's credentials
         Tuple<Integer, String> userData = UserModel.findLogin(email);
 
+        if (userData == null) {
+            return false;
+        }
+
         int userID = userData.first.intValue();
         String dbPassword = userData.second;
 

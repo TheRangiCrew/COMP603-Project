@@ -98,7 +98,6 @@ public class LoginView extends ViewPanel {
                 try {
                     // Submit the form to the controller
                     controller.login();
-                    Navigator.goToPrev();
 
                 } catch (ValidationException ex) {
                     // Set the error message

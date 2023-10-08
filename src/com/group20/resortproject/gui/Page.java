@@ -1,11 +1,12 @@
 package com.group20.resortproject.gui;
 
+import java.lang.reflect.InvocationTargetException;
+
 import com.group20.resortproject.Controller;
 import com.group20.resortproject.MainPanel;
 import com.group20.resortproject.Model;
 import com.group20.resortproject.gui.controllers.*;
 import com.group20.resortproject.gui.views.*;
-import com.group20.resortproject.user.UserController;
 
 /**
  * ALL the pages that can be navigated to in the program. This is very much an
@@ -17,9 +18,12 @@ public enum Page {
     /**
      * The Pages with their own name and MVC classes
      */
-    WELCOME("Welcome", new WelcomeView(), new WelcomeController()),
-    LOGIN("Login", new LoginView(), new LoginController()),
-    REGISTER("Register", new RegisterView(), new RegisterController());
+    WELCOME("Welcome", null, WelcomeView.class, WelcomeController.class),
+    LOGIN("Login", null, LoginView.class, LoginController.class),
+    REGISTER("Register", null, RegisterView.class, RegisterController.class),
+    HOME("Home", null, MainMenuView.class, HomeController.class);
+
+    
     
     // User friendly name of the page
     private String name;
@@ -29,32 +33,10 @@ public enum Page {
     private ViewPanel view;
     // MVC controller of the page
     private Controller controller;
-    // If a page requires a user to be loggedin or not
-    private PageConstraints constraint;
-
-    /**
-     * Creates an instance of a page without a model, for pages that only have
-     * content and interactive elements with no data (i.e. the welcome page)
-     * 
-     * @param name       user friendly name of the page
-     * @param view
-     * @param controller
-     */
-    private Page(String name, ViewPanel view, Controller controller) {
-        this.name = name;
-        this.model = null;
-        this.view = view;
-        this.controller = controller;
-        this.constraint = PageConstraints.NONE;
-        // Pass references between MVC instances so they can communicate
-        this.controller.addView(this.view);
-        this.view.addController(this.controller);
-
-        // Add the page to the content panel CardLayout in MainPanel so it can be
-        // navigated to with just it's name
-        MainPanel.getContentPanel().add(this.view, name);
-        System.out.println(name + " initialised");
-    }
+    // Classes
+    private Class<? extends Model> modelClass;
+    private Class<? extends ViewPanel> viewClass;
+    private Class<? extends Controller> controllerClass;
 
     /**
      * Creates an instance of a page without a model, for pages that only have
@@ -65,47 +47,40 @@ public enum Page {
      * @param controller
      * @param restriction
      */
-    private Page(String name, ViewPanel view, Controller controller, PageConstraints restriction) {
+    private Page(String name, Class<? extends Model> modelClass, Class<? extends ViewPanel> viewClass,
+            Class<? extends Controller> controllerClass) {
         this.name = name;
-        this.model = null;
-        this.view = view;
-        this.controller = controller;
-        this.constraint = restriction;
-        // Pass references between MVC instances so they can communicate
-        this.controller.addView(this.view);
-        this.view.addController(this.controller);
-
-        // Add the page to the content panel CardLayout in MainPanel so it can be
-        // navigated to with just it's name
-        MainPanel.getContentPanel().add(this.view, name);
-        System.out.println(name + " initialised");
+        this.modelClass = modelClass;
+        this.viewClass = viewClass;
+        this.controllerClass = controllerClass;
     }
 
-    /**
-     * Creates an instance of a fully functional page with a model, view and
-     * controller
-     * 
-     * @param name       user friendly name of the page
-     * @param model
-     * @param view
-     * @param controller
-     */
-    private Page(String name, Model model, ViewPanel view, Controller controller) {
-        this.name = name;
-        this.model = model;
-        this.view = view;
-        this.controller = controller;
-        this.constraint = PageConstraints.NONE;
-        // Pass references between MVC instances so they can communicate
-        this.model.addObserver(this.view);
-        this.controller.addModel(this.model);
-        this.controller.addView(this.view);
-        this.view.addController(this.controller);
+    public void initialise() {
+        if (viewClass != null && controllerClass != null) {
+            try {
+                this.model = null;
+                if (modelClass != null) {
+                    this.model = modelClass.getDeclaredConstructor().newInstance();
+                }
+                // Instantiate the view and controller
+                this.view = viewClass.getDeclaredConstructor().newInstance();
+                this.controller = controllerClass.getDeclaredConstructor().newInstance();
 
-        // Add the page to the content panel CardLayout in MainPanel so it can be
-        // navigated to with just it's name
-        MainPanel.getContentPanel().add(this.view, name);
-        System.out.println(name + " initialised");
+                // Pass references between MVC instances so they can communicate
+                if (model != null) {
+                    this.controller.addModel(model);
+                }
+                this.controller.addView(view);
+                this.view.addController(controller);
+
+                // Add the page to the content panel CardLayout in MainPanel
+                MainPanel.getContentPanel().add(view, name);
+                System.out.println(name + " initialised");
+            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+                // Handle exception
+                System.out.println("Oops....");
+            }
+        }
     }
 
     /**
@@ -141,27 +116,6 @@ public enum Page {
      */
     public String getName() {
         return this.name;
-    }
-
-    /**
-     * 
-     * @return the constraint on the page
-     */
-    public PageConstraints getConstraint() {
-        return this.constraint;
-    }
-
-
-    public boolean isAllowed() {
-        switch (this.constraint) {
-            case LOGGEDOUT:
-             return !(UserController.isLoggedIn());
-            case LOGGEDIN:
-                return UserController.isLoggedIn();
-            default: // NONE
-                return true;
-            
-        }
     }
 
     /**

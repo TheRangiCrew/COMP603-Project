@@ -37,7 +37,7 @@ public class RegisterController implements Controller {
         firstName = this.view.getFirstNameField().getText();
         lastName = this.view.getLastNameField().getText();
         dob = this.view.getDobStringField().getText();
-        email = this.view.getEmailField().getText();
+        email = this.view.getEmailField().getText().toLowerCase();
         phone = this.view.getPhoneField().getText();
         password = new String(this.view.getPasswordField().getPassword());
         confirmation = new String(this.view.getConfirmationField().getPassword());

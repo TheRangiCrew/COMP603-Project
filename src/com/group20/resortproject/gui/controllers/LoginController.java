@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import com.group20.resortproject.Controller;
 import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
+import com.group20.resortproject.gui.Navigator;
+import com.group20.resortproject.gui.Page;
 import com.group20.resortproject.gui.views.LoginView;
 import com.group20.resortproject.user.UserController;
 import com.group20.resortproject.utility.ValidationException;
@@ -21,7 +23,7 @@ public class LoginController implements Controller {
         String password = "";
 
         try {
-            email = this.view.getEmailField().getText();
+            email = this.view.getEmailField().getText().toLowerCase();
             password = new String(this.view.getPasswordField().getPassword()).trim();
         } catch (NullPointerException e) {
         }
@@ -44,7 +46,9 @@ public class LoginController implements Controller {
 
         // If a user login attempt is successful...
         if(UserController.login(email, password)) {
-            System.out.println("Logged In...");
+            System.out.println("Logged in...");
+            Navigator.goTo(Page.HOME);
+            Navigator.resetPrevious();
         } else {
             // If all is unsuccessful, change button status
             submitButton = this.view.getSubmitButton();
