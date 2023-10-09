@@ -39,13 +39,12 @@ public class Main {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
 
-        int screenWidth=screenSize.width;
-        int frameWidth=screenWidth/2;
-        int screenHeight=screenSize.height;
-        int frameHeight=screenHeight/2;
+        int screenWidth = screenSize.width;
+        int frameWidth = screenWidth / 2;
+        int screenHeight = screenSize.height;
+        int frameHeight = screenHeight / 2;
         size = new Dimension(frameWidth, frameHeight);
 
-        
         // Create the main JFrame of the program
         frame = new JFrame("Resort Kiosk");
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

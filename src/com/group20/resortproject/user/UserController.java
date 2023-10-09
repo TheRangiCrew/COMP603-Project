@@ -2,10 +2,11 @@ package com.group20.resortproject.user;
 
 import java.time.LocalDate;
 
+import com.group20.resortproject.lifts.LiftPassModel;
 import com.group20.resortproject.utility.Tuple;
 
 public class UserController {
-    
+
     private static User loggedInUser = null;
 
     /**
@@ -18,6 +19,7 @@ public class UserController {
 
     /**
      * Given the email and password of a user, attempt to log them in
+     * 
      * @param email
      * @param password
      * @return true if login successful, otherwise false
@@ -34,8 +36,9 @@ public class UserController {
         String dbPassword = userData.second;
 
         // Compare the password
-        if(password.equals(dbPassword)) {
+        if (password.equals(dbPassword)) {
             loggedInUser = UserModel.findUser(userID);
+            updateLiftPasses();
             return true;
         } else {
             return false;
@@ -50,8 +53,19 @@ public class UserController {
         loggedInUser = null;
     }
 
-    public static void addUser(String firstName, String lastName, LocalDate dob, String email, String phone, String password) {
+    public static void addUser(String firstName, String lastName, LocalDate dob, String email, String phone,
+            String password) {
         UserModel.insertUser(firstName, lastName, dob, email, phone, password);
+    }
+
+    public static void addCredit(float amount) {
+        loggedInUser.addCredit(amount);
+        UserModel.updateUser(loggedInUser);
+    }
+
+    public static int updateLiftPasses() {
+        loggedInUser.setLiftPasses(LiftPassModel.getLiftPassesForUser(loggedInUser.getID()));
+        return loggedInUser.getLiftPasses().size();
     }
 
 }

@@ -6,7 +6,9 @@ import com.group20.resortproject.Controller;
 import com.group20.resortproject.MainPanel;
 import com.group20.resortproject.Model;
 import com.group20.resortproject.gui.controllers.*;
+import com.group20.resortproject.gui.controllers.creditpass.*;
 import com.group20.resortproject.gui.views.*;
+import com.group20.resortproject.gui.views.creditpass.*;
 
 /**
  * ALL the pages that can be navigated to in the program. This is very much an
@@ -21,10 +23,12 @@ public enum Page {
     WELCOME("Welcome", null, WelcomeView.class, WelcomeController.class),
     LOGIN("Login", null, LoginView.class, LoginController.class),
     REGISTER("Register", null, RegisterView.class, RegisterController.class),
-    HOME("Home", null, MainMenuView.class, HomeController.class);
+    HOME("Home", null, MainMenuView.class, HomeController.class),
+    /** Credit and Lift Pass pages */
+    CREDITPASS("Credit & Lift Passes", null, CreditPassView.class, CreditPassController.class),
+    LIFTPASS("Add Lift Pass", null, LiftPassView.class, LiftPassController.class),
+    CREDIT("Add Credit", null, CreditView.class, CreditController.class);
 
-    
-    
     // User friendly name of the page
     private String name;
     // MVC Model of the page
@@ -42,7 +46,7 @@ public enum Page {
      * Creates an instance of a page without a model, for pages that only have
      * content and interactive elements with no data (i.e. the welcome page)
      * 
-     * @param name       user friendly name of the page
+     * @param name        user friendly name of the page
      * @param view
      * @param controller
      * @param restriction
@@ -76,9 +80,11 @@ public enum Page {
                 // Add the page to the content panel CardLayout in MainPanel
                 MainPanel.getContentPanel().add(view, name);
                 System.out.println(name + " initialised");
-            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
                 // Handle exception
-                System.out.println("Oops....");
+                System.out.println("Oops.... navigation cancelled");
+                e.printStackTrace();
             }
         }
     }

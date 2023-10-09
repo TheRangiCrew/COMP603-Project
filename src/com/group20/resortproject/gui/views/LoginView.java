@@ -80,11 +80,6 @@ public class LoginView extends ViewPanel {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        // TODO Auto-generated method stub
-    }
-
-    @Override
     public void addController(Controller c) {
 
         LoginController controller = (LoginController) c;

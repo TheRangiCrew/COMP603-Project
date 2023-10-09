@@ -2,7 +2,9 @@ package com.group20.resortproject;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import com.group20.resortproject.gui.components.TopBar.TopBarView;
@@ -37,6 +39,7 @@ public class MainPanel extends JPanel {
         topBar = new TopBarView();
 
         contentPanel = new JPanel(new CardLayout());
+        contentPanel.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, new Color(0, 0, 0, (int) (0.1 * 255))));
 
         add(topBar, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);

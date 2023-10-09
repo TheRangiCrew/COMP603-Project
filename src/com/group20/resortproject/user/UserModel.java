@@ -11,7 +11,7 @@ import com.group20.resortproject.utility.DBManager;
 import com.group20.resortproject.utility.Tuple;
 
 public class UserModel {
-    
+
     static User findUser(int id) {
         Connection conn = DBManager.getConnection();
 
@@ -19,8 +19,10 @@ public class UserModel {
         ResultSet result;
 
         try {
-            statement = conn.prepareStatement("SELECT firstName, lastName, email, dob, phone FROM users WHERE userID = ?");
-            
+            statement = conn
+                    .prepareStatement(
+                            "SELECT firstName, lastName, email, dob, phone, credit FROM users WHERE userID = ?");
+
             statement.setInt(1, id);
 
             result = statement.executeQuery();
@@ -31,8 +33,9 @@ public class UserModel {
                 String email = result.getString("email");
                 LocalDate dob = result.getDate("dob").toLocalDate();
                 String phone = result.getString("phone");
+                float credit = result.getFloat("credit");
 
-                return new User(id, firstName, lastName, email, dob, phone);
+                return new User(id, firstName, lastName, email, dob, phone, credit);
             }
 
             return null;
@@ -49,7 +52,7 @@ public class UserModel {
 
         try {
             statement = conn.prepareStatement("SELECT userID, password FROM users WHERE email = ?");
-            
+
             statement.setString(1, email);
 
             result = statement.executeQuery();
@@ -61,26 +64,28 @@ public class UserModel {
         String dbPassword;
 
         try {
-			if (result.next()) {
+            if (result.next()) {
                 id = result.getInt("userID");
                 dbPassword = result.getString("password");
-			} else {
+            } else {
                 return null;
             }
-		} catch (SQLException e) {
-			return null;
-		}
+        } catch (SQLException e) {
+            return null;
+        }
 
         return new Tuple<Integer, String>(id, dbPassword);
     }
 
-    static void insertUser(String firstName, String lastName, LocalDate dob, String email, String phone, String password) {
+    static void insertUser(String firstName, String lastName, LocalDate dob, String email, String phone,
+            String password) {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
 
         try {
-            statement = conn.prepareStatement("INSERT INTO Users(firstName, lastName, dob, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
+            statement = conn.prepareStatement(
+                    "INSERT INTO Users(firstName, lastName, dob, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
 
             statement.setString(1, firstName);
             statement.setString(2, lastName);
@@ -88,12 +93,35 @@ public class UserModel {
             statement.setString(4, email);
             statement.setString(5, phone);
             statement.setString(6, password);
-            
+
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+    }
+
+    static void updateUser(User user) {
+        Connection conn = DBManager.getConnection();
+
+        PreparedStatement statement;
+
+        try {
+            statement = conn.prepareStatement(
+                    "UPDATE Users SET firstName = ?, lastName = ?, dob = ?, email = ?, phone = ?, credit = ? WHERE userID = ?");
+
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setDate(3, Date.valueOf(user.getDob()));
+            statement.setString(4, user.getEmail());
+            statement.setString(5, user.getPhone());
+            statement.setFloat(6, user.getCredit());
+            statement.setInt(7, user.getID());
+
+            System.out.println("Executed...");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
