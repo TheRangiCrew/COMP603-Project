@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import com.group20.resortproject.Main;
 import com.group20.resortproject.gui.components.Heading;
+import com.group20.resortproject.user.User;
 import com.group20.resortproject.user.UserController;
 
 public class MainMenuView extends ViewPanel {
@@ -55,6 +56,10 @@ public class MainMenuView extends ViewPanel {
         this.leftPanel.add(new JLabel("Date of birth: " + UserController.getLoggedIn().getDob()), constraints);
         constraints.gridy++;
         this.leftPanel.add(new JLabel("Account credit: $" + UserController.getLoggedIn().getCredit()), constraints);
+        constraints.gridy++;
+        this.leftPanel.add(new JLabel("Lift Pass: " + (UserController.getLoggedIn().hasValidPass()
+                ? UserController.getLoggedIn().getValidLiftPass().toString()
+                : "No Valid Passes")), constraints);
 
         /**
          * Right Panel Components (Lift Information)
