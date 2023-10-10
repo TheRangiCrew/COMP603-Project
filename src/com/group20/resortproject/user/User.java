@@ -13,7 +13,7 @@ public class User {
     private String email;
     private LocalDate dob;
     private String phone;
-    private float credit;
+    private float credit; 
     private ArrayList<LiftPass> passes;
 
     public User(int id, String firstName, String lastName, String email, LocalDate dob, String phone, float credit) {

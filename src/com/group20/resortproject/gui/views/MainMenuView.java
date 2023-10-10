@@ -1,18 +1,24 @@
 package com.group20.resortproject.gui.views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import com.group20.resortproject.Main;
 import com.group20.resortproject.gui.components.Heading;
+import com.group20.resortproject.lifts.Lift;
+import com.group20.resortproject.lifts.LiftController;
 import com.group20.resortproject.user.User;
 import com.group20.resortproject.user.UserController;
 
@@ -66,6 +72,33 @@ public class MainMenuView extends ViewPanel {
          */
         this.rightPanel = new JPanel();
 
+        this.rightPanel = new JPanel(new GridBagLayout());
+        this.rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        this.rightPanel.add(Box.createVerticalGlue());
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridheight = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
+        this.rightPanel.add(new Heading(Heading.H5, "Lift Report"), constraints);
+        constraints.gridheight = 1;
+        constraints.gridy += 2;
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Name");
+        model.addColumn("Open hours");
+        model.addColumn("Status");
+
+        for (Lift lift : LiftController.getLifts()) {
+            model.addRow(
+                    new Object[] { lift.getName(),
+                            lift.getOpeningTime().toString() + " - " + lift.getClosingTime().toString(),
+                            lift.getLiftStatus() });
+        }
+
+        JTable table = new JTable(model);
+        table.setPreferredSize(new Dimension(350, (int) (Main.size.getHeight() * 0.6)));
+        this.rightPanel.add(table, constraints);
         /**
          * Combine all components and panels
          */
