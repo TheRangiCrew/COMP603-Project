@@ -97,6 +97,7 @@ public class MainMenuView extends ViewPanel {
         }
 
         JTable table = new JTable(model);
+        table.setEnabled(false);
         table.setPreferredSize(new Dimension(350, (int) (Main.size.getHeight() * 0.6)));
         this.rightPanel.add(table, constraints);
         /**
