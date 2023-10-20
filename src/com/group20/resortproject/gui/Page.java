@@ -6,8 +6,10 @@ import com.group20.resortproject.Controller;
 import com.group20.resortproject.MainPanel;
 import com.group20.resortproject.Model;
 import com.group20.resortproject.gui.controllers.*;
+import com.group20.resortproject.gui.controllers.cafe.*;
 import com.group20.resortproject.gui.controllers.creditpass.*;
 import com.group20.resortproject.gui.views.*;
+import com.group20.resortproject.gui.views.cafe.*;
 import com.group20.resortproject.gui.views.creditpass.*;
 
 /**
@@ -27,7 +29,9 @@ public enum Page {
     /** Credit and Lift Pass pages */
     CREDITPASS("Credit & Lift Passes", null, CreditPassView.class, CreditPassController.class),
     LIFTPASS("Add Lift Pass", null, LiftPassView.class, LiftPassController.class),
-    CREDIT("Add Credit", null, CreditView.class, CreditController.class);
+    CREDIT("Add Credit", null, CreditView.class, CreditController.class),
+    /** Mountain Cafe */
+    CAFE("Mountain Cafe", null, CafeMainView.class, CafeMainController.class);
 
     // User friendly name of the page
     private String name;

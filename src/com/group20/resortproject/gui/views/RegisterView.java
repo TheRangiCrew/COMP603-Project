@@ -21,7 +21,7 @@ import com.group20.resortproject.gui.controllers.RegisterController;
 import com.group20.resortproject.utility.ValidationException;
 
 public class RegisterView extends ViewPanel {
-    
+
     private JLabel errorLabel;
     private JTextField firstNameField;
     private JTextField lastNameField;
@@ -85,9 +85,7 @@ public class RegisterView extends ViewPanel {
         this.add(dobStringField, constraints);
         constraints.gridx = 0;
         constraints.gridy = 4;
-        JLabel emaiLabel = new JLabel("Email: ");
-        emaiLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        this.add(emaiLabel, constraints);
+        this.add(new JLabel("Email: "), constraints);
         constraints.gridx++;
         this.add(emailField, constraints);
         constraints.gridx = 0;
@@ -163,14 +161,15 @@ public class RegisterView extends ViewPanel {
                     // Submit the form to the controller
                     controller.submit();
 
-                    JOptionPane.showMessageDialog(null, "Your account has been registered! You can login straight away by clicking \"Login\" on the Welcome page.");
+                    JOptionPane.showMessageDialog(null,
+                            "Your account has been registered! You can login straight away by clicking \"Login\" on the Welcome page.");
 
                     Navigator.goToPrev();
                 } catch (ValidationException ex) {
                     errorLabel.setText(ex.getMessage());
                 }
             }
-            
+
         });
     }
 

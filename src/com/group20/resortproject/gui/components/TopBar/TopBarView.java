@@ -59,7 +59,7 @@ public class TopBarView extends JPanel {
         this.navButtons = new TopBarButton[] {
                 new TopBarButton("Home", Page.HOME),
                 new TopBarButton("Credit & Lift Passes", Page.CREDITPASS),
-                new TopBarButton("Mountain Café", Page.HOME),
+                new TopBarButton("Mountain Café", Page.CAFE),
                 new TopBarButton("Rental Equipment", Page.HOME),
         };
 

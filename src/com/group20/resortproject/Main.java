@@ -40,10 +40,10 @@ public class Main {
         Dimension screenSize = kit.getScreenSize();
 
         int screenWidth = screenSize.width;
-        int frameWidth = screenWidth / 2;
+        double frameWidth = screenWidth * 0.7;
         int screenHeight = screenSize.height;
-        int frameHeight = screenHeight / 2;
-        size = new Dimension(frameWidth, frameHeight);
+        double frameHeight = screenHeight * 0.7;
+        size = new Dimension((int) frameWidth, (int) frameHeight);
 
         // Create the main JFrame of the program
         frame = new JFrame("Resort Kiosk");
@@ -56,7 +56,7 @@ public class Main {
         frame.pack();
 
         // Navigate to the welcome page and open the frame
-        Navigator.goTo(Page.WELCOME);
+        Navigator.goTo(Page.CAFE);
         frame.setVisible(true);
     }
 
