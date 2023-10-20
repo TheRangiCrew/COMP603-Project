@@ -63,23 +63,6 @@ CREATE TABLE RentalEquipment (
     FOREIGN KEY (equipmentType) REFERENCES RentalEquipmentTypes(rentalEquipmentTypeID)
 );
 
-/** Rental Equipment Attributes **/
-CREATE TABLE RentalEquipmentAttributes (
-    rentalEquipmentAttributesID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    attrName VARCHAR(255),
-    attrValue VARCHAR(255),
-    unit VARCHAR(20)
-);
-
-/** Rental Equipment Attribute Links **/
-CREATE TABLE RentalEquipmentAttributeLinks (
-    linkID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    equipmentID INT,
-    rentalEquipmentAttributesID INT,
-    FOREIGN KEY (equipmentID) REFERENCES RentalEquipment(equipmentID),
-    FOREIGN KEY (rentalEquipmentAttributesID) REFERENCES RentalEquipmentAttributes(rentalEquipmentAttributesID)
-);
-
 /** Rentals **/
 CREATE TABLE Rentals (
   rentalID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
