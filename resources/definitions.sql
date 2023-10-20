@@ -56,9 +56,11 @@ CREATE TABLE RentalEquipmentTypes (
 CREATE TABLE RentalEquipment (
     equipmentID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     equipmentName VARCHAR(25),
-    equipmentSize INT,
+    equipmentSize VARCHAR(10),
     equipmentSizeUnit VARCHAR(20),
-    equipmentAvailability INT
+    equipmentAvailability INT,
+    equipmentType INT,
+    FOREIGN KEY (equipmentType) REFERENCES RentalEquipmentTypes(rentalEquipmentTypeID)
 );
 
 /** Rental Equipment Attributes **/
