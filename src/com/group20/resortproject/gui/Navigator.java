@@ -91,7 +91,7 @@ public class Navigator {
     }
 
     public static void goToHome() {
-        goTo(Page.WELCOME);
+        goTo(Page.HOME);
         resetPrevious();
     }
 
