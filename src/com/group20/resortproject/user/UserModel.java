@@ -100,7 +100,7 @@ public class UserModel {
         }
     }
 
-    static void updateUser(User user) {
+    static void updateUser(User user) throws Exception {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
@@ -121,6 +121,7 @@ public class UserModel {
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new Exception("Something went wrong while updating user info.");
         }
     }
 
