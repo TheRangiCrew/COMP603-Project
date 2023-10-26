@@ -7,6 +7,9 @@ public class CafeController {
 
     private static HashMap<CafeCategories, ArrayList<Item>> items;
 
+    /**
+     * Initialises the Cafe
+     */
     public static void initCafe() {
         items = CafeModel.getItems();
     }
@@ -14,5 +17,4 @@ public class CafeController {
     public static HashMap<CafeCategories, ArrayList<Item>> getItems() {
         return items;
     }
-
 }

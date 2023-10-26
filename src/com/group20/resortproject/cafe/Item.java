@@ -36,4 +36,24 @@ public class Item {
         return description;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Item)) {
+            return false;
+        }
+
+        Item item = (Item) obj;
+
+        return this.ID == item.ID;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+
 }
