@@ -1,6 +1,7 @@
 package com.group20.resortproject.gui.views;
 
 import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
@@ -11,7 +12,6 @@ public class ViewPanel extends JPanel implements View {
 
     @Override
     public void update(Observable o, Object arg) {
-
     }
 
     @Override

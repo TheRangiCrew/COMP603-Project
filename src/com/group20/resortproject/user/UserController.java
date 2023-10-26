@@ -58,9 +58,14 @@ public class UserController {
         UserModel.insertUser(firstName, lastName, dob, email, phone, password);
     }
 
-    public static void addCredit(float amount) {
-        loggedInUser.addCredit(amount);
-        UserModel.updateUser(loggedInUser);
+    public static void addCredit(float amount) throws Exception {
+        try {
+
+            loggedInUser.addCredit(amount);
+            UserModel.updateUser(loggedInUser);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     public static int updateLiftPasses() {

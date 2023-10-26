@@ -72,8 +72,13 @@ public class CreditView extends ViewPanel {
                             "Confirm Credit", JOptionPane.YES_NO_OPTION);
 
                     if (response == JOptionPane.YES_OPTION) {
-                        UserController.addCredit(controller.getFloat());
-                        Navigator.goToPrev();
+                        try {
+
+                            UserController.addCredit(controller.getFloat());
+                            Navigator.goToPrev();
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     } else {
                         return;
                     }

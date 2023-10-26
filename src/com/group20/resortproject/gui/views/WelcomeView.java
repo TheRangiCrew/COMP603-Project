@@ -57,12 +57,6 @@ public class WelcomeView extends ViewPanel {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
     public void addController(Controller c) {
         WelcomeController controller = (WelcomeController) c;
         System.out.println("Added");

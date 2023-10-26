@@ -13,7 +13,7 @@ public class User {
     private String email;
     private LocalDate dob;
     private String phone;
-    private float credit; 
+    private float credit;
     private ArrayList<LiftPass> passes;
 
     public User(int id, String firstName, String lastName, String email, LocalDate dob, String phone, float credit) {
@@ -85,6 +85,24 @@ public class User {
 
     public ArrayList<LiftPass> getLiftPasses() {
         return this.passes;
+    }
+
+    public void chargeAccount(float amount) throws Exception {
+        if (amount <= 0.0f) {
+            throw new Exception("Amount to charge was less than or equal to zero. Payment failed");
+        }
+
+        if (amount > this.credit) {
+            throw new Exception("Account has insufficient credit for this transaction.");
+        }
+
+        this.credit -= amount;
+
+        try {
+            UserModel.updateUser(this);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     void setLiftPasses(ArrayList<LiftPass> list) {

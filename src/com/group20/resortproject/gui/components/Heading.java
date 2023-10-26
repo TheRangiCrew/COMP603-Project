@@ -12,6 +12,13 @@ public class Heading extends JLabel {
         this.setText(text);
     }
 
+    public Heading(HeadingDefinition definition, String text, int constraints) {
+        Font font = this.getFont().deriveFont(definition.getWeight(), definition.getSize());
+        this.setFont(font);
+        this.setText(text);
+        this.setHorizontalAlignment(constraints);
+    }
+
     public static final HeadingDefinition H1 = new HeadingDefinition(36, Font.BOLD);
     public static final HeadingDefinition H2 = new HeadingDefinition(28, Font.BOLD);
     public static final HeadingDefinition H3 = new HeadingDefinition(22, Font.BOLD);
