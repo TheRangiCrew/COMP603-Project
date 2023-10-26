@@ -5,10 +5,7 @@ import com.group20.resortproject.cafe.CafeCategories;
 import com.group20.resortproject.cafe.CafeController;
 import com.group20.resortproject.cafe.Item;
 import com.group20.resortproject.gui.Navigator;
-import com.group20.resortproject.gui.Page;
 import com.group20.resortproject.gui.components.Heading;
-import com.group20.resortproject.gui.components.cafe.CafeItemRenderer;
-import com.group20.resortproject.gui.components.cafe.ItemPanel;
 import com.group20.resortproject.gui.components.cafe.OrderPanel;
 import com.group20.resortproject.gui.controllers.cafe.CafeMainController;
 import com.group20.resortproject.gui.views.ViewPanel;
@@ -24,7 +21,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

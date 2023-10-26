@@ -1,8 +1,6 @@
 package com.group20.resortproject.gui.views;
 
 import java.util.Observable;
-import java.util.Observer;
-
 import javax.swing.JPanel;
 
 import com.group20.resortproject.Controller;

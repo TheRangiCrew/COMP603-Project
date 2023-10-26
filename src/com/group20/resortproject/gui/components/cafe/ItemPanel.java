@@ -1,8 +1,6 @@
 package com.group20.resortproject.gui.components.cafe;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,12 +15,7 @@ import com.group20.resortproject.cafe.OrderItem;
 
 public class ItemPanel extends JPanel {
 
-    private OrderItem item;
-    private Order order;
-
     public ItemPanel(OrderItem item, Order order) {
-        this.item = item;
-        this.order = order;
 
         DecimalFormat priceFormatter = new DecimalFormat("$0.00");
 

@@ -4,13 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,7 +16,6 @@ import javax.swing.SwingConstants;
 import com.group20.resortproject.cafe.Order;
 import com.group20.resortproject.cafe.OrderItem;
 import com.group20.resortproject.gui.components.Heading;
-import com.group20.resortproject.gui.controllers.cafe.CafeMainController;
 
 public class OrderPanel extends JPanel {
 

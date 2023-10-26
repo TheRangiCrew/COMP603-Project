@@ -6,8 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -19,7 +17,6 @@ import com.group20.resortproject.Main;
 import com.group20.resortproject.gui.components.Heading;
 import com.group20.resortproject.lifts.Lift;
 import com.group20.resortproject.lifts.LiftController;
-import com.group20.resortproject.user.User;
 import com.group20.resortproject.user.UserController;
 
 public class MainMenuView extends ViewPanel {

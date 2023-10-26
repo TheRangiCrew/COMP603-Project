@@ -5,11 +5,8 @@ import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.gui.Navigator;
 import com.group20.resortproject.gui.Page;
-import com.group20.resortproject.gui.views.creditpass.CreditPassView;
 
 public class CreditPassController implements Controller {
-
-    private CreditPassView view;
 
     public void addCredit() {
         Navigator.goTo(Page.CREDIT);
@@ -26,7 +23,6 @@ public class CreditPassController implements Controller {
 
     @Override
     public void addView(View view) {
-        this.view = (CreditPassView) view;
     }
 
 }

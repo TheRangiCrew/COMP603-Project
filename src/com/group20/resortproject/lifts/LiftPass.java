@@ -35,6 +35,10 @@ public class LiftPass {
         this.validTo = validTo;
     }
 
+    public int getID() {
+        return this.id;
+    }
+
     public LocalDateTime getValidFrom() {
         return this.validFrom;
     }
