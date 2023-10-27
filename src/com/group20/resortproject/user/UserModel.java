@@ -12,12 +12,19 @@ import com.group20.resortproject.utility.Tuple;
 
 public class UserModel {
 
+    /**
+     * finds a user given their ID
+     * 
+     * @param id
+     * @return the user if found
+     */
     static User findUser(int id) {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
         ResultSet result;
 
+        // execute query
         try {
             statement = conn
                     .prepareStatement(
@@ -27,6 +34,7 @@ public class UserModel {
 
             result = statement.executeQuery();
 
+            // if the results match returns user information
             if (result.next()) {
                 String firstName = result.getString("firstName");
                 String lastName = result.getString("lastName");
@@ -44,12 +52,19 @@ public class UserModel {
         }
     }
 
+    /**
+     * reads the database to find a user
+     * 
+     * @param email
+     * @return email and password
+     */
     static Tuple<Integer, String> findLogin(String email) {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
         ResultSet result;
 
+        // try execute the query
         try {
             statement = conn.prepareStatement("SELECT userID, password FROM users WHERE email = ?");
 
@@ -77,12 +92,23 @@ public class UserModel {
         return new Tuple<Integer, String>(id, dbPassword);
     }
 
+    /**
+     * inserts a new user into the database
+     * 
+     * @param firstName
+     * @param lastName
+     * @param dob
+     * @param email
+     * @param phone
+     * @param password
+     */
     static void insertUser(String firstName, String lastName, LocalDate dob, String email, String phone,
             String password) {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
 
+        // execute insert to update a new user into database
         try {
             statement = conn.prepareStatement(
                     "INSERT INTO Users(firstName, lastName, dob, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
@@ -100,11 +126,18 @@ public class UserModel {
         }
     }
 
+    /**
+     * updates a users details when changes are made
+     * 
+     * @param user
+     * @throws Exception
+     */
     static void updateUser(User user) throws Exception {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
 
+        // executes update statement to try update user details
         try {
             statement = conn.prepareStatement(
                     "UPDATE Users SET firstName = ?, lastName = ?, dob = ?, email = ?, phone = ?, credit = ? WHERE userID = ?");
