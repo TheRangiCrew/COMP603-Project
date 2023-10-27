@@ -9,7 +9,10 @@ import java.util.EventListener;
  */
 public interface Controller extends EventListener {
 
-    public void addModel(Model model);
-
+    /**
+     * Add a view to the current controller for easy access to the View
+     * 
+     * @param view the view to add
+     */
     public void addView(View view);
 }

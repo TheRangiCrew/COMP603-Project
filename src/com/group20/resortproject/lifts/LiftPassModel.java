@@ -10,35 +10,43 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.group20.resortproject.user.UserController;
 import com.group20.resortproject.utility.DBManager;
 
 public class LiftPassModel {
 
-    public static boolean addLiftPass(LiftPass pass) {
+    /**
+     * Add new lift pass and assign it to the currently logged in user
+     * 
+     * @param pass the lift pass to add
+     * @throws SQLException
+     */
+    public static void addLiftPass(LiftPass pass) throws SQLException {
         Connection conn = DBManager.getConnection();
 
+        // The statement to execute
         PreparedStatement statement;
+        statement = conn.prepareStatement(
+                "INSERT INTO LiftPasses(validFrom, validTo, userID) VALUES (?, ?, ?)");
 
-        try {
-            statement = conn.prepareStatement(
-                    "INSERT INTO LiftPasses(validFrom, validTo, userID) VALUES (?, ?, ?)");
+        // Insert the data into the quey
+        statement.setTimestamp(1, new Timestamp(
+                ZonedDateTime.of(pass.getValidFrom(), ZoneId.systemDefault()).toInstant().toEpochMilli()));
+        statement.setTimestamp(2, new Timestamp(
+                ZonedDateTime.of(pass.getValidTo(), ZoneId.systemDefault()).toInstant().toEpochMilli()));
+        statement.setInt(3, UserController.getLoggedIn().getID());
 
-            statement.setTimestamp(1, new Timestamp(
-                    ZonedDateTime.of(pass.getValidFrom(), ZoneId.systemDefault()).toInstant().toEpochMilli()));
-            statement.setTimestamp(2, new Timestamp(
-                    ZonedDateTime.of(pass.getValidTo(), ZoneId.systemDefault()).toInstant().toEpochMilli()));
-            statement.setInt(3, UserController.getLoggedIn().getID());
-
-            statement.executeUpdate();
-
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        // Execute the query
+        statement.executeUpdate();
     }
 
+    /**
+     * 
+     * @param userID the ID of the user to get data about
+     * @return the lift passes belonging to the specified user
+     */
     public static ArrayList<LiftPass> getLiftPassesForUser(int userID) {
         Connection conn = DBManager.getConnection();
 
@@ -47,6 +55,7 @@ public class LiftPassModel {
         ArrayList<LiftPass> list = new ArrayList<>();
 
         try {
+            // Prepare the SQL statement
             statement = conn
                     .prepareStatement("SELECT * FROM LiftPasses WHERE userID = ?");
 
@@ -54,6 +63,7 @@ public class LiftPassModel {
 
             result = statement.executeQuery();
 
+            // Loop through the rows and convert to data types
             while (result.next()) {
                 int id = result.getInt("passID");
                 LocalDateTime validFrom = result.getTimestamp("validFrom").toLocalDateTime();
@@ -63,7 +73,9 @@ public class LiftPassModel {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "SQL Exception occurred while getting user lift passes\n" + e.getMessage(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
         return list;

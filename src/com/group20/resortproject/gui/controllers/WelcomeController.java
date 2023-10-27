@@ -1,7 +1,6 @@
 package com.group20.resortproject.gui.controllers;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.gui.Navigator;
 import com.group20.resortproject.gui.Page;
@@ -17,14 +16,8 @@ public class WelcomeController implements Controller {
     }
 
     @Override
-    public void addModel(Model model) {
-        
-    }
-
-    @Override
     public void addView(View view) {
-        
-    }
 
+    }
 
 }
