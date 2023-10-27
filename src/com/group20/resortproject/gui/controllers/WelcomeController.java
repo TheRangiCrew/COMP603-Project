@@ -19,5 +19,4 @@ public class WelcomeController implements Controller {
     public void addView(View view) {
 
     }
-
 }

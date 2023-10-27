@@ -32,6 +32,9 @@ public class RegisterController implements Controller {
         String password = "";
         String confirmation = "";
 
+        /**
+         * gets the vaules and checks the values are valid
+         */
         try {
             firstName = this.view.getFirstNameField().getText();
             lastName = this.view.getLastNameField().getText();
@@ -43,6 +46,7 @@ public class RegisterController implements Controller {
         } catch (NullPointerException e) {
         }
 
+        // if any fields are missing or entered incorrectly, sends a message to the user
         if (firstName.isEmpty()) {
             throw new ValidationException("Your first name is required!");
         } else if (!(firstName.matches(nameRegex))) {

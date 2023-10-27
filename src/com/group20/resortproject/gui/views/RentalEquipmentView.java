@@ -1,10 +1,6 @@
 package com.group20.resortproject.gui.views;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,7 +18,6 @@ import com.group20.resortproject.equipment.RentalEquipmentController;
 import com.group20.resortproject.equipment.RentalItem;
 import com.group20.resortproject.gui.components.Heading;
 import com.group20.resortproject.gui.controllers.rentalequipment.RentalViewController;
-import com.group20.resortproject.user.UserController;
 
 public class RentalEquipmentView extends ViewPanel {
 
@@ -30,12 +25,19 @@ public class RentalEquipmentView extends ViewPanel {
     private JButton confirmButton;
     private RentalItem selectedItem;
 
+    /**
+     * the GUI for the rental equipment
+     */
     public RentalEquipmentView() {
 
         this.confirmButton = new JButton("YES");
+
+        // set box layout
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 100));
 
+        // calls the rental equipment controller to initiate the rental equipment and
+        // get a list of equipment items
         RentalEquipmentController.initRentalEquipment();
 
         Heading heading = new Heading(Heading.H4, "What equipment would you like to rent?");
@@ -43,6 +45,8 @@ public class RentalEquipmentView extends ViewPanel {
 
         JPanel buttonPanel = new JPanel();
 
+        // creates a button for each type of equipment and gives them all their own
+        // action
         for (EquipmentType type : RentalEquipmentController.getItems().keySet()) {
 
             JButton equipmentButton = new JButton(type.getName());
@@ -72,6 +76,12 @@ public class RentalEquipmentView extends ViewPanel {
 
     }
 
+    /**
+     * using the selected equipmentType, adds a panal for more options for the
+     * selected type and updates the UI as necessary
+     * 
+     * @param type the selected equipment
+     */
     private void setType(EquipmentType type) {
 
         this.secondPanel.removeAll();
@@ -84,6 +94,7 @@ public class RentalEquipmentView extends ViewPanel {
             this.secondPanel.add(new JLabel("Please pick a " + type.getName() + " size:"));
         }
 
+        // creates a button for each size of the specified item
         for (RentalItem item : RentalEquipmentController.getItems().get(type)) {
             JButton sizeButton = new JButton(item.getEquipmentSize());
             sizeButton.setFont(sizeButton.getFont().deriveFont(20f));
@@ -102,6 +113,11 @@ public class RentalEquipmentView extends ViewPanel {
         this.secondPanel.repaint();
     }
 
+    /**
+     * ask the user to confirm purchase
+     * 
+     * @param item
+     */
     private void confirmation(RentalItem item) {
 
         this.selectedItem = item;
@@ -127,6 +143,7 @@ public class RentalEquipmentView extends ViewPanel {
         this.secondPanel.add(confirmButton);
         this.secondPanel.add(declineButton);
 
+        // if decline button is pressed, resets the UI
         declineButton.addActionListener(new ActionListener() {
 
             @Override
@@ -141,6 +158,8 @@ public class RentalEquipmentView extends ViewPanel {
         this.secondPanel.repaint();
     }
 
+    // when confirm button pressed, panel pop up confiming rental success, else
+    // throws error panel
     @Override
     public void addController(Controller c) {
         RentalViewController controller = (RentalViewController) c;

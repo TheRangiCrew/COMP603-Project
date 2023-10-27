@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBManager {
+    /**
+     * String details used to connect to the database
+     */
     private static final String URL = "jdbc:derby:MountainResort;create=true;";
     private static final String USERNAME = "group20";
     private static final String PASSWORD = "group20";

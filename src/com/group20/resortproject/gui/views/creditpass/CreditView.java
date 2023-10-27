@@ -57,6 +57,7 @@ public class CreditView extends ViewPanel {
         this.add(Box.createVerticalGlue());
     }
 
+    @Override
     public void addController(Controller c) {
         CreditController controller = (CreditController) c;
 
