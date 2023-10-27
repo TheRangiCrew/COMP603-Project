@@ -6,6 +6,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.text.DecimalFormat;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JLabel;
@@ -59,7 +61,9 @@ public class MainMenuView extends ViewPanel {
         constraints.gridy++;
         this.leftPanel.add(new JLabel("Date of birth: " + UserController.getLoggedIn().getDob()), constraints);
         constraints.gridy++;
-        this.leftPanel.add(new JLabel("Account credit: $" + UserController.getLoggedIn().getCredit()), constraints);
+        this.leftPanel.add(new JLabel(
+                "Account credit: $" + new DecimalFormat("0.00").format(UserController.getLoggedIn().getCredit())),
+                constraints);
         constraints.gridy++;
         this.leftPanel.add(new JLabel("Lift Pass: " + (UserController.getLoggedIn().hasValidPass()
                 ? UserController.getLoggedIn().getValidLiftPass().toString()
