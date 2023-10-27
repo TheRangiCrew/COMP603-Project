@@ -26,6 +26,7 @@ replay_pid*
 nbproject/private/
 nbproject/private/private.properties
 /build/
-nbproject/private/private.properties
+
 .vscode
 .vscode/settings.json
+.VSCodeCounter
