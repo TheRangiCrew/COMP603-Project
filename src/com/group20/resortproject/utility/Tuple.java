@@ -1,5 +1,8 @@
 package com.group20.resortproject.utility;
 
+/**
+ * A Tuple
+ */
 public class Tuple<A, B> {
     public A first;
     public B second;

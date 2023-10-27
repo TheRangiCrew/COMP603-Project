@@ -45,17 +45,18 @@ public class TopBarView extends JPanel {
         this.add(this.backButton, BorderLayout.WEST);
 
         /**
-         * That thing in the middle
+         * Navigation Bar
          */
+        this.centerPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         // This adds spacing between each field (in pixels)
         constraints.insets = new Insets(0, 10, 0, 10);
-
-        this.centerPanel = new JPanel(new GridBagLayout());
-        this.add(Box.createVerticalGlue());
         constraints.gridx = 0;
         constraints.gridy = 0;
 
+        this.add(Box.createVerticalGlue());
+
+        // The different buttons for the navigation bar
         this.navButtons = new TopBarButton[] {
                 new TopBarButton("Home", Page.HOME),
                 new TopBarButton("Credit & Lift Passes", Page.CREDITPASS),
@@ -66,7 +67,7 @@ public class TopBarView extends JPanel {
         Color activeColour = new Color(54, 133, 245);
         Color defaultColour = new Color(30, 38, 48);
 
-        // Apply all button styles
+        // Apply styles and action listeners to all buttons
         for (TopBarButton button : navButtons) {
             button.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, defaultColour));
             button.setBackground(new Color(0, 0, 0, 0));
@@ -77,7 +78,6 @@ public class TopBarView extends JPanel {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    button.navigate();
                     button.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, activeColour));
                 }
 
@@ -93,16 +93,23 @@ public class TopBarView extends JPanel {
         this.logoutButton.setEnabled(false);
         this.logoutButton.addActionListener(new ActionListener() {
 
+            // When the logout button is pressed, log the user out and navigate to the
+            // welcome page
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserController.logout();
-                Navigator.goToHome();
+                Navigator.goTo(Page.WELCOME);
+                Navigator.resetPrevious();
             }
 
         });
         this.add(this.logoutButton, BorderLayout.EAST);
     }
 
+    /**
+     * Update the components to reflect the latest state of several program
+     * variables
+     */
     public void update() {
         this.backButton.setEnabled(Navigator.hasPrevious());
         this.centerPanel.setVisible(UserController.isLoggedIn());

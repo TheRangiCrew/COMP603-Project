@@ -4,6 +4,13 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+/**
+ * A helper class to provide JLabels similarly styled to HTML heading tags.
+ * Examples:
+ * <h1>Heading 1</h1>
+ * <h2>Heading 2</h2>
+ * <h4>Heading 4</h4>
+ */
 public class Heading extends JLabel {
 
     public Heading(HeadingDefinition definition, String text) {
@@ -19,6 +26,7 @@ public class Heading extends JLabel {
         this.setHorizontalAlignment(constraints);
     }
 
+    // Definitions for different styles of headings
     public static final HeadingDefinition H1 = new HeadingDefinition(36, Font.BOLD);
     public static final HeadingDefinition H2 = new HeadingDefinition(28, Font.BOLD);
     public static final HeadingDefinition H3 = new HeadingDefinition(22, Font.BOLD);
@@ -28,6 +36,9 @@ public class Heading extends JLabel {
 
 }
 
+/**
+ * Heading style definitions
+ */
 class HeadingDefinition {
     private final float size;
     private final int weight;
