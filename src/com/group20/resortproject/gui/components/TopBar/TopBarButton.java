@@ -3,7 +3,6 @@ package com.group20.resortproject.gui.components.TopBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import com.group20.resortproject.gui.Navigator;
