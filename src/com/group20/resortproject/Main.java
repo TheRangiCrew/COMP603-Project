@@ -56,7 +56,7 @@ public class Main {
         frame.pack();
 
         // Navigate to the welcome page and open the frame
-        Navigator.goTo(Page.CAFE);
+        Navigator.goTo(Page.WELCOME);
         frame.setVisible(true);
     }
 

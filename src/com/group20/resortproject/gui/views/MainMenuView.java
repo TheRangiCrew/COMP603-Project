@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.group20.resortproject.Main;
+import com.group20.resortproject.equipment.RentalEquipmentModel;
 import com.group20.resortproject.gui.components.Heading;
 import com.group20.resortproject.lifts.Lift;
 import com.group20.resortproject.lifts.LiftController;
@@ -63,6 +64,12 @@ public class MainMenuView extends ViewPanel {
         this.leftPanel.add(new JLabel("Lift Pass: " + (UserController.getLoggedIn().hasValidPass()
                 ? UserController.getLoggedIn().getValidLiftPass().toString()
                 : "No Valid Passes")), constraints);
+        constraints.gridy++;
+        this.leftPanel.add(new JLabel("Current rentals: "), constraints);
+        for (String item : RentalEquipmentModel.getRentals()) {
+            constraints.gridy++;
+            this.leftPanel.add(new JLabel(item), constraints);
+        }
 
         /**
          * Right Panel Components (Lift Information)

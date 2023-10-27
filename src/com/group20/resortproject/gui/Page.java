@@ -5,9 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import com.group20.resortproject.Controller;
 import com.group20.resortproject.MainPanel;
 import com.group20.resortproject.Model;
+import com.group20.resortproject.equipment.RentalEquipmentController;
 import com.group20.resortproject.gui.controllers.*;
 import com.group20.resortproject.gui.controllers.cafe.*;
 import com.group20.resortproject.gui.controllers.creditpass.*;
+import com.group20.resortproject.gui.controllers.rentalequipment.RentalViewController;
 import com.group20.resortproject.gui.views.*;
 import com.group20.resortproject.gui.views.cafe.*;
 import com.group20.resortproject.gui.views.creditpass.*;
@@ -31,7 +33,9 @@ public enum Page {
     LIFTPASS("Add Lift Pass", null, LiftPassView.class, LiftPassController.class),
     CREDIT("Add Credit", null, CreditView.class, CreditController.class),
     /** Mountain Cafe */
-    CAFE("Mountain Cafe", null, CafeMainView.class, CafeMainController.class);
+    CAFE("Mountain Cafe", null, CafeMainView.class, CafeMainController.class),
+    /** RentalEquipment */
+    RENTALEQUIPMENT("Rental Equipment", null, RentalEquipmentView.class, RentalViewController.class);
 
     // User friendly name of the page
     private String name;

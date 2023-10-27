@@ -48,7 +48,8 @@ CREATE TABLE CafeItems (
 /** Rental Equipment Types **/
 CREATE TABLE RentalEquipmentTypes (
     rentalEquipmentTypeID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    rentalEquipmentTypeName VARCHAR(50)
+    rentalEquipmentTypeName VARCHAR(50),
+    rentalEquipmentPrice INT
 );
 
 

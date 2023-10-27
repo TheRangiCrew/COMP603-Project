@@ -60,7 +60,7 @@ public class TopBarView extends JPanel {
                 new TopBarButton("Home", Page.HOME),
                 new TopBarButton("Credit & Lift Passes", Page.CREDITPASS),
                 new TopBarButton("Mountain Café", Page.CAFE),
-                new TopBarButton("Rental Equipment", Page.HOME),
+                new TopBarButton("Rental Equipment", Page.RENTALEQUIPMENT),
         };
 
         Color activeColour = new Color(54, 133, 245);
