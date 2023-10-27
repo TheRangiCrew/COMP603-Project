@@ -1,5 +1,8 @@
 package com.group20.resortproject.cafe;
 
+/**
+ * An Item that can be purchased at the Cafe
+ */
 public class Item {
 
     private int ID;
@@ -8,6 +11,16 @@ public class Item {
     private float price;
     private String description;
 
+    /**
+     * 
+     * @param ID          Item ID
+     * @param name        Item name
+     * @param category    Item category
+     * @param price       Item price
+     * @param description Item descirption
+     * 
+     * @see CafeCategories
+     */
     public Item(int ID, String name, CafeCategories category, float price, String description) {
         this.ID = ID;
         this.name = name;
@@ -16,22 +29,44 @@ public class Item {
         this.description = description;
     }
 
+    /**
+     * 
+     * @return the item's unique ID
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * 
+     * @return the item's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * 
+     * @return the item's category
+     * 
+     * @see CafeCategories
+     */
     public CafeCategories getCategory() {
         return category;
     }
 
+    /**
+     * 
+     * @return the item's price
+     */
     public float getPrice() {
         return price;
     }
 
+    /**
+     * 
+     * @return the item's description
+     */
     public String getDescription() {
         return description;
     }

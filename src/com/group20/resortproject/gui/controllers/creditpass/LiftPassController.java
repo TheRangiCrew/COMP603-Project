@@ -1,10 +1,10 @@
 package com.group20.resortproject.gui.controllers.creditpass;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.gui.views.creditpass.LiftPassView;
 import com.group20.resortproject.lifts.LiftPass;
@@ -54,16 +54,13 @@ public class LiftPassController implements Controller {
                 return false;
         }
 
-        if (!(LiftPassModel.addLiftPass(pass))) {
+        try {
+            LiftPassModel.addLiftPass(pass);
+        } catch (SQLException e) {
             return false;
         }
         UserController.updateLiftPasses();
         return true;
-    }
-
-    @Override
-    public void addModel(Model model) {
-
     }
 
     @Override

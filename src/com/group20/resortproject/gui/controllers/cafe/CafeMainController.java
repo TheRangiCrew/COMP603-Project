@@ -4,7 +4,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.cafe.Item;
 import com.group20.resortproject.cafe.Order;
@@ -31,10 +30,6 @@ public class CafeMainController implements Controller, Observer {
         } catch (Exception e) {
             throw e;
         }
-    }
-
-    @Override
-    public void addModel(Model model) {
     }
 
     @Override

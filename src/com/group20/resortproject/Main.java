@@ -34,8 +34,10 @@ public class Main {
         // your call!
         FlatLightLaf.setup();
 
+        // Initiate the database connection
         DBManager.establishConnection();
 
+        // Calculate the program's dimensions, occupying 70% of the screen
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
 

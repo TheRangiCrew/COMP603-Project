@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.group20.resortproject.utility.DBManager;
 
 public class LiftModel {
 
+    /**
+     * 
+     * @return the lifts in the resort
+     */
     public static ArrayList<Lift> getLifts() {
 
         Connection conn = DBManager.getConnection();
@@ -34,8 +40,10 @@ public class LiftModel {
                 list.add(new Lift(id, name, openingTime, closingTime, liftStatus, liftType, length, capacity));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "SQL Exception while getting lift data\n" + e.getMessage(),
+                    "Fatal Error", JOptionPane.ERROR_MESSAGE);
         }
+
         return list;
     }
 }

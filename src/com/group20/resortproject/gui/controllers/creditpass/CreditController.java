@@ -3,7 +3,6 @@ package com.group20.resortproject.gui.controllers.creditpass;
 import java.text.DecimalFormat;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.gui.views.creditpass.CreditView;
 import com.group20.resortproject.utility.ValidationException;
@@ -42,11 +41,6 @@ public class CreditController implements Controller {
 
     public String getValuestring() {
         return this.valueString;
-    }
-
-    @Override
-    public void addModel(Model model) {
-
     }
 
     @Override

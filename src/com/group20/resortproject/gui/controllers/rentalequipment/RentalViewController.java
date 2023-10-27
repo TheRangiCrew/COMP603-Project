@@ -1,7 +1,6 @@
 package com.group20.resortproject.gui.controllers.rentalequipment;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.equipment.RentalEquipmentController;
 import com.group20.resortproject.equipment.RentalItem;
@@ -11,10 +10,6 @@ public class RentalViewController implements Controller {
 
     public RentalViewController() {
         RentalEquipmentController.initRentalEquipment();
-    }
-
-    @Override
-    public void addModel(Model model) {
     }
 
     @Override

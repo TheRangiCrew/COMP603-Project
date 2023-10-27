@@ -3,7 +3,6 @@ package com.group20.resortproject.gui.controllers;
 import javax.swing.JButton;
 
 import com.group20.resortproject.Controller;
-import com.group20.resortproject.Model;
 import com.group20.resortproject.View;
 import com.group20.resortproject.gui.Navigator;
 import com.group20.resortproject.gui.Page;
@@ -45,7 +44,7 @@ public class LoginController implements Controller {
         submitButton.setText("Checking...");
 
         // If a user login attempt is successful...
-        if(UserController.login(email, password)) {
+        if (UserController.login(email, password)) {
             System.out.println("Logged in...");
             Navigator.goTo(Page.HOME);
             Navigator.resetPrevious();
@@ -62,10 +61,6 @@ public class LoginController implements Controller {
     @Override
     public void addView(View view) {
         this.view = (LoginView) view;
-    }
-
-    @Override
-    public void addModel(Model model) {
     }
 
 }

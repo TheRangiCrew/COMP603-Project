@@ -3,6 +3,9 @@ package com.group20.resortproject.lifts;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A pass granting user's access to the lifts within the resort
+ */
 public class LiftPass {
 
     private int id;
@@ -35,14 +38,26 @@ public class LiftPass {
         this.validTo = validTo;
     }
 
+    /**
+     * 
+     * @return the unique ID of the pass
+     */
     public int getID() {
         return this.id;
     }
 
+    /**
+     * 
+     * @return the datetime the lift pass is valid from
+     */
     public LocalDateTime getValidFrom() {
         return this.validFrom;
     }
 
+    /**
+     * 
+     * @return the datetime the lift pass is valid to
+     */
     public LocalDateTime getValidTo() {
         return this.validTo;
     }
