@@ -103,13 +103,12 @@ public class UserModel {
      * @param password
      */
     static void insertUser(String firstName, String lastName, LocalDate dob, String email, String phone,
-            String password) {
+            String password) throws SQLException {
         Connection conn = DBManager.getConnection();
 
         PreparedStatement statement;
 
         // execute insert to update a new user into database
-        try {
             statement = conn.prepareStatement(
                     "INSERT INTO Users(firstName, lastName, dob, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)");
 
@@ -121,9 +120,6 @@ public class UserModel {
             statement.setString(6, password);
 
             statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

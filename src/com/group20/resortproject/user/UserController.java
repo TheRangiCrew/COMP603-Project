@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.group20.resortproject.lifts.LiftPassModel;
 import com.group20.resortproject.utility.Tuple;
+import java.sql.SQLException;
 
 public class UserController {
 
@@ -70,13 +71,18 @@ public class UserController {
      * @param phone
      * @param password
      */
-    public static void addUser(String firstName, String lastName, LocalDate dob, String email, String phone,
+    public static boolean addUser(String firstName, String lastName, LocalDate dob, String email, String phone,
             String password) {
-        UserModel.insertUser(firstName, lastName, dob, email, phone, password);
+        try {
+            UserModel.insertUser(firstName, lastName, dob, email, phone, password);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     /**
-     * updates the information on the programe and in the database
+     * updates the information on the programS and in the database
      * 
      * @param amount
      * @throws Exception
