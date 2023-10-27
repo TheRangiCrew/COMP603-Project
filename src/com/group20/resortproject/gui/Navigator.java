@@ -132,6 +132,12 @@ public class Navigator {
         return current;
     }
 
+    /**
+     * Resets the previously visited pages so they can no longer be navigated to
+     * using goToPrevious
+     * 
+     * @see goToPrevious()
+     */
     public static void resetPrevious() {
         previous.clear();
         MainPanel.getTopBar().update();
