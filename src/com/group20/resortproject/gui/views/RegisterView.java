@@ -78,7 +78,7 @@ public class RegisterView extends ViewPanel {
         this.add(lastNameField, constraints);
         constraints.gridx = 0;
         constraints.gridy = 3;
-        this.add(new JLabel("Date of birth: "), constraints);
+        this.add(new JLabel("Date of birth (dd/mm/yyyy): "), constraints);
         constraints.gridx++;
         this.add(dobStringField, constraints);
         constraints.gridx = 0;
